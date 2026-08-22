@@ -1,0 +1,73 @@
+import { AnalyticsSnippet } from '@/components/AnalyticsSnippet'
+import { FinalCta } from '@/components/site/FinalCta'
+import { Hero } from '@/components/site/Hero'
+import { Journey } from '@/components/site/Journey'
+import { Services } from '@/components/site/Services'
+import { ServicesMarquee } from '@/components/site/ServicesMarquee'
+import { SiteFooter } from '@/components/site/SiteFooter'
+import { SiteHeader } from '@/components/site/SiteHeader'
+import { Testimonials } from '@/components/site/Testimonials'
+import { Trust } from '@/components/site/Trust'
+import { Visit } from '@/components/site/Visit'
+import { LocalBusinessJsonLd } from '@/components/LocalBusinessJsonLd'
+import { Seo } from '@/components/Seo'
+import type { SiteModuleKey } from '@/content/types'
+import { useSiteContent } from '@/hooks/use-site-content'
+
+export function HomePage() {
+  const { content } = useSiteContent()
+  const whatsappUrl =
+    content.visit.whatsappUrl ||
+    `https://wa.me/${content.visit.whatsapp.replace(/\D/g, '')}`
+
+  const enabled = (key: SiteModuleKey) =>
+    content.modules.items.find((item) => item.key === key)?.enabled !== false
+
+  return (
+    <>
+      <Seo seo={content.seo} canonicalPath="/" />
+      <AnalyticsSnippet analytics={content.analytics} />
+      <LocalBusinessJsonLd content={content} />
+      <SiteHeader
+        brand={content.hero.brand}
+        logoUrl={content.hero.logoUrl}
+        whatsappUrl={whatsappUrl}
+      />
+      <main>
+        <Hero
+          hero={content.hero}
+          whatsappUrl={whatsappUrl}
+          showPayments={enabled('paymentMarquee')}
+        />
+        {enabled('journey') ? <Journey journey={content.journey} /> : null}
+        {enabled('trust') ? <Trust trust={content.trust} /> : null}
+        {enabled('servicesMarquee') ? (
+          <ServicesMarquee
+            labels={content.services.items.map((item) => item.title)}
+          />
+        ) : null}
+        {enabled('services') ? (
+          <Services services={content.services} />
+        ) : null}
+        {enabled('testimonials') ? (
+          <Testimonials
+            testimonials={content.testimonials}
+            instagramUrl={content.visit.instagram}
+          />
+        ) : null}
+        {enabled('visit') ? (
+          <Visit visit={content.visit} whatsappUrl={whatsappUrl} />
+        ) : null}
+        {enabled('finalCta') ? (
+          <FinalCta finalCta={content.finalCta} whatsappUrl={whatsappUrl} />
+        ) : null}
+      </main>
+      <SiteFooter
+        brand={content.hero.brand}
+        logoUrl={content.hero.logoUrl}
+        visit={content.visit}
+        footer={content.footer}
+      />
+    </>
+  )
+}

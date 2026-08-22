@@ -1,0 +1,518 @@
+import type { SiteContent } from './types'
+
+/** Stock: consultorio + profesional mujer + escenas clínicas */
+const IMG_HERO =
+  'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=2400&q=80'
+const IMG_TRUST =
+  'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1400&q=80'
+const IMG_CLINIC =
+  'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80'
+const IMG_ORTO =
+  'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=900&q=80'
+const IMG_WHITE =
+  'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=900&q=80'
+const IMG_PROTESIS =
+  'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=900&q=80'
+const IMG_ENDO =
+  'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=900&q=80'
+const IMG_GEST =
+  'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=900&q=80'
+const IMG_PACIENTE_1 =
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80'
+const IMG_PACIENTE_2 =
+  'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80'
+const IMG_PACIENTE_3 =
+  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=800&q=80'
+const IMG_PACIENTE_4 =
+  'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80'
+
+const ADDRESS = 'Calle 3A Sur #72-45, Barrio Perdomo, Bogotá, Colombia'
+const MAP_QUERY = encodeURIComponent(ADDRESS)
+
+export const defaultContent: SiteContent = {
+  seo: {
+    title: 'Dra. Kimberly Martínez — Odontología en Bogotá | Perdomo',
+    description:
+      'Consultorio odontológico en Barrio Perdomo, Bogotá. Ortodoncia, blanqueamiento, prótesis, endodoncia y odontología para gestantes. Agenda por WhatsApp.',
+    keywords:
+      'odontología Bogotá, dra kimberly martinez, ortodoncia Perdomo, blanqueamiento dental, prótesis flexibles, endodoncia, odontología gestantes',
+    ogImage: '/logo-dra-kimberly.jpg',
+  },
+  hero: {
+    brand: 'Dra. Kimberly Martínez',
+    logoUrl: '/logo-sin-texto.png',
+    eyebrow: 'Odontología de precisión',
+    lineOne: 'Precisión que se siente',
+    accentWord: 'natural.',
+    lineTwo: '',
+    promise:
+      'Diagnóstico claro, tratamientos precisos y un trato cercano. Agenda tu valoración y da el siguiente paso con calma.',
+    watermark: 'PRECISIÓN',
+    primaryCtaLabel: 'Agendar cita',
+    secondaryCtaLabel: 'Ver tratamientos',
+    secondaryCtaHref: '#tratamientos',
+    doctorImageUrl: IMG_HERO,
+    floatingCardTitle: 'Agenda tu valoración con calma',
+    floatingCardBody: 'Un solo camino de consulta. Sin presión, con plan claro.',
+    highlights: [
+      { id: 'h1', label: 'Valoración clara' },
+      { id: 'h2', label: 'Plan a tu ritmo' },
+      { id: 'h3', label: 'Diagnóstico primero' },
+      { id: 'h4', label: 'Atención cercana' },
+    ],
+    paymentTitle: 'Medios de pago',
+    paymentMethods: [
+      {
+        id: 'p1',
+        label: 'Codensa',
+        logoUrl: '/payments/codensa.png',
+        notes: 'Crédito Codensa para tratamientos.',
+        enabled: true,
+      },
+      {
+        id: 'p2',
+        label: 'Sistecrédito',
+        logoUrl: '/payments/sistecredito.webp',
+        notes: 'Financiación en cuotas.',
+        enabled: true,
+      },
+      {
+        id: 'p3',
+        label: 'Visa',
+        logoUrl: '/payments/visa-logo-png.png',
+        notes: 'Tarjetas Visa.',
+        enabled: true,
+      },
+      {
+        id: 'p4',
+        label: 'Mastercard',
+        logoUrl: '/payments/mastercard.svg',
+        notes: 'Tarjetas Mastercard.',
+        enabled: true,
+      },
+      {
+        id: 'p5',
+        label: 'Efectivo',
+        logoUrl: '/payments/efectivo.svg',
+        notes: 'Pago en efectivo en consultorio.',
+        enabled: true,
+      },
+      {
+        id: 'p6',
+        label: 'Welli',
+        logoUrl: '/payments/welli.png',
+        notes: 'Financiación Welli.',
+        enabled: true,
+      },
+    ],
+    stats: [
+      { id: 's1', value: '10+', label: 'Años de experiencia' },
+      { id: 's2', value: '5+', label: 'Áreas de tratamiento' },
+      { id: 's3', value: '1:1', label: 'Atención personalizada' },
+    ],
+    trustStatValue: '10+',
+    trustStatLabel: 'años de experiencia clínica',
+  },
+  journey: {
+    title: 'De la incertidumbre a la confianza informada.',
+    intro:
+      'El recorrido refleja cómo decides: reducir ansiedad, entender el plan, ver criterio clínico y dar el siguiente paso con calma.',
+    watermark: 'CONFIANZA',
+    activeStepIndex: 1,
+    steps: [
+      {
+        id: 'j1',
+        title: 'REDUCIR ANSIEDAD',
+        description: 'Un primer contacto claro, sin presión ni tecnicismos innecesarios.',
+      },
+      {
+        id: 'j2',
+        title: 'CONSTRUIR ENTENDIMIENTO',
+        description: 'Capítulos claros que traducen el tratamiento en decisiones simples.',
+      },
+      {
+        id: 'j3',
+        title: 'PROBAR CREDIBILIDAD',
+        description: 'Proceso, materiales y resultados reales hacen visible la experiencia.',
+      },
+      {
+        id: 'j4',
+        title: 'HABILITAR ACCIÓN',
+        description: 'Un solo camino de consulta cierra el recorrido sin presión.',
+      },
+    ],
+    flowLabels: ['INCERTIDUMBRE', 'CLARIDAD', 'PRUEBA', 'CONFIANZA', 'ACCIÓN'],
+  },
+  services: {
+    eyebrow: 'Servicios',
+    title: 'Tratamientos pensados para tu día a día',
+    intro:
+      'Cada opción se explica en lenguaje claro: qué cambia para ti, cómo se siente el proceso y para quién tiene más sentido.',
+    ctaLabel: 'Agendar valoración',
+    ctaHref: '#cita',
+    items: [
+      {
+        id: 'ortodoncia',
+        title: 'Ortodoncia',
+        benefit: 'Alinear con un plan que entiendes desde la primera cita.',
+        description:
+          'Corrige la posición de tus dientes con un seguimiento cercano y pasos claros. Ideal si buscas mejorar mordida, estética o comodidad al hablar y comer, sin sorpresas en el camino.',
+        pageBody:
+          'En el consultorio de la Dra. Kimberly Martínez en Barrio Perdomo, la ortodoncia empieza por una valoración clara: qué quieres corregir, cómo se ve el proceso y qué implica en tu rutina. El plan se explica sin tecnicismos innecesarios, con controles cercanos para que avances con tranquilidad. Trabajamos alineación, mordida y comodidad al hablar o comer, siempre con decisiones compartidas y sin presión.',
+        audience:
+          'Ideal si buscas mejorar la posición de tus dientes, la mordida o la estética de tu sonrisa con un seguimiento cercano.',
+        slug: 'ortodoncia',
+        imageUrl: IMG_ORTO,
+        imageAlt:
+          'Ortodoncia en el consultorio Dra. Kimberly Martínez, Bogotá',
+        highlights: [
+          { id: 'o1', label: 'Valoración y plan explicados desde el inicio' },
+          { id: 'o2', label: 'Seguimiento cercano en cada etapa' },
+          { id: 'o3', label: 'Decisiones a tu ritmo, sin presión' },
+        ],
+        seoTitle: 'Ortodoncia en Bogotá — Dra. Kimberly Martínez | Perdomo',
+        seoDescription:
+          'Ortodoncia en Barrio Perdomo, Bogotá. Plan claro, seguimiento cercano y decisiones sin presión. Agenda con la Dra. Kimberly Martínez.',
+        seoKeywords:
+          'ortodoncia Bogotá, ortodoncia Perdomo, brackets Bogotá, alineación dental, dra kimberly martinez',
+      },
+      {
+        id: 'blanqueamiento',
+        title: 'Blanqueamiento dental',
+        benefit: 'Más luminosidad, con control y cuidado de tu esmalte.',
+        description:
+          'Aclara el tono de tus dientes de forma supervisada, respetando la salud de tu boca. Pensado para quienes quieren verse más descansados y seguros, sin agresiones innecesarias al esmalte.',
+        pageBody:
+          'El blanqueamiento dental en el consultorio se hace con criterio: primero valoramos el estado de tu esmalte y tus expectativas, después elegimos un enfoque supervisado para aclarar el tono con seguridad. Buscamos un resultado natural — más luminosidad sin agresiones innecesarias — para que te veas descansada y segura, cuidando la salud de tu boca en cada paso.',
+        audience:
+          'Ideal si quieres un tono más claro y natural, con supervisión profesional y respeto por tu esmalte.',
+        slug: 'blanqueamiento-dental',
+        imageUrl: IMG_WHITE,
+        imageAlt:
+          'Blanqueamiento dental en el consultorio Dra. Kimberly Martínez, Bogotá',
+        highlights: [
+          { id: 'b1', label: 'Valoración previa del esmalte y la sonrisa' },
+          { id: 'b2', label: 'Proceso supervisado, resultado natural' },
+          { id: 'b3', label: 'Cuidado de la salud bucal en cada paso' },
+        ],
+        seoTitle:
+          'Blanqueamiento dental en Bogotá — Dra. Kimberly Martínez',
+        seoDescription:
+          'Blanqueamiento dental controlado en Bogotá. Resultado natural y cuidado del esmalte en el consultorio de la Dra. Kimberly Martínez en Perdomo.',
+        seoKeywords:
+          'blanqueamiento dental Bogotá, blanqueamiento Perdomo, dientes más blancos, dra kimberly martinez',
+      },
+      {
+        id: 'protesis',
+        title: 'Prótesis dental',
+        benefit: 'Recuperar masticar y sonreír con naturalidad.',
+        description:
+          'Reemplaza dientes ausentes o dañados para volver a comer y hablar con confianza. Incluye prótesis flexibles, una opción más cómoda y discreta para quienes buscan un ajuste amable en el día a día.',
+        pageBody:
+          'Las prótesis dentales ayudan a recuperar función y estética cuando faltan dientes o hay piezas muy comprometidas. En el consultorio evaluamos tu caso y te explicamos opciones claras — incluida la prótesis flexible, pensada para mayor comodidad y discreción en el día a día. El objetivo es volver a masticar, hablar y sonreír con naturalidad, con un plan que entiendes desde la primera cita.',
+        audience:
+          'Ideal si necesitas reemplazar dientes ausentes o dañados y buscas comodidad, función y un resultado natural.',
+        slug: 'protesis-dental',
+        imageUrl: IMG_PROTESIS,
+        imageAlt:
+          'Prótesis dental flexible en el consultorio Dra. Kimberly Martínez, Bogotá',
+        highlights: [
+          { id: 'p1', label: 'Opciones claras, incluida prótesis flexible' },
+          { id: 'p2', label: 'Enfoque en comodidad y naturalidad' },
+          { id: 'p3', label: 'Plan explicado antes de avanzar' },
+        ],
+        seoTitle: 'Prótesis dental en Bogotá — Dra. Kimberly Martínez',
+        seoDescription:
+          'Prótesis dental y prótesis flexibles en Bogotá. Recuperar función y estética con un plan claro en Barrio Perdomo.',
+        seoKeywords:
+          'prótesis dental Bogotá, prótesis flexibles Perdomo, dentadura Bogotá, dra kimberly martinez',
+      },
+      {
+        id: 'endodoncia',
+        title: 'Endodoncia',
+        benefit: 'Aliviar el dolor y conservar tu diente cuando aún es posible.',
+        description:
+          'Trata la inflamación o infección dentro del diente para quitar el dolor y evitar una extracción innecesaria. Para quienes llegan con molestia intensa y quieren una solución calmada, explicada paso a paso.',
+        pageBody:
+          'La endodoncia trata la inflamación o infección dentro del diente para aliviar el dolor y, cuando es posible, conservar la pieza. Si llegas con molestia intensa, priorizamos calma y claridad: te explicamos qué está pasando, qué implica el tratamiento y cómo se cuida después. El objetivo es resolver el problema sin precipitar una extracción si tu diente aún se puede salvar.',
+        audience:
+          'Ideal si tienes dolor dental intenso o infección y quieres una solución clara para conservar tu diente.',
+        slug: 'endodoncia',
+        imageUrl: IMG_ENDO,
+        imageAlt:
+          'Endodoncia en el consultorio Dra. Kimberly Martínez, Bogotá',
+        highlights: [
+          { id: 'e1', label: 'Alivio del dolor con explicación paso a paso' },
+          { id: 'e2', label: 'Prioridad a conservar el diente cuando es viable' },
+          { id: 'e3', label: 'Atención calmada en momentos de molestia' },
+        ],
+        seoTitle: 'Endodoncia en Bogotá — Dra. Kimberly Martínez | Perdomo',
+        seoDescription:
+          'Endodoncia en Bogotá para aliviar el dolor y conservar tu diente. Atención clara en el consultorio de la Dra. Kimberly Martínez en Perdomo.',
+        seoKeywords:
+          'endodoncia Bogotá, tratamiento de conducto Perdomo, dolor dental, dra kimberly martinez',
+      },
+      {
+        id: 'gestantes',
+        title: 'Odontología para gestantes',
+        benefit: 'Cuidado dental seguro mientras esperas a tu bebé.',
+        description:
+          'Atención pensada para el embarazo: valoración cuidadosa, explicaciones tranquilas y decisiones que priorizan tu bienestar y el de tu bebé. Un diferenciador del consultorio — aquí el cuidado dental durante la gestación se trata con criterio y calma.',
+        pageBody:
+          'Durante el embarazo, la salud bucal merece atención con criterio y calma. En el consultorio de la Dra. Kimberly Martínez ofrecemos odontología para gestantes: valoración cuidadosa, explicaciones tranquilas y decisiones que priorizan tu bienestar y el de tu bebé. Es un diferenciador del consultorio — aquí no se improvisa: se escucha, se explica y se actúa con prudencia clínica en cada etapa del embarazo.',
+        audience:
+          'Ideal si estás embarazada y quieres cuidado dental seguro, claro y sin alarmismo innecesario.',
+        slug: 'odontologia-gestantes',
+        imageUrl: IMG_GEST,
+        imageAlt:
+          'Odontología para gestantes en el consultorio Dra. Kimberly Martínez, Bogotá',
+        highlights: [
+          { id: 'g1', label: 'Valoración cuidadosa en cada trimestre' },
+          { id: 'g2', label: 'Explicaciones tranquilas, sin presión' },
+          { id: 'g3', label: 'Decisiones que cuidan a mamá y bebé' },
+        ],
+        seoTitle:
+          'Odontología para gestantes en Bogotá — Dra. Kimberly Martínez',
+        seoDescription:
+          'Odontología segura para gestantes en Bogotá. Atención tranquilizadora y criterio clínico en Perdomo con la Dra. Kimberly Martínez.',
+        seoKeywords:
+          'odontología gestantes Bogotá, dentista embarazo Perdomo, salud bucal embarazo, dra kimberly martinez',
+      },
+    ],
+  },
+  trust: {
+    eyebrow: 'Nosotros',
+    title: 'Cercanía y criterio en cada consulta',
+    body:
+      'La Dra. Kimberly Martínez acompaña a sus pacientes en Barrio Perdomo con una forma de atender sencilla y cercana: primero entender qué te preocupa, después explicar el plan con claridad. En el consultorio prioriza que te sientas escuchada y que cada decisión tenga sentido para tu vida diaria — no solo en la silla dental. Más de 10 años de experiencia en odontología general, con un enfoque integral y seguimiento cercano.',
+    imageUrl: IMG_TRUST,
+    imageAlt:
+      'Dra. Kimberly Martínez, odontóloga en consultorio de Barrio Perdomo, Bogotá',
+    secondaryImageUrl: IMG_CLINIC,
+    secondaryImageAlt:
+      'Consultorio odontológico de la Dra. Kimberly Martínez en Barrio Perdomo, Bogotá',
+    highlights: [
+      {
+        id: 'th1',
+        label: 'Diagnóstico claro antes de tratar',
+      },
+      {
+        id: 'th2',
+        label: 'Plan explicado a tu ritmo, sin presión',
+      },
+      {
+        id: 'th3',
+        label: 'Odontología para gestantes con criterio',
+      },
+    ],
+    ctaLabel: 'Conocer el consultorio',
+    ctaHref: '#visita',
+    credentials: [
+      {
+        id: 'exp',
+        label: 'Experiencia',
+        value: 'Más de 10 años',
+      },
+      {
+        id: 'formacion',
+        label: 'Formación',
+        value: 'Odontóloga · Atención integral',
+      },
+      {
+        id: 'enfoque',
+        label: 'Enfoque',
+        value: 'Diagnóstico primero, plan a tu ritmo',
+      },
+      {
+        id: 'lugar',
+        label: 'Consultorio',
+        value: 'Barrio Perdomo, Bogotá',
+      },
+    ],
+  },
+  testimonials: {
+    titleLineOne: 'Pacientes',
+    titleLineTwo: 'felices.',
+    titleLineThree: '#PacientesFelices',
+    intro:
+      'Voces de quienes ya dieron el paso. También puedes ver más historias en Instagram con #PacientesFelices.',
+    hashtag: '#PacientesFelices',
+    watermark: 'RESULTADOS',
+    items: [
+      {
+        id: 't1',
+        quote:
+          'Me explicaron cada paso sin presión. Salí entendiendo el plan y con mucha más calma.',
+        name: 'M.R.',
+        detail: 'Ortodoncia',
+        imageUrl: IMG_PACIENTE_1,
+        imageAlt: 'Paciente #PacientesFelices — ortodoncia',
+      },
+      {
+        id: 't2',
+        quote:
+          'El blanqueamiento se sintió controlado y natural. Me gustó que cuidaran el esmalte.',
+        name: 'A.L.',
+        detail: 'Blanqueamiento dental',
+        imageUrl: IMG_PACIENTE_2,
+        imageAlt: 'Paciente #PacientesFelices — blanqueamiento',
+      },
+      {
+        id: 't3',
+        quote:
+          'Durante el embarazo me atendieron con mucha tranquilidad. Me sentí acompañada de verdad.',
+        name: 'C.G.',
+        detail: 'Odontología para gestantes',
+        imageUrl: IMG_PACIENTE_3,
+        imageAlt: 'Paciente #PacientesFelices — gestantes',
+      },
+      {
+        id: 't4',
+        quote:
+          'Llegué con dolor y me explicaron opciones claras. Recuperé la confianza de masticar bien.',
+        name: 'J.P.',
+        detail: 'Endodoncia',
+        imageUrl: IMG_PACIENTE_4,
+        imageAlt: 'Paciente #PacientesFelices — endodoncia',
+      },
+    ],
+  },
+  visit: {
+    title: 'Ubicación y horarios',
+    intro:
+      'Estamos en Barrio Perdomo. Agenda con anticipación para dedicarte el tiempo que tu caso merece.',
+    address: ADDRESS,
+    hours: 'Lunes a viernes: 8:00 a.m. – 6:00 p.m. · Sábados con cita previa',
+    phone: '',
+    email: '',
+    whatsapp: '',
+    whatsappUrl: 'https://wa.me/message/SEK3UXCDLIJZJ1',
+    mapEmbedUrl: `https://maps.google.com/maps?q=${MAP_QUERY}&t=&z=16&ie=UTF8&iwloc=&output=embed`,
+    instagram: 'https://instagram.com/drakimberlymartinez',
+    instagramHandle: '@drakimberlymartinez',
+    facebook: '',
+  },
+  finalCta: {
+    title: '¿Tienes una duda antes de agendar?',
+    body: 'Escríbenos por WhatsApp. Resolvemos preguntas con calma y, si tiene sentido, coordinamos tu valoración.',
+    ctaLabel: 'Escribir por WhatsApp',
+  },
+  footer: {
+    note: 'Consultorio en Barrio Perdomo, Bogotá · Atención con cita',
+    privacyLabel: 'Privacidad',
+    privacyHref: '#',
+    termsLabel: 'Términos',
+    termsHref: '#',
+  },
+  blog: {
+    title: 'Blog del consultorio',
+    intro:
+      'Artículos claros sobre salud bucal, gestación y tratamientos — sin alarmismo.',
+    posts: [
+      {
+        id: 'b1',
+        title: 'Cómo prepararte para tu primera valoración',
+        slug: 'primera-valoracion',
+        excerpt:
+          'Qué llevar, qué preguntar y cómo llegar con más calma a tu primera cita.',
+        coverUrl: IMG_CLINIC,
+        status: 'draft',
+        publishedAt: '',
+        seoTitle: 'Primera valoración odontológica — Dra. Kimberly Martínez',
+        seoDescription:
+          'Guía para tu primera valoración en el consultorio de la Dra. Kimberly Martínez en Barrio Perdomo, Bogotá.',
+      },
+      {
+        id: 'b2',
+        title: 'Odontología en el embarazo: qué sí y qué esperar',
+        slug: 'odontologia-embarazo',
+        excerpt:
+          'Criterio clínico y tranquilidad para cuidar tu boca durante la gestación.',
+        coverUrl: IMG_GEST,
+        status: 'draft',
+        publishedAt: '',
+        seoTitle: 'Odontología en el embarazo — Dra. Kimberly Martínez',
+        seoDescription:
+          'Cuidado dental durante el embarazo en Bogotá. Atención con criterio en Perdomo.',
+      },
+      {
+        id: 'b3',
+        title: 'Blanqueamiento: expectativas realistas',
+        slug: 'blanqueamiento-expectativas',
+        excerpt:
+          'Qué cambia el tono, qué no, y por qué el control del esmalte importa.',
+        coverUrl: IMG_WHITE,
+        status: 'published',
+        publishedAt: '2026-08-01',
+        seoTitle: 'Blanqueamiento dental: expectativas — Dra. Kimberly',
+        seoDescription:
+          'Expectativas realistas del blanqueamiento dental en el consultorio de la Dra. Kimberly Martínez.',
+      },
+    ],
+  },
+  modules: {
+    items: [
+      {
+        id: 'mod-pay',
+        key: 'paymentMarquee',
+        label: 'Medios de pago',
+        description: 'Carrusel bajo el hero con Codensa, tarjetas y efectivo.',
+        enabled: true,
+      },
+      {
+        id: 'mod-journey',
+        key: 'journey',
+        label: 'Recorrido',
+        description: 'Sección “De la incertidumbre a la confianza informada”.',
+        enabled: true,
+      },
+      {
+        id: 'mod-services',
+        key: 'services',
+        label: 'Servicios',
+        description: 'Grid de tratamientos con enlace a páginas SEO.',
+        enabled: true,
+      },
+      {
+        id: 'mod-marquee',
+        key: 'servicesMarquee',
+        label: 'Marquee de servicios',
+        description: 'Franja azul con nombres de tratamientos.',
+        enabled: true,
+      },
+      {
+        id: 'mod-trust',
+        key: 'trust',
+        label: 'Nosotros',
+        description: 'Bloque de cercanía y criterio con collage.',
+        enabled: true,
+      },
+      {
+        id: 'mod-patients',
+        key: 'testimonials',
+        label: '#PacientesFelices',
+        description: 'Cards de pacientes / testimonios.',
+        enabled: true,
+      },
+      {
+        id: 'mod-visit',
+        key: 'visit',
+        label: 'Ubicación',
+        description: 'Dirección, horarios y mapa.',
+        enabled: true,
+      },
+      {
+        id: 'mod-cta',
+        key: 'finalCta',
+        label: 'CTA final',
+        description: 'Bloque oscuro de WhatsApp al cierre.',
+        enabled: true,
+      },
+    ],
+  },
+  analytics: {
+    googleAnalyticsId: '',
+    googleTagManagerId: '',
+    notes: 'Pega aquí el ID de medición (G-XXXXXXXX) o el contenedor GTM (GTM-XXXX).',
+  },
+}

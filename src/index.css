@@ -1,0 +1,169 @@
+@import 'tailwindcss';
+
+/*
+  Precisión clínica × identidad logo
+  --ink    #151A24  texto / fondos oscuros
+  --signal #12B4D8  azul-cian vivo (CTAs, links, números)
+  --ember  #FF6A1A  naranja vivo — solo apliques pequeños
+  --paper  #F3F8FB
+  --fog    #E4F1F6
+  --bg     #FFFFFF
+*/
+
+@theme {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Onest', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #151a24;
+  --color-signal: #12b4d8;
+  --color-ember: #ff6a1a;
+  --color-paper: #f3f8fb;
+  --color-fog: #e4f1f6;
+  --color-muted: #5f6d78;
+  --color-line: #d5e6ee;
+  --color-bg: #ffffff;
+  --color-gold: #ff6a1a;
+
+  --color-royal: #12b4d8;
+  --color-royal-deep: #151a24;
+  --color-royal-soft: #e4f1f6;
+  --color-royal-mist: #f3f8fb;
+
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --shadow-soft: 0 18px 50px rgba(21, 26, 36, 0.08);
+  --shadow-lift: 0 10px 28px rgba(18, 180, 216, 0.18);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-signal) 22%, white);
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .surface-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .surface-lift {
+    box-shadow: var(--shadow-lift);
+  }
+
+  .atmosphere {
+    background:
+      radial-gradient(ellipse 70% 55% at 85% 15%, color-mix(in oklab, var(--color-signal) 10%, transparent), transparent 55%),
+      radial-gradient(ellipse 55% 45% at 8% 80%, color-mix(in oklab, var(--color-fog) 80%, white), transparent 60%),
+      var(--color-bg);
+  }
+
+  .atmosphere-paper {
+    background:
+      radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in oklab, var(--color-signal) 7%, transparent), transparent 50%),
+      var(--color-paper);
+  }
+
+  .payment-marquee {
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+
+  .payment-marquee-track {
+    animation: payment-scroll 32s linear infinite;
+    will-change: transform;
+  }
+
+  .payment-marquee:hover .payment-marquee-track {
+    animation-play-state: paused;
+  }
+
+  .services-marquee-track {
+    animation: payment-scroll 32s linear infinite;
+  }
+
+  .services-marquee:hover .services-marquee-track {
+    animation-play-state: paused;
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: reveal-up 600ms var(--ease-out-strong) forwards;
+    animation-timeline: view();
+    animation-range: entry 10% entry 40%;
+  }
+
+  @supports not (animation-timeline: view()) {
+    .scroll-reveal {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+  }
+}
+
+@keyframes reveal-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes payment-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .payment-marquee-track {
+    animation: none;
+    /* Sin movimiento: una sola fila (la duplicada es solo para el loop) */
+    justify-content: center;
+    width: 100%;
+  }
+
+  .payment-marquee-track > ul:last-child {
+    display: none;
+  }
+
+  .payment-marquee {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .services-marquee-track {
+    animation: none;
+  }
+}
