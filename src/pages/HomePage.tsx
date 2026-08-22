@@ -1,7 +1,8 @@
-import { AnalyticsSnippet } from '@/components/AnalyticsSnippet'
+import { FaqJsonLd } from '@/components/FaqJsonLd'
 import { FinalCta } from '@/components/site/FinalCta'
 import { Hero } from '@/components/site/Hero'
 import { Journey } from '@/components/site/Journey'
+import { ServiceFaq } from '@/components/site/ServiceFaq'
 import { Services } from '@/components/site/Services'
 import { ServicesMarquee } from '@/components/site/ServicesMarquee'
 import { SiteFooter } from '@/components/site/SiteFooter'
@@ -26,8 +27,10 @@ export function HomePage() {
   return (
     <>
       <Seo seo={content.seo} canonicalPath="/" />
-      <AnalyticsSnippet analytics={content.analytics} />
       <LocalBusinessJsonLd content={content} />
+      {enabled('clinicFaqs') ? (
+        <FaqJsonLd faqs={content.clinicFaqs.items} />
+      ) : null}
       <SiteHeader
         brand={content.hero.brand}
         logoUrl={content.hero.logoUrl}
@@ -53,6 +56,14 @@ export function HomePage() {
           <Testimonials
             testimonials={content.testimonials}
             instagramUrl={content.visit.instagram}
+          />
+        ) : null}
+        {enabled('clinicFaqs') ? (
+          <ServiceFaq
+            faqs={content.clinicFaqs.items}
+            eyebrow={content.clinicFaqs.eyebrow}
+            title={content.clinicFaqs.title}
+            variant="section"
           />
         ) : null}
         {enabled('visit') ? (

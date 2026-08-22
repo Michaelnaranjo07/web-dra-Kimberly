@@ -1,32 +1,80 @@
 import { Link } from 'react-router-dom'
 import type { ServicesContent } from '@/content/types'
+import { trackWhatsAppClick } from '@/lib/site'
 
 type ServicesProps = {
   services: ServicesContent
+  /** page: h1 + CTA WhatsApp; section: h2 + enlace a /servicios */
+  variant?: 'section' | 'page'
+  whatsappUrl?: string
+  showBreadcrumb?: boolean
 }
 
-export function Services({ services }: ServicesProps) {
+export function Services({
+  services,
+  variant = 'section',
+  whatsappUrl = '',
+  showBreadcrumb = false,
+}: ServicesProps) {
+  const isPage = variant === 'page'
+  const TitleTag = isPage ? 'h1' : 'h2'
+
   return (
-    <section id="tratamientos" className="atmosphere-paper">
-      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-24 xl:max-w-7xl">
-        <div className="scroll-reveal flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-end lg:justify-between">
+    <section
+      id={isPage ? undefined : 'tratamientos'}
+      className="atmosphere-paper"
+    >
+      <div
+        className={[
+          'mx-auto max-w-6xl px-5 sm:px-6 xl:max-w-7xl',
+          isPage ? 'pt-24 pb-10 sm:pt-28 sm:pb-16' : 'py-12 sm:py-24',
+        ].join(' ')}
+      >
+        {showBreadcrumb ? (
+          <nav className="mb-6 text-sm text-muted" aria-label="Migas de pan">
+            <Link to="/" className="transition-colors hover:text-signal">
+              Inicio
+            </Link>
+            <span className="mx-2 text-line">/</span>
+            <span className="text-ink">Servicios</span>
+          </nav>
+        ) : null}
+
+        <div
+          className={[
+            'flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-end lg:justify-between',
+            isPage ? '' : 'scroll-reveal',
+          ].join(' ')}
+        >
           <div className="max-w-2xl">
             <p className="text-[11px] font-semibold tracking-[0.18em] text-signal uppercase">
               {services.eyebrow}
             </p>
-            <h2 className="font-display mt-3 text-[1.75rem] leading-tight font-extrabold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
+            <TitleTag className="font-display mt-3 text-[1.75rem] leading-tight font-extrabold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
               {services.title}
-            </h2>
+            </TitleTag>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
               {services.intro}
             </p>
           </div>
-          <Link
-            to="/servicios"
-            className="inline-flex w-full shrink-0 items-center justify-center rounded-full bg-signal px-5 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong-ink active:scale-97 sm:w-auto sm:self-start lg:self-auto"
-          >
-            Explorar servicios
-          </Link>
+          {isPage && whatsappUrl ? (
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => trackWhatsAppClick('servicios_index')}
+              className="inline-flex w-full shrink-0 items-center justify-center rounded-full bg-signal px-5 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-ink active:scale-97 sm:w-auto sm:self-start lg:self-auto"
+            >
+              {services.ctaLabel}
+            </a>
+          ) : (
+            <Link
+              to="/servicios"
+              className="inline-flex w-full shrink-0 items-center justify-center rounded-full bg-signal px-5 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-ink active:scale-97 sm:w-auto sm:self-start lg:self-auto"
+            >
+              Explorar servicios
+            </Link>
+          )}
         </div>
 
         <ul className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
@@ -37,12 +85,13 @@ export function Services({ services }: ServicesProps) {
                 key={item.id}
                 id={`servicio-${item.slug}`}
                 className={[
-                  'scroll-reveal group overflow-hidden rounded-2xl border bg-white transition-[transform,box-shadow] duration-200 ease-out-strong',
+                  'group overflow-hidden rounded-2xl border bg-white transition-[transform,box-shadow] duration-200 ease-out-strong',
+                  isPage ? '' : 'scroll-reveal',
                   featured
                     ? 'surface-lift border-signal/20'
                     : 'surface-soft border-line/60',
                 ].join(' ')}
-                style={{ animationDelay: `${index * 40}ms` }}
+                style={isPage ? undefined : { animationDelay: `${index * 40}ms` }}
               >
                 <Link to={`/servicios/${item.slug}`} className="block">
                   <div className="relative aspect-4/3 overflow-hidden bg-fog">
@@ -57,9 +106,15 @@ export function Services({ services }: ServicesProps) {
                   </div>
 
                   <div className="p-5 sm:p-6">
-                    <h3 className="font-display text-xl font-bold tracking-tight text-ink">
-                      {item.title}
-                    </h3>
+                    {isPage ? (
+                      <h2 className="font-display text-xl font-bold tracking-tight text-ink">
+                        {item.title}
+                      </h2>
+                    ) : (
+                      <h3 className="font-display text-xl font-bold tracking-tight text-ink">
+                        {item.title}
+                      </h3>
+                    )}
                     <p className="mt-2 text-sm font-semibold text-ink/80">
                       {item.benefit}
                     </p>

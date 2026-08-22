@@ -38,7 +38,7 @@ export function TermsPage() {
       />
       <main>
         <section className="atmosphere-paper">
-          <div className="mx-auto max-w-3xl px-5 py-10 sm:px-6 sm:py-16">
+          <div className="mx-auto max-w-3xl px-5 pt-24 pb-10 sm:px-6 sm:pt-28 sm:pb-16">
             <nav className="text-sm text-muted" aria-label="Migas de pan">
               <Link to="/" className="transition-colors hover:text-signal">
                 Inicio

@@ -77,7 +77,16 @@
 
   .atmosphere-paper {
     background:
-      radial-gradient(ellipse 60% 50% at 100% 0%, color-mix(in oklab, var(--color-signal) 7%, transparent), transparent 50%),
+      radial-gradient(ellipse 70% 48% at 95% -8%, color-mix(in oklab, var(--color-signal) 14%, transparent), transparent 55%),
+      radial-gradient(ellipse 48% 42% at 4% 28%, color-mix(in oklab, var(--color-signal) 7%, transparent), transparent 52%),
+      var(--color-paper);
+  }
+
+  .atmosphere-faq {
+    background:
+      radial-gradient(ellipse 90% 70% at 8% -20%, color-mix(in oklab, var(--color-signal) 18%, transparent), transparent 58%),
+      radial-gradient(ellipse 70% 55% at 100% 110%, color-mix(in oklab, var(--color-signal) 12%, transparent), transparent 55%),
+      radial-gradient(ellipse 45% 40% at 55% 45%, color-mix(in oklab, var(--color-fog) 85%, white), transparent 65%),
       var(--color-paper);
   }
 

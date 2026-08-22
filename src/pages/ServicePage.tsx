@@ -74,7 +74,7 @@ export function ServicePage() {
       />
       <main>
         <section className="atmosphere-paper border-b border-line/50">
-          <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:gap-10 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center xl:max-w-7xl">
+          <div className="mx-auto grid max-w-6xl gap-8 px-5 pt-24 pb-10 sm:gap-10 sm:px-6 sm:pt-28 sm:pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center xl:max-w-7xl">
             <div className="min-w-0">
               <nav
                 className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted"
@@ -186,13 +186,7 @@ export function ServicePage() {
           </div>
         </section>
 
-        {service.faqs?.length ? (
-          <section className="border-t border-line/50 bg-bg">
-            <div className="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
-              <ServiceFaq faqs={service.faqs} />
-            </div>
-          </section>
-        ) : null}
+        {service.faqs?.length ? <ServiceFaq faqs={service.faqs} /> : null}
 
         <section className="atmosphere-paper border-t border-line/50">
           <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 sm:py-16 xl:max-w-7xl">

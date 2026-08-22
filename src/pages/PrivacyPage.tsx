@@ -41,7 +41,7 @@ export function PrivacyPage() {
       />
       <main>
         <section className="atmosphere-paper">
-          <div className="mx-auto max-w-3xl px-5 py-10 sm:px-6 sm:py-16">
+          <div className="mx-auto max-w-3xl px-5 pt-24 pb-10 sm:px-6 sm:pt-28 sm:pb-16">
             <nav className="text-sm text-muted" aria-label="Migas de pan">
               <Link to="/" className="transition-colors hover:text-signal">
                 Inicio
@@ -104,7 +104,21 @@ export function PrivacyPage() {
 
               <section>
                 <h2 className="font-display text-xl font-bold tracking-tight text-ink">
-                  4. Derechos ARCO y habeas data
+                  4. Cookies y analítica
+                </h2>
+                <p className="mt-3">
+                  El sitio puede usar cookies técnicas necesarias para su
+                  funcionamiento y, solo si usted las acepta, cookies de
+                  medición (por ejemplo Google Analytics o Tag Manager) para
+                  entender el uso del sitio de forma agregada. Puede elegir
+                  “Solo necesarias” en el aviso de cookies; en ese caso no
+                  cargamos scripts de analítica.
+                </p>
+              </section>
+
+              <section>
+                <h2 className="font-display text-xl font-bold tracking-tight text-ink">
+                  5. Derechos ARCO y habeas data
                 </h2>
                 <p className="mt-3">
                   Usted puede ejercer los derechos de conocer, actualizar,
@@ -117,7 +131,7 @@ export function PrivacyPage() {
 
               <section>
                 <h2 className="font-display text-xl font-bold tracking-tight text-ink">
-                  5. Contacto
+                  6. Contacto
                 </h2>
                 <p className="mt-3">
                   Para consultas sobre privacidad o habeas data:{' '}

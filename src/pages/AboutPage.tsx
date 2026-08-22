@@ -18,7 +18,7 @@ export function AboutPage() {
     <>
       <Seo
         seo={{
-          title: `${about.title} — Odontóloga en Barrio Perdomo, Bogotá`,
+          title: 'Dra. Kimberly Martínez — Odontóloga en Perdomo',
           description: about.intro,
           keywords:
             'Dra. Kimberly Martínez, odontóloga Bogotá, Perdomo, odontología gestantes, RETHUS',
@@ -41,7 +41,7 @@ export function AboutPage() {
       />
       <main>
         <section className="atmosphere-paper border-b border-line/50">
-          <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:gap-10 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center xl:max-w-7xl">
+          <div className="mx-auto grid max-w-6xl gap-8 px-5 pt-24 pb-10 sm:gap-10 sm:px-6 sm:pt-28 sm:pb-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center xl:max-w-7xl">
             <div className="min-w-0">
               <nav className="text-sm text-muted" aria-label="Migas de pan">
                 <Link to="/" className="transition-colors hover:text-signal">

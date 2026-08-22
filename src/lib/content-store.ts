@@ -1,8 +1,13 @@
 import { defaultContent } from '@/content/defaults'
-import type { PaymentMethod, ServiceItem, SiteContent } from '@/content/types'
+import type {
+  PaymentMethod,
+  ServiceFaq,
+  ServiceItem,
+  SiteContent,
+} from '@/content/types'
 import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 
-const STORAGE_KEY = 'dra-kimberly:content:v32'
+const STORAGE_KEY = 'dra-kimberly:content:v33'
 const CONTENT_ROW_ID = 'main'
 
 type Listener = () => void
@@ -13,6 +18,16 @@ const listeners = new Set<Listener>()
 
 function notify() {
   listeners.forEach((listener) => listener())
+}
+
+function mergeFaqs(
+  parsed: ServiceFaq[] | undefined,
+  fallback: ServiceFaq[],
+): ServiceFaq[] {
+  if (!parsed?.length) return fallback
+  const seen = new Set(parsed.map((faq) => faq.id))
+  const extras = fallback.filter((faq) => !seen.has(faq.id))
+  return [...parsed, ...extras]
 }
 
 function mergeServiceItems(parsed?: ServiceItem[]): ServiceItem[] {
@@ -27,7 +42,7 @@ function mergeServiceItems(parsed?: ServiceItem[]): ServiceItem[] {
       highlights: item.highlights?.length
         ? item.highlights
         : fallback.highlights,
-      faqs: item.faqs?.length ? item.faqs : fallback.faqs,
+      faqs: mergeFaqs(item.faqs, fallback.faqs),
     }
   })
 }
@@ -90,6 +105,14 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
       items: parsed.testimonials?.items?.length
         ? parsed.testimonials.items
         : defaultContent.testimonials.items,
+    },
+    clinicFaqs: {
+      ...defaultContent.clinicFaqs,
+      ...parsed.clinicFaqs,
+      items: mergeFaqs(
+        parsed.clinicFaqs?.items,
+        defaultContent.clinicFaqs.items,
+      ),
     },
     visit: {
       ...defaultContent.visit,

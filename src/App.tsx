@@ -1,5 +1,7 @@
 import { useLayoutEffect } from 'react'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { ConsentAnalytics } from '@/components/ConsentAnalytics'
+import { CookieConsent } from '@/components/site/CookieConsent'
 import { HomePage } from '@/pages/HomePage'
 import { ServicePage } from '@/pages/ServicePage'
 import { ServicesIndexPage } from '@/pages/ServicesIndexPage'
@@ -30,6 +32,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <ConsentAnalytics />
+      <CookieConsent />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/servicios" element={<ServicesIndexPage />} />

@@ -29,7 +29,7 @@ export function NotFoundPage() {
         variant="solid"
       />
       <main className="atmosphere-paper">
-        <div className="mx-auto max-w-2xl px-5 py-20 text-center sm:px-6 sm:py-28">
+        <div className="mx-auto max-w-2xl px-5 pt-28 pb-20 text-center sm:px-6 sm:pt-32 sm:pb-28">
           <p className="text-[11px] font-semibold tracking-[0.18em] text-signal uppercase">
             Error 404
           </p>

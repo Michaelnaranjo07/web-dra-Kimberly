@@ -23,7 +23,7 @@ function ArrowIcon() {
 
 export function FinalCta({ finalCta, whatsappUrl }: FinalCtaProps) {
   return (
-    <section id="cita" className="bg-bg pb-8 sm:pb-10">
+    <section id="cita" className="bg-bg pt-10 pb-8 sm:pt-14 sm:pb-10">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="scroll-reveal surface-soft relative overflow-hidden rounded-2xl bg-ink px-5 py-10 text-center sm:px-12 sm:py-16">
           <div

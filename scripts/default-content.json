@@ -8,7 +8,7 @@
   "hero": {
     "brand": "Dra. Kimberly Martínez",
     "logoUrl": "/logo-sin-texto.png",
-    "eyebrow": "Odontología de precisión",
+    "eyebrow": "Odontología de precisión en Bogotá",
     "lineOne": "Precisión que se siente",
     "accentWord": "natural.",
     "lineTwo": "",
@@ -141,7 +141,7 @@
   "services": {
     "eyebrow": "Servicios",
     "title": "Tratamientos pensados para tu día a día",
-    "intro": "Cada opción se explica en lenguaje claro: qué cambia para ti, cómo se siente el proceso y para quién tiene más sentido.",
+    "intro": "Ortodoncia, blanqueamiento, prótesis, endodoncia y odontología para gestantes en Bogotá — cada opción explicada en lenguaje claro: qué cambia para ti, cómo se siente el proceso y para quién tiene más sentido.",
     "ctaLabel": "Agendar valoración",
     "ctaHref": "#cita",
     "items": [
@@ -184,6 +184,16 @@
             "id": "orto-f3",
             "question": "¿Puedo empezar ortodoncia siendo adulto?",
             "answer": "Sí. Muchas personas adultas corrigen alineación o mordida. Evaluamos tu salud periodontal y tus objetivos antes de proponer un plan."
+          },
+          {
+            "id": "orto-f4",
+            "question": "¿Qué tipos de ortodoncia manejan?",
+            "answer": "En la valoración te mostramos las opciones disponibles en el consultorio — incluyendo brackets metálicos y estéticos — con sus tiempos, cuidados diarios y diferencias reales, para que decidas con información y no solo por estética."
+          },
+          {
+            "id": "orto-f5",
+            "question": "¿Necesito sacarme dientes para la ortodoncia?",
+            "answer": "No siempre. Depende del espacio disponible y la posición de tus dientes. Si una extracción hace parte del plan, te lo explicamos como paso necesario desde el inicio, no como sorpresa a mitad de tratamiento."
           }
         ],
         "seoTitle": "Ortodoncia en Bogotá — Dra. Kimberly Martínez | Perdomo",
@@ -229,6 +239,16 @@
             "id": "blanc-f3",
             "question": "¿Puedo blanquear si tengo coronas o resinas?",
             "answer": "El blanqueamiento actúa sobre el diente natural. Las restauraciones no cambian de color igual; en la cita te explicamos qué se puede armonizar y qué no."
+          },
+          {
+            "id": "blanc-f4",
+            "question": "¿Cuántas sesiones necesito?",
+            "answer": "Varía según el tono de partida y tus expectativas. En la valoración te damos un número realista de sesiones — no prometemos un resultado en una sola cita si tu caso no lo permite."
+          },
+          {
+            "id": "blanc-f5",
+            "question": "¿Puedo blanquear si tengo los dientes sensibles?",
+            "answer": "Sí, evaluamos primero el nivel de sensibilidad y ajustamos el protocolo o el producto según tu caso. Si la sensibilidad es alta, te lo decimos antes de empezar, no después."
           }
         ],
         "seoTitle": "Blanqueamiento dental en Bogotá — Dra. Kimberly Martínez",
@@ -274,6 +294,16 @@
             "id": "prot-f3",
             "question": "¿Cómo se cuida una prótesis en casa?",
             "answer": "Higiene diaria, limpieza adecuada del aparato y revisiones periódicas ayudan a mantener comodidad y función. Te dejamos indicaciones claras según el tipo de prótesis."
+          },
+          {
+            "id": "prot-f4",
+            "question": "¿Cuál es la diferencia entre prótesis parcial y total?",
+            "answer": "La parcial reemplaza algunos dientes ausentes y se apoya en los que conservas; la total sustituye toda la arcada. Cuál te conviene depende de cuántas piezas te faltan y del estado de las que quedan — se define en la valoración."
+          },
+          {
+            "id": "prot-f5",
+            "question": "¿Una prótesis se ve natural?",
+            "answer": "Buscamos que el color y la forma coincidan con tu sonrisa. El grado de naturalidad depende del tipo de prótesis y de tu anatomía; en la cita te mostramos qué resultado es razonable esperar."
           }
         ],
         "seoTitle": "Prótesis dental en Bogotá — Dra. Kimberly Martínez",
@@ -319,6 +349,16 @@
             "id": "endo-f3",
             "question": "¿Qué sigue después del tratamiento de conducto?",
             "answer": "Suele necesitarse una restauración (obturación o corona según el caso) para proteger la pieza. Te explicamos el siguiente paso antes de cerrar la cita."
+          },
+          {
+            "id": "endo-f4",
+            "question": "¿Cuántas citas toma un tratamiento de conducto?",
+            "answer": "La mayoría de los casos se resuelven en una o dos citas, según la complejidad del diente y si hay infección activa. Te damos un estimado claro después de revisar la radiografía."
+          },
+          {
+            "id": "endo-f5",
+            "question": "¿Puedo comer normal después de la endodoncia?",
+            "answer": "Es mejor esperar a que pase el efecto de la anestesia y evitar morder fuerte con ese diente hasta que quede protegido con la restauración final. Te damos indicaciones concretas al salir de la cita."
           }
         ],
         "seoTitle": "Endodoncia en Bogotá — Dra. Kimberly Martínez | Perdomo",
@@ -364,9 +404,19 @@
             "id": "gest-f3",
             "question": "¿El sangrado de encías es normal en el embarazo?",
             "answer": "Es frecuente por cambios hormonales, pero conviene valorarlo. Una limpieza y orientación de higiene suelen ayudar; no lo ignores si persiste o molesta."
+          },
+          {
+            "id": "gest-f4",
+            "question": "¿En qué trimestre es mejor hacer tratamientos que no son urgentes?",
+            "answer": "El segundo trimestre suele ser el más cómodo para procedimientos no urgentes, pero cada caso se valora individualmente junto con tu control prenatal."
+          },
+          {
+            "id": "gest-f5",
+            "question": "¿Puedo recibir anestesia local estando embarazada?",
+            "answer": "Sí, cuando es necesaria se usa con protocolos seguros para el embarazo. Te explicamos el porqué antes de aplicar cualquier procedimiento — nunca se hace sin conversarlo contigo primero."
           }
         ],
-        "seoTitle": "Odontología para gestantes en Bogotá — Dra. Kimberly Martínez",
+        "seoTitle": "Odontología para gestantes en Bogotá | Dra. Kimberly",
         "seoDescription": "Odontología segura para gestantes en Bogotá. Atención tranquilizadora y criterio clínico en Perdomo con la Dra. Kimberly Martínez.",
         "seoKeywords": "odontología gestantes Bogotá, dentista embarazo Perdomo, salud bucal embarazo, dra kimberly martinez"
       }
@@ -375,7 +425,7 @@
   "trust": {
     "eyebrow": "Nosotros",
     "title": "Cercanía y criterio en cada consulta",
-    "body": "La Dra. Kimberly Martínez acompaña a sus pacientes en Barrio Perdomo con una forma de atender sencilla y cercana: primero entender qué te preocupa, después explicar el plan con claridad. En el consultorio prioriza que te sientas escuchada y que cada decisión tenga sentido para tu vida diaria — no solo en la silla dental. Más de 10 años de experiencia en odontología general, con un enfoque integral y seguimiento cercano.",
+    "body": "La Dra. Kimberly Martínez acompaña a sus pacientes en Barrio Perdomo con una forma de atender sencilla y cercana: primero entender qué te preocupa, después explicar el plan con claridad. Más de 10 años de experiencia en odontología general, con un enfoque integral y seguimiento cercano.",
     "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1400&q=80",
     "imageAlt": "Dra. Kimberly Martínez, odontóloga en consultorio de Barrio Perdomo, Bogotá",
     "secondaryImageUrl": "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80",
@@ -394,8 +444,8 @@
         "label": "Odontología para gestantes con criterio"
       }
     ],
-    "ctaLabel": "Conocer el consultorio",
-    "ctaHref": "#visita",
+    "ctaLabel": "Conocer a la Dra. Kimberly",
+    "ctaHref": "/nosotros",
     "credentials": [
       {
         "id": "exp",
@@ -709,8 +759,8 @@
   "about": {
     "title": "Dra. Kimberly Martínez",
     "intro": "Odontóloga en Barrio Perdomo: atención cercana, diagnóstico claro y planes a tu ritmo.",
-    "bio": "La Dra. Kimberly Martínez acompaña a sus pacientes en Barrio Perdomo con una forma de atender sencilla y cercana: primero entender qué te preocupa, después explicar el plan con claridad. En el consultorio prioriza que te sientas escuchada y que cada decisión tenga sentido para tu vida diaria — no solo en la silla dental. Más de 10 años de experiencia en odontología general, con un enfoque integral y seguimiento cercano.",
-    "formation": "Odontóloga con más de 10 años de experiencia en atención integral.",
+    "bio": "Soy Kimberly Martínez, odontóloga en Barrio Perdomo, Bogotá. Llevo más de 10 años acompañando pacientes que llegan con dudas, con ansiedad, o simplemente con ganas de entender qué les pasa antes de decidir un tratamiento. Mi forma de trabajar parte de una idea simple: primero escuchar, después explicar, y solo entonces proponer un plan — nunca al revés. Me especializo en atención integral, con un interés particular en la odontología para gestantes, un área donde la calma y el criterio clínico hacen toda la diferencia. Fuera de la silla dental, creo que la salud bucal no debería sentirse como un examen: por eso cada valoración empieza con una conversación, no con un diagnóstico apurado. Si tienes una duda antes de decidir, con gusto la resolvemos primero.",
+    "formation": "Odontóloga con más de 10 años de experiencia en atención integral, con actualización continua en odontología para gestantes.",
     "credentialsNote": "Las credenciales profesionales (tarjeta / RETHUS) se confirman en el consultorio y se publicarán en el sitio apenas estén verificadas para publicación.",
     "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1400&q=80",
     "imageAlt": "Dra. Kimberly Martínez, odontóloga en consultorio de Barrio Perdomo, Bogotá",
@@ -720,9 +770,55 @@
   },
   "reviews": {
     "title": "Opiniones de pacientes",
-    "intro": "Lee reseñas reales y comparte tu experiencia en Google.",
+    "intro": "Reseñas reales de pacientes de la Dra. Kimberly Martínez en Barrio Perdomo, Bogotá. Deja la tuya en Google.",
     "googleUrl": "https://www.google.com/maps/search/?api=1&query=Calle+3A+Sur+%2372-45+Barrio+Perdomo+Bogotá",
     "ctaLabel": "Ver reseñas en Google"
+  },
+  "clinicFaqs": {
+    "eyebrow": "Dudas frecuentes",
+    "title": "Preguntas del consultorio",
+    "items": [
+      {
+        "id": "clinic-f1",
+        "question": "¿Cómo agendo una cita?",
+        "answer": "Escríbenos por WhatsApp contándonos brevemente qué necesitas — así podemos sugerirte un horario que le dé el tiempo adecuado a tu caso."
+      },
+      {
+        "id": "clinic-f2",
+        "question": "¿Qué medios de pago aceptan?",
+        "answer": "Codensa, Sistecrédito, Welli, tarjetas Visa y Mastercard, y efectivo en el consultorio. Puedes ver el detalle de cada uno en la sección de medios de pago del sitio."
+      },
+      {
+        "id": "clinic-f3",
+        "question": "¿Atienden urgencias dentales?",
+        "answer": "Escríbenos por WhatsApp contándonos qué sientes — según la disponibilidad de agenda te decimos si podemos verte el mismo día o te damos la recomendación más prudente mientras tanto."
+      },
+      {
+        "id": "clinic-f4",
+        "question": "¿Cuánto dura la primera cita?",
+        "answer": "Una primera valoración suele tomar entre 30 y 45 minutos: tiempo suficiente para escucharte, revisar tu boca con calma y explicarte un plan sin apuros."
+      },
+      {
+        "id": "clinic-f5",
+        "question": "¿Atienden niños?",
+        "answer": "El consultorio está enfocado en atención a adultos y gestantes. Si tu consulta es sobre un niño, cuéntanos el caso por WhatsApp y te orientamos sobre la mejor opción."
+      },
+      {
+        "id": "clinic-f6",
+        "question": "¿Puedo cancelar o reprogramar mi cita?",
+        "answer": "Sí. Escríbenos por WhatsApp con la mayor anticipación posible y coordinamos un nuevo horario sin problema."
+      },
+      {
+        "id": "clinic-f7",
+        "question": "¿Trabajan con EPS o solo de forma particular?",
+        "answer": "La atención es particular. Si tienes dudas sobre algún convenio o cobertura específica, pregúntanos por WhatsApp antes de agendar."
+      },
+      {
+        "id": "clinic-f8",
+        "question": "¿Debo escribir por WhatsApp o puedo llamar?",
+        "answer": "Por ahora coordinamos todas las citas por WhatsApp. En cuanto el consultorio publique un número de teléfono directo, esta respuesta se actualiza."
+      }
+    ]
   },
   "modules": {
     "items": [
@@ -766,6 +862,13 @@
         "key": "testimonials",
         "label": "#PacientesFelices",
         "description": "Cards de pacientes / testimonios.",
+        "enabled": true
+      },
+      {
+        "id": "mod-clinic-faqs",
+        "key": "clinicFaqs",
+        "label": "Preguntas del consultorio",
+        "description": "FAQ general de agenda, pagos y atención en home.",
         "enabled": true
       },
       {

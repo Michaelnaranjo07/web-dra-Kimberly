@@ -230,6 +230,12 @@ export type ReviewsContent = {
   ctaLabel: string
 }
 
+export type ClinicFaqsContent = {
+  eyebrow: string
+  title: string
+  items: ServiceFaq[]
+}
+
 export type SiteModuleKey =
   | 'paymentMarquee'
   | 'journey'
@@ -237,6 +243,7 @@ export type SiteModuleKey =
   | 'servicesMarquee'
   | 'trust'
   | 'testimonials'
+  | 'clinicFaqs'
   | 'visit'
   | 'finalCta'
 
@@ -265,6 +272,7 @@ export type SiteContent = {
   services: ServicesContent
   trust: TrustContent
   testimonials: TestimonialsContent
+  clinicFaqs: ClinicFaqsContent
   visit: VisitContent
   finalCta: FinalCtaContent
   footer: FooterContent
