@@ -1,5 +1,6 @@
 import type { HeroContent } from '@/content/types'
 import { PaymentCarousel } from '@/components/site/PaymentCarousel'
+import { trackWhatsAppClick } from '@/lib/site'
 
 type HeroProps = {
   hero: HeroContent
@@ -99,6 +100,7 @@ export function Hero({ hero, whatsappUrl, showPayments = true }: HeroProps) {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackWhatsAppClick('hero')}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-signal px-7 py-3.5 text-sm font-bold text-white transition-[transform,background-color] duration-150 ease-(--ease-out-strong) hover:bg-ink active:scale-97"
               >
                 {hero.primaryCtaLabel}

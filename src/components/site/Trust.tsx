@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import type { TrustContent } from '@/content/types'
 
 type TrustProps = {
@@ -90,12 +91,12 @@ export function Trust({ trust }: TrustProps) {
             ))}
           </ul>
 
-          <a
-            href={trust.ctaHref}
+          <Link
+            to={trust.ctaHref}
             className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-signal px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-ink active:scale-97 sm:w-auto"
           >
             {trust.ctaLabel}
-          </a>
+          </Link>
 
           <dl className="mt-10 hidden divide-y divide-line border-y border-line sm:block">
             {trust.credentials.slice(0, 2).map((item) => (

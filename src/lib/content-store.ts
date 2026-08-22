@@ -1,12 +1,19 @@
 import { defaultContent } from '@/content/defaults'
 import type { PaymentMethod, ServiceItem, SiteContent } from '@/content/types'
+import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 
-const STORAGE_KEY = 'dra-kimberly:content:v30'
+const STORAGE_KEY = 'dra-kimberly:content:v32'
+const CONTENT_ROW_ID = 'main'
 
 type Listener = () => void
 
 let memoryCache: SiteContent | null = null
+let hydrateStarted = false
 const listeners = new Set<Listener>()
+
+function notify() {
+  listeners.forEach((listener) => listener())
+}
 
 function mergeServiceItems(parsed?: ServiceItem[]): ServiceItem[] {
   const source = parsed?.length ? parsed : defaultContent.services.items
@@ -20,6 +27,7 @@ function mergeServiceItems(parsed?: ServiceItem[]): ServiceItem[] {
       highlights: item.highlights?.length
         ? item.highlights
         : fallback.highlights,
+      faqs: item.faqs?.length ? item.faqs : fallback.faqs,
     }
   })
 }
@@ -83,16 +91,35 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
         ? parsed.testimonials.items
         : defaultContent.testimonials.items,
     },
-    visit: { ...defaultContent.visit, ...parsed.visit },
+    visit: {
+      ...defaultContent.visit,
+      ...parsed.visit,
+      openingHours: parsed.visit?.openingHours?.length
+        ? parsed.visit.openingHours
+        : defaultContent.visit.openingHours,
+    },
     finalCta: { ...defaultContent.finalCta, ...parsed.finalCta },
     footer: { ...defaultContent.footer, ...parsed.footer },
     blog: {
       ...defaultContent.blog,
       ...parsed.blog,
       posts: parsed.blog?.posts?.length
-        ? parsed.blog.posts
+        ? parsed.blog.posts.map((post) => {
+            const fallback =
+              defaultContent.blog.posts.find((entry) => entry.id === post.id) ??
+              defaultContent.blog.posts[0]
+            return {
+              ...fallback,
+              ...post,
+              body: post.body || fallback.body || '',
+              relatedServiceSlug:
+                post.relatedServiceSlug || fallback.relatedServiceSlug || '',
+            }
+          })
         : defaultContent.blog.posts,
     },
+    about: { ...defaultContent.about, ...parsed.about },
+    reviews: { ...defaultContent.reviews, ...parsed.reviews },
     modules: {
       items: parsed.modules?.items?.length
         ? defaultContent.modules.items.map((mod) => {
@@ -110,7 +137,7 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
   }
 }
 
-function readStorage(): SiteContent {
+function readLocal(): SiteContent {
   if (memoryCache) return memoryCache
 
   try {
@@ -127,24 +154,66 @@ function readStorage(): SiteContent {
   }
 }
 
-function writeStorage(content: SiteContent) {
+function writeLocal(content: SiteContent) {
   memoryCache = content
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(content))
-  listeners.forEach((listener) => listener())
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(content))
+  } catch {
+    // ignore quota / private mode
+  }
+  notify()
+}
+
+async function persistRemote(content: SiteContent) {
+  if (!supabase || !isSupabaseConfigured) return
+  const { error } = await supabase.from('site_content').upsert({
+    id: CONTENT_ROW_ID,
+    data: content,
+    updated_at: new Date().toISOString(),
+  })
+  if (error) {
+    console.warn('[content-store] No se pudo guardar en Supabase:', error.message)
+  }
+}
+
+export async function hydrateContentFromSupabase() {
+  if (!supabase || !isSupabaseConfigured) return
+  const { data, error } = await supabase
+    .from('site_content')
+    .select('data')
+    .eq('id', CONTENT_ROW_ID)
+    .maybeSingle()
+
+  if (error) {
+    console.warn('[content-store] No se pudo leer Supabase:', error.message)
+    return
+  }
+  if (!data?.data) return
+
+  writeLocal(mergeContent(data.data as Partial<SiteContent>))
+}
+
+function ensureHydration() {
+  if (hydrateStarted || typeof window === 'undefined') return
+  hydrateStarted = true
+  void hydrateContentFromSupabase()
 }
 
 export function getContentSnapshot(): SiteContent {
   if (typeof window === 'undefined') return defaultContent
-  return readStorage()
+  ensureHydration()
+  return readLocal()
 }
 
 export function subscribeContent(listener: Listener) {
   listeners.add(listener)
+  ensureHydration()
   return () => listeners.delete(listener)
 }
 
 export function updateContent(next: SiteContent) {
-  writeStorage(next)
+  writeLocal(next)
+  void persistRemote(next)
 }
 
 export function updateContentSection<K extends keyof SiteContent>(
@@ -152,11 +221,10 @@ export function updateContentSection<K extends keyof SiteContent>(
   value: SiteContent[K],
 ) {
   const current = getContentSnapshot()
-  writeStorage({ ...current, [key]: value })
+  updateContent({ ...current, [key]: value })
 }
 
 export function resetContent() {
-  memoryCache = defaultContent
-  localStorage.removeItem(STORAGE_KEY)
-  listeners.forEach((listener) => listener())
+  writeLocal(defaultContent)
+  void persistRemote(defaultContent)
 }

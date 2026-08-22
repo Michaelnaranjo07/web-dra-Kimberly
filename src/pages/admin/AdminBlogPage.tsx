@@ -10,9 +10,11 @@ function emptyPost(): BlogPost {
     title: 'Nuevo artículo',
     slug: `articulo-${Date.now()}`,
     excerpt: '',
+    body: '',
     coverUrl: '',
     status: 'draft',
     publishedAt: '',
+    relatedServiceSlug: '',
     seoTitle: '',
     seoDescription: '',
   }
@@ -70,8 +72,7 @@ export function AdminBlogPage() {
             Blog
           </h1>
           <p className="mt-2 max-w-xl text-sm text-muted">
-            Mockup de publicaciones. El listado público se podrá conectar después;
-            aquí ya guardas estructura SEO y estados.
+            Mock de publicaciones. Lo publicado aparece en /blog.
           </p>
         </div>
         <Button type="button" onClick={addPost}>
@@ -180,7 +181,7 @@ export function AdminBlogPage() {
                 onChange={(e) => updatePost(editing.id, { title: e.target.value })}
               />
             </Field>
-            <Field label="Slug" hint="URL futura: /blog/slug">
+            <Field label="Slug" hint="URL pública: /blog/slug">
               <TextInput
                 value={editing.slug}
                 onChange={(e) => updatePost(editing.id, { slug: e.target.value })}
@@ -191,6 +192,24 @@ export function AdminBlogPage() {
                 value={editing.excerpt}
                 onChange={(e) =>
                   updatePost(editing.id, { excerpt: e.target.value })
+                }
+              />
+            </Field>
+            <Field label="Cuerpo" hint="Párrafos separados por línea en blanco">
+              <TextArea
+                value={editing.body}
+                onChange={(e) =>
+                  updatePost(editing.id, { body: e.target.value })
+                }
+              />
+            </Field>
+            <Field label="Servicio relacionado (slug)" hint="ej. ortodoncia">
+              <TextInput
+                value={editing.relatedServiceSlug}
+                onChange={(e) =>
+                  updatePost(editing.id, {
+                    relatedServiceSlug: e.target.value,
+                  })
                 }
               />
             </Field>

@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import type { FooterContent, VisitContent } from '@/content/types'
+import { trackWhatsAppClick } from '@/lib/site'
 
 type SiteFooterProps = {
   brand: string
@@ -38,8 +40,16 @@ export function SiteFooter({ brand, logoUrl, visit, footer }: SiteFooterProps) {
           <p className="font-semibold text-ink">Contacto</p>
           <div className="mt-3 space-y-1.5">
             <p className="leading-relaxed">{visit.address}</p>
-            {!isPlaceholder(visit.phone) ? <p>{visit.phone}</p> : null}
-            {!isPlaceholder(visit.email) ? <p>{visit.email}</p> : null}
+            {!isPlaceholder(visit.phone) ? (
+              <a href={`tel:${visit.phone.replace(/\s/g, '')}`} className={linkClass}>
+                {visit.phone}
+              </a>
+            ) : null}
+            {!isPlaceholder(visit.email) ? (
+              <a href={`mailto:${visit.email}`} className={linkClass}>
+                {visit.email}
+              </a>
+            ) : null}
             <a
               href={visit.instagram}
               target="_blank"
@@ -57,23 +67,33 @@ export function SiteFooter({ brand, logoUrl, visit, footer }: SiteFooterProps) {
             aria-label="Pie de página"
             className="mt-3 grid grid-cols-2 gap-x-5 gap-y-2"
           >
-            <a href="/servicios" className={linkClass}>
+            <Link to="/servicios" className={linkClass}>
               Servicios
-            </a>
+            </Link>
+            <Link to="/nosotros" className={linkClass}>
+              Nosotros
+            </Link>
+            <Link to="/blog" className={linkClass}>
+              Blog
+            </Link>
+            <Link to="/opiniones" className={linkClass}>
+              Opiniones
+            </Link>
             <a
               href={visit.whatsappUrl}
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackWhatsAppClick('footer')}
               className={linkClass}
             >
               WhatsApp
             </a>
-            <a href={footer.privacyHref} className={linkClass}>
+            <Link to={footer.privacyHref} className={linkClass}>
               {footer.privacyLabel}
-            </a>
-            <a href={footer.termsHref} className={linkClass}>
+            </Link>
+            <Link to={footer.termsHref} className={linkClass}>
               {footer.termsLabel}
-            </a>
+            </Link>
           </nav>
         </div>
       </div>

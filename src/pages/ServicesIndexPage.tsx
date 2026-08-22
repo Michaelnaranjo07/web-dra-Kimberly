@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
 import { FinalCta } from '@/components/site/FinalCta'
 import { SiteFooter } from '@/components/site/SiteFooter'
 import { SiteHeader } from '@/components/site/SiteHeader'
 import { Seo } from '@/components/Seo'
 import { useSiteContent } from '@/hooks/use-site-content'
+import { trackWhatsAppClick } from '@/lib/site'
 
 export function ServicesIndexPage() {
   const { content } = useSiteContent()
@@ -23,6 +25,12 @@ export function ServicesIndexPage() {
           ogImage: content.seo.ogImage,
         }}
         canonicalPath="/servicios"
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Inicio', path: '/' },
+          { name: 'Servicios', path: '/servicios' },
+        ]}
       />
       <SiteHeader
         brand={content.hero.brand}
@@ -57,6 +65,7 @@ export function ServicesIndexPage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackWhatsAppClick('servicios_index')}
                 className="inline-flex w-full shrink-0 items-center justify-center rounded-full bg-signal px-5 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-ink active:scale-97 sm:w-auto"
               >
                 {content.services.ctaLabel}

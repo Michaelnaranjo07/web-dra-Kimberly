@@ -1,10 +1,13 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
 import { FinalCta } from '@/components/site/FinalCta'
+import { ServiceFaq } from '@/components/site/ServiceFaq'
 import { SiteFooter } from '@/components/site/SiteFooter'
 import { SiteHeader } from '@/components/site/SiteHeader'
 import { Seo } from '@/components/Seo'
 import { ServiceJsonLd } from '@/components/ServiceJsonLd'
 import { useSiteContent } from '@/hooks/use-site-content'
+import { trackWhatsAppClick } from '@/lib/site'
 
 function CheckIcon() {
   return (
@@ -56,6 +59,13 @@ export function ServicePage() {
         content={content}
         url={absoluteUrl}
       />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Inicio', path: '/' },
+          { name: 'Servicios', path: '/servicios' },
+          { name: service.title, path },
+        ]}
+      />
       <SiteHeader
         brand={content.hero.brand}
         logoUrl={content.hero.logoUrl}
@@ -106,6 +116,7 @@ export function ServicePage() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() => trackWhatsAppClick(`servicio_${service.slug}`)}
                   className="inline-flex w-full items-center justify-center rounded-full bg-signal px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-ink active:scale-97 sm:w-auto"
                 >
                   Agendar valoración
@@ -166,6 +177,7 @@ export function ServicePage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackWhatsAppClick(`servicio_sidebar_${service.slug}`)}
                 className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-signal px-5 py-3 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-ink active:scale-97"
               >
                 Escribir por WhatsApp
@@ -173,6 +185,14 @@ export function ServicePage() {
             </div>
           </div>
         </section>
+
+        {service.faqs?.length ? (
+          <section className="border-t border-line/50 bg-bg">
+            <div className="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-16">
+              <ServiceFaq faqs={service.faqs} />
+            </div>
+          </section>
+        ) : null}
 
         <section className="atmosphere-paper border-t border-line/50">
           <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 sm:py-16 xl:max-w-7xl">

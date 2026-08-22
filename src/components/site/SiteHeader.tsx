@@ -1,5 +1,6 @@
 import { useLayoutEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { trackWhatsAppClick } from '@/lib/site'
 
 type SiteHeaderProps = {
   brand: string
@@ -15,9 +16,9 @@ type NavItem =
 
 const navItems: NavItem[] = [
   { kind: 'hash', hash: 'inicio', label: 'Inicio' },
-  { kind: 'hash', hash: 'recorrido', label: 'Recorrido' },
   { kind: 'route', to: '/servicios', label: 'Servicios' },
-  { kind: 'hash', hash: 'confianza', label: 'Nosotros' },
+  { kind: 'route', to: '/nosotros', label: 'Nosotros' },
+  { kind: 'route', to: '/blog', label: 'Blog' },
   { kind: 'hash', hash: 'voces', label: 'Pacientes' },
   { kind: 'hash', hash: 'visita', label: 'Contacto' },
 ]
@@ -130,6 +131,9 @@ export function SiteHeader({
             href={whatsappUrl}
             target="_blank"
             rel="noreferrer"
+            onClick={() => {
+              trackWhatsAppClick('header')
+            }}
             className="inline-flex items-center gap-1.5 rounded-full bg-signal px-3 py-2 text-xs font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-ink active:scale-97 sm:gap-2 sm:px-5 sm:py-2.5 sm:text-sm"
           >
             <span className="sm:hidden">Agendar</span>

@@ -1,4 +1,5 @@
 import type { VisitContent } from '@/content/types'
+import { trackWhatsAppClick } from '@/lib/site'
 
 type VisitProps = {
   visit: VisitContent
@@ -44,10 +45,24 @@ export function Visit({ visit, whatsappUrl }: VisitProps) {
                 Contacto
               </p>
               {visit.phone && !visit.phone.startsWith('[') ? (
-                <p className="mt-2 font-semibold text-ink">{visit.phone}</p>
-              ) : null}
+                <a
+                  href={`tel:${visit.phone.replace(/\s/g, '')}`}
+                  className="mt-2 block font-semibold text-ink transition-colors hover:text-signal"
+                >
+                  {visit.phone}
+                </a>
+              ) : (
+                <p className="mt-2 text-sm text-muted">
+                  Teléfono: agrégalo en el contenido para completar NAP y schema.
+                </p>
+              )}
               {visit.email && !visit.email.startsWith('[') ? (
-                <p className="mt-1 font-semibold text-ink">{visit.email}</p>
+                <a
+                  href={`mailto:${visit.email}`}
+                  className="mt-1 block font-semibold text-ink transition-colors hover:text-signal"
+                >
+                  {visit.email}
+                </a>
               ) : null}
               <a
                 href={visit.instagram}
@@ -59,14 +74,27 @@ export function Visit({ visit, whatsappUrl }: VisitProps) {
               </a>
             </div>
 
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-full items-center justify-center rounded-full bg-signal px-5 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong-ink active:scale-97 sm:w-auto"
-            >
-              Coordinar por WhatsApp
-            </a>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackWhatsAppClick('visit')}
+                className="inline-flex w-full items-center justify-center rounded-full bg-signal px-5 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-ink active:scale-97 sm:w-auto"
+              >
+                Coordinar por WhatsApp
+              </a>
+              {visit.googleReviewsUrl ? (
+                <a
+                  href={visit.googleReviewsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex w-full items-center justify-center rounded-full border border-line bg-white px-5 py-3.5 text-sm font-semibold text-ink transition-[transform,background-color] duration-150 ease-out-strong hover:bg-paper active:scale-97 sm:w-auto"
+                >
+                  Ver en Google
+                </a>
+              ) : null}
+            </div>
           </div>
 
           <div className="scroll-reveal overflow-hidden rounded-2xl border border-line/60 surface-soft">

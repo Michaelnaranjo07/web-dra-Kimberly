@@ -3,6 +3,12 @@ export type ServiceHighlight = {
   label: string
 }
 
+export type ServiceFaq = {
+  id: string
+  question: string
+  answer: string
+}
+
 export type ServiceItem = {
   id: string
   title: string
@@ -14,6 +20,7 @@ export type ServiceItem = {
   imageUrl: string
   imageAlt: string
   highlights: ServiceHighlight[]
+  faqs: ServiceFaq[]
   seoTitle: string
   seoDescription: string
   seoKeywords: string
@@ -136,11 +143,26 @@ export type TestimonialsContent = {
   items: Testimonial[]
 }
 
+export type OpeningHoursSpec = {
+  days: string
+  opens: string
+  closes: string
+}
+
 export type VisitContent = {
   title: string
   intro: string
   address: string
+  streetAddress: string
+  addressLocality: string
+  addressRegion: string
+  postalCode: string
+  addressCountry: string
+  latitude: number
+  longitude: number
+  priceRange: string
   hours: string
+  openingHours: OpeningHoursSpec[]
   phone: string
   email: string
   whatsapp: string
@@ -149,6 +171,7 @@ export type VisitContent = {
   instagram: string
   instagramHandle: string
   facebook: string
+  googleReviewsUrl: string
 }
 
 export type FinalCtaContent = {
@@ -172,9 +195,11 @@ export type BlogPost = {
   title: string
   slug: string
   excerpt: string
+  body: string
   coverUrl: string
   status: BlogPostStatus
   publishedAt: string
+  relatedServiceSlug: string
   seoTitle: string
   seoDescription: string
 }
@@ -183,6 +208,26 @@ export type BlogContent = {
   title: string
   intro: string
   posts: BlogPost[]
+}
+
+export type AboutContent = {
+  title: string
+  intro: string
+  bio: string
+  formation: string
+  credentialsNote: string
+  imageUrl: string
+  imageAlt: string
+  rethus: string
+  university: string
+  specialty: string
+}
+
+export type ReviewsContent = {
+  title: string
+  intro: string
+  googleUrl: string
+  ctaLabel: string
 }
 
 export type SiteModuleKey =
@@ -224,6 +269,8 @@ export type SiteContent = {
   finalCta: FinalCtaContent
   footer: FooterContent
   blog: BlogContent
+  about: AboutContent
+  reviews: ReviewsContent
   modules: ModulesContent
   analytics: AnalyticsContent
 }

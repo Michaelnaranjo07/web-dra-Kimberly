@@ -1,3 +1,4 @@
+import { trackWhatsAppClick } from '@/lib/site'
 import type { FinalCtaContent } from '@/content/types'
 
 type FinalCtaProps = {
@@ -40,6 +41,7 @@ export function FinalCta({ finalCta, whatsappUrl }: FinalCtaProps) {
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackWhatsAppClick('final_cta')}
               className="mt-7 inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-signal px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-white hover:text-ink active:scale-97 sm:mt-8 sm:w-auto"
             >
               {finalCta.ctaLabel}
