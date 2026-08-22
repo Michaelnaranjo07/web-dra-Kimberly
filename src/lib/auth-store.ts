@@ -1,36 +1,32 @@
-const AUTH_KEY = 'dra-kimberly:auth'
-const DEFAULT_PASSWORD = 'kimberly-admin'
+import type { Session, User } from '@supabase/supabase-js'
+import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 
 type Listener = () => void
 
-let memoryAuth: boolean | null = null
+let session: Session | null = null
+let ready = false
 const listeners = new Set<Listener>()
 
-function getExpectedPassword() {
-  return import.meta.env.VITE_ADMIN_PASSWORD || DEFAULT_PASSWORD
-}
-
-function readAuth(): boolean {
-  if (memoryAuth !== null) return memoryAuth
-  try {
-    memoryAuth = sessionStorage.getItem(AUTH_KEY) === '1'
-    return memoryAuth
-  } catch {
-    memoryAuth = false
-    return false
-  }
-}
-
-function writeAuth(value: boolean) {
-  memoryAuth = value
-  if (value) sessionStorage.setItem(AUTH_KEY, '1')
-  else sessionStorage.removeItem(AUTH_KEY)
+function notify() {
   listeners.forEach((listener) => listener())
 }
 
-export function getAuthSnapshot() {
-  if (typeof window === 'undefined') return false
-  return readAuth()
+function setSession(next: Session | null) {
+  session = next
+  ready = true
+  notify()
+}
+
+if (supabase) {
+  void supabase.auth.getSession().then(({ data }) => {
+    setSession(data.session)
+  })
+
+  supabase.auth.onAuthStateChange((_event, next) => {
+    setSession(next)
+  })
+} else {
+  ready = true
 }
 
 export function subscribeAuth(listener: Listener) {
@@ -38,12 +34,59 @@ export function subscribeAuth(listener: Listener) {
   return () => listeners.delete(listener)
 }
 
-export function login(password: string) {
-  if (password !== getExpectedPassword()) return false
-  writeAuth(true)
-  return true
+export function getAuthReadySnapshot() {
+  return ready
 }
 
-export function logout() {
-  writeAuth(false)
+export function getAuthSnapshot() {
+  return Boolean(session)
+}
+
+export function getAuthUserSnapshot(): User | null {
+  return session?.user ?? null
+}
+
+export type LoginResult = { ok: true } | { ok: false; message: string }
+
+export async function login(
+  email: string,
+  password: string,
+): Promise<LoginResult> {
+  if (!supabase || !isSupabaseConfigured) {
+    return {
+      ok: false,
+      message:
+        'Supabase no está configurado. Añade VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY.',
+    }
+  }
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email: email.trim(),
+    password,
+  })
+
+  if (error) {
+    return { ok: false, message: mapAuthError(error.message) }
+  }
+
+  return { ok: true }
+}
+
+export async function logout() {
+  if (!supabase) {
+    setSession(null)
+    return
+  }
+  await supabase.auth.signOut()
+}
+
+function mapAuthError(message: string) {
+  const lower = message.toLowerCase()
+  if (lower.includes('invalid login credentials')) {
+    return 'Correo o contraseña incorrectos'
+  }
+  if (lower.includes('email not confirmed')) {
+    return 'Confirma el correo antes de entrar'
+  }
+  return message
 }

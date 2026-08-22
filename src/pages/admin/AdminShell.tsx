@@ -19,10 +19,22 @@ const nav = [
 ]
 
 export function AdminShell() {
-  const { isAuthenticated, logout } = useAuth()
+  const { isReady, isAuthenticated, user, logout } = useAuth()
+
+  if (!isReady) {
+    return (
+      <div className="flex min-h-dvh items-center justify-center bg-paper px-6">
+        <p className="text-sm text-muted">Cargando sesión…</p>
+      </div>
+    )
+  }
 
   if (!isAuthenticated) {
     return <Navigate to="/admin/login" replace />
+  }
+
+  async function onLogout() {
+    await logout()
   }
 
   return (
@@ -33,8 +45,8 @@ export function AdminShell() {
             <p className="font-display text-lg font-extrabold tracking-tight text-ink sm:text-xl">
               Panel Dra. Kimberly
             </p>
-            <p className="text-xs text-muted">
-              Blog · Pagos · Testimonios · Analytics
+            <p className="truncate text-xs text-muted">
+              {user?.email ?? 'Blog · Pagos · Testimonios · Analytics'}
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -46,7 +58,7 @@ export function AdminShell() {
             >
               Ver sitio
             </a>
-            <Button variant="ghost" onClick={logout} className="!py-2 !px-4">
+            <Button variant="ghost" onClick={onLogout} className="!py-2 !px-4">
               Salir
             </Button>
           </div>
