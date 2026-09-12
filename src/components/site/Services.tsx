@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { MediaCover } from '@/components/site/MediaCover'
 import type { ServicesContent } from '@/content/types'
 import { trackWhatsAppClick } from '@/lib/site'
 
@@ -95,12 +96,15 @@ export function Services({
               >
                 <Link to={`/servicios/${item.slug}`} className="block">
                   <div className="relative aspect-4/3 overflow-hidden bg-fog">
-                    <img
-                      src={item.imageUrl}
+                    <MediaCover
+                      imageUrl={item.imageUrl}
+                      videoUrl={item.videoUrl}
                       alt={item.imageAlt}
-                      className="h-full w-full object-cover transition-transform duration-300 ease-out-strong group-hover:scale-[1.03]"
+                      className="h-full w-full"
+                      mediaClassName="h-full w-full object-cover transition-transform duration-300 ease-out-strong group-hover:scale-[1.03]"
+                      objectPosition="center 30%"
                     />
-                    <span className="absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center rounded-full bg-signal font-display text-xs font-bold text-white tabular-nums">
+                    <span className="absolute bottom-3 left-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-signal font-display text-xs font-bold text-white tabular-nums">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>

@@ -7,7 +7,7 @@ import type {
 } from '@/content/types'
 import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 
-const STORAGE_KEY = 'dra-kimberly:content:v33'
+const STORAGE_KEY = 'dra-kimberly:content:v37'
 const CONTENT_ROW_ID = 'main'
 
 type Listener = () => void
@@ -39,6 +39,8 @@ function mergeServiceItems(parsed?: ServiceItem[]): ServiceItem[] {
     return {
       ...fallback,
       ...item,
+      imageUrl: item.imageUrl || fallback.imageUrl,
+      videoUrl: item.videoUrl ?? fallback.videoUrl,
       highlights: item.highlights?.length
         ? item.highlights
         : fallback.highlights,
@@ -53,6 +55,9 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
     hero: {
       ...defaultContent.hero,
       ...(parsed.hero ?? {}),
+      // Media del hero siempre desde defaults (fachada actual)
+      doctorImageUrl: defaultContent.hero.doctorImageUrl,
+      videoUrl: defaultContent.hero.videoUrl,
       highlights: parsed.hero?.highlights?.length
         ? parsed.hero.highlights
         : defaultContent.hero.highlights,

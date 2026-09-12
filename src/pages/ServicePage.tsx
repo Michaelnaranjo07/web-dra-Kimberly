@@ -1,6 +1,7 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
 import { FinalCta } from '@/components/site/FinalCta'
+import { MediaCover } from '@/components/site/MediaCover'
 import { ServiceFaq } from '@/components/site/ServiceFaq'
 import { SiteFooter } from '@/components/site/SiteFooter'
 import { SiteHeader } from '@/components/site/SiteHeader'
@@ -131,10 +132,13 @@ export function ServicePage() {
             </div>
 
             <div className="surface-soft order-first overflow-hidden rounded-[1.25rem] bg-fog ring-1 ring-black/5 sm:rounded-[1.75rem] lg:order-0">
-              <img
-                src={service.imageUrl}
+              <MediaCover
+                imageUrl={service.imageUrl}
+                videoUrl={service.videoUrl}
                 alt={service.imageAlt}
-                className="aspect-4/3 w-full object-cover sm:aspect-5/4"
+                className="aspect-4/3 w-full sm:aspect-5/4"
+                mediaClassName="h-full w-full object-cover"
+                objectPosition="center 28%"
               />
             </div>
           </div>

@@ -1,4 +1,5 @@
 import type { HeroContent } from '@/content/types'
+import { MediaCover } from '@/components/site/MediaCover'
 import { PaymentCarousel } from '@/components/site/PaymentCarousel'
 import { trackWhatsAppClick } from '@/lib/site'
 
@@ -37,10 +38,12 @@ export function Hero({ hero, whatsappUrl, showPayments = true }: HeroProps) {
       ].join(' ')}
     >
       <div className="relative min-h-0 flex-1 overflow-hidden">
-        <img
-          src={hero.doctorImageUrl}
-          alt="Consultorio odontológico"
-          className="absolute inset-0 h-full w-full object-cover object-[42%_40%]"
+        <MediaCover
+          imageUrl={hero.doctorImageUrl || '/images/fachada-clinica.png'}
+          alt="Fachada del consultorio Dra. Kimberly Martínez"
+          className="absolute inset-0"
+          mediaClassName="h-full w-full object-cover"
+          objectPosition="center 40%"
         />
         {/* Tint uniforme + viñeta suave (sin manchas de blur) */}
         <div aria-hidden="true" className="absolute inset-0 bg-signal/20" />

@@ -48,7 +48,7 @@ export function Trust({ trust }: TrustProps) {
             <img
               src={trust.imageUrl}
               alt={trust.imageAlt}
-              className="h-full w-full object-cover object-[center_20%]"
+              className="h-full w-full object-cover object-[center_18%]"
             />
           </div>
 

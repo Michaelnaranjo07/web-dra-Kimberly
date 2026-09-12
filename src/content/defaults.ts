@@ -1,22 +1,18 @@
 import type { SiteContent } from './types'
 
-/** Stock: consultorio + profesional mujer + escenas clínicas */
-const IMG_HERO =
-  'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=2400&q=80'
-const IMG_TRUST =
-  'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1400&q=80'
-const IMG_CLINIC =
-  'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80'
-const IMG_ORTO =
-  'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=900&q=80'
-const IMG_WHITE =
-  'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=900&q=80'
-const IMG_PROTESIS =
-  'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=900&q=80'
-const IMG_ENDO =
-  'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=900&q=80'
-const IMG_GEST =
-  'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=900&q=80'
+/** Fotos reales del consultorio (public/images) */
+const IMG_HERO = '/images/fachada-clinica.png'
+const IMG_TRUST = '/images/dra-kimberly.jpg'
+const IMG_CLINIC = '/images/planeacion-tratamiento.jpg'
+const IMG_ORTO = '/images/servicio-ortodoncia.jpg'
+const IMG_WHITE = '/images/servicio-blanqueamiento.jpg'
+const IMG_PROTESIS = '/images/protesis-dental.png'
+const IMG_ENDO = '/images/servicio-endodoncia.jpg'
+const IMG_GEST = '/images/servicio-gestantes.jpg'
+const VID_ORTO = '/images/servicio-ortodoncia.mp4'
+const VID_WHITE = '/images/servicio-blanqueamiento.mp4'
+const VID_ENDO = '/images/servicio-endodoncia.mp4'
+/** Testimonios: stock hasta tener consentimiento de pacientes */
 const IMG_PACIENTE_1 =
   'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80'
 const IMG_PACIENTE_2 =
@@ -38,7 +34,7 @@ export const defaultContent: SiteContent = {
       'Consultorio odontológico en Barrio Perdomo, Bogotá. Ortodoncia, blanqueamiento, prótesis, endodoncia y odontología para gestantes. Agenda por WhatsApp.',
     keywords:
       'odontología Bogotá, dra kimberly martinez, ortodoncia Perdomo, blanqueamiento dental, prótesis flexibles, endodoncia, odontología gestantes',
-    ogImage: '/logo-dra-kimberly.jpg',
+    ogImage: '/images/fachada-clinica.png',
   },
   hero: {
     brand: 'Dra. Kimberly Martínez',
@@ -167,6 +163,7 @@ export const defaultContent: SiteContent = {
         imageUrl: IMG_ORTO,
         imageAlt:
           'Ortodoncia en el consultorio Dra. Kimberly Martínez, Bogotá',
+        videoUrl: VID_ORTO,
         highlights: [
           { id: 'o1', label: 'Valoración y plan explicados desde el inicio' },
           { id: 'o2', label: 'Seguimiento cercano en cada etapa' },
@@ -224,6 +221,7 @@ export const defaultContent: SiteContent = {
         imageUrl: IMG_WHITE,
         imageAlt:
           'Blanqueamiento dental en el consultorio Dra. Kimberly Martínez, Bogotá',
+        videoUrl: VID_WHITE,
         highlights: [
           { id: 'b1', label: 'Valoración previa del esmalte y la sonrisa' },
           { id: 'b2', label: 'Proceso supervisado, resultado natural' },
@@ -339,6 +337,7 @@ export const defaultContent: SiteContent = {
         imageUrl: IMG_ENDO,
         imageAlt:
           'Endodoncia en el consultorio Dra. Kimberly Martínez, Bogotá',
+        videoUrl: VID_ENDO,
         highlights: [
           { id: 'e1', label: 'Alivio del dolor con explicación paso a paso' },
           { id: 'e2', label: 'Prioridad a conservar el diente cuando es viable' },

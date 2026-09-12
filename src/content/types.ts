@@ -19,6 +19,8 @@ export type ServiceItem = {
   slug: string
   imageUrl: string
   imageAlt: string
+  /** Video opcional del tratamiento (muted/loop en cards y ficha) */
+  videoUrl?: string
   highlights: ServiceHighlight[]
   faqs: ServiceFaq[]
   seoTitle: string
@@ -80,6 +82,8 @@ export type HeroContent = {
   secondaryCtaLabel: string
   secondaryCtaHref: string
   doctorImageUrl: string
+  /** Video de fondo opcional del hero (muted/loop; doctorImageUrl = poster) */
+  videoUrl?: string
   floatingCardTitle: string
   floatingCardBody: string
   highlights: HeroHighlight[]
