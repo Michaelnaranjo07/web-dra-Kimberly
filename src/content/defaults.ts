@@ -22,10 +22,11 @@ const IMG_PACIENTE_3 =
 const IMG_PACIENTE_4 =
   'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80'
 
-const ADDRESS = 'Calle 3A Sur #72-45, Barrio Perdomo, Bogotá, Colombia'
+const ADDRESS =
+  'Calle 64A Sur #72-18 Local 1, Barrio Perdomo, Bogotá, Colombia'
 const MAP_QUERY = encodeURIComponent(ADDRESS)
 const GOOGLE_REVIEWS_URL =
-  'https://www.google.com/maps/search/?api=1&query=Calle+3A+Sur+%2372-45+Barrio+Perdomo+Bogotá'
+  'https://www.google.com/maps/search/?api=1&query=Calle+64A+Sur+%2372-18+Local+1+Barrio+Perdomo+Bogotá'
 
 export const defaultContent: SiteContent = {
   seo: {
@@ -553,25 +554,26 @@ export const defaultContent: SiteContent = {
     intro:
       'Estamos en Barrio Perdomo. Agenda con anticipación para dedicarte el tiempo que tu caso merece.',
     address: ADDRESS,
-    streetAddress: 'Calle 3A Sur #72-45',
+    streetAddress: 'Calle 64A Sur #72-18 Local 1',
     addressLocality: 'Bogotá',
     addressRegion: 'Cundinamarca',
-    postalCode: '111931',
+    postalCode: '111921',
     addressCountry: 'CO',
-    latitude: 4.5775,
-    longitude: -74.1605,
+    latitude: 4.588,
+    longitude: -74.1701,
     priceRange: '$$',
-    hours: 'Lunes a viernes: 8:00 a.m. – 6:00 p.m. · Sábados con cita previa',
+    hours:
+      'Lunes a viernes: 10:00 a.m. – 6:30 p.m. · Sábados: 10:00 a.m. – 3:00 p.m.',
     openingHours: [
       {
         days: 'Monday,Tuesday,Wednesday,Thursday,Friday',
-        opens: '08:00',
-        closes: '18:00',
+        opens: '10:00',
+        closes: '18:30',
       },
-      { days: 'Saturday', opens: '08:00', closes: '13:00' },
+      { days: 'Saturday', opens: '10:00', closes: '15:00' },
     ],
     phone: '',
-    email: '',
+    email: 'info@drakimberlymartinez.com',
     whatsapp: '',
     whatsappUrl: 'https://wa.me/message/SEK3UXCDLIJZJ1',
     mapEmbedUrl: `https://maps.google.com/maps?q=${MAP_QUERY}&t=&z=16&ie=UTF8&iwloc=&output=embed`,
@@ -768,7 +770,7 @@ export const defaultContent: SiteContent = {
         slug: 'consultorio-perdomo',
         excerpt:
           'Dónde estamos, cómo llegar y qué esperar en tu visita.',
-        body: 'Atendemos en Calle 3A Sur #72-45, Barrio Perdomo, Bogotá. Es un espacio pensado para citas con tiempo: escucharte, explicar el plan y avanzar sin prisa.\n\nAgenda con anticipación, sobre todo si buscas un horario concreto. Los sábados trabajamos con cita previa en franja de mañana.\n\nSi quieres conocernos, escríbenos por WhatsApp. También puedes revisar ubicación y horarios en la sección de visita del sitio.',
+        body: 'Atendemos en Calle 64A Sur #72-18 Local 1, Barrio Perdomo, Bogotá. Es un espacio pensado para citas con tiempo: escucharte, explicar el plan y avanzar sin prisa.\n\nAgenda con anticipación, sobre todo si buscas un horario concreto. Los sábados trabajamos con cita previa en franja de mañana.\n\nSi quieres conocernos, escríbenos por WhatsApp. También puedes revisar ubicación y horarios en la sección de visita del sitio.',
         coverUrl: IMG_CLINIC,
         status: 'draft',
         publishedAt: '',

@@ -7,7 +7,7 @@ import type {
 } from '@/content/types'
 import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 
-const STORAGE_KEY = 'dra-kimberly:content:v37'
+const STORAGE_KEY = 'dra-kimberly:content:v41'
 const CONTENT_ROW_ID = 'main'
 
 type Listener = () => void
@@ -122,9 +122,17 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
     visit: {
       ...defaultContent.visit,
       ...parsed.visit,
-      openingHours: parsed.visit?.openingHours?.length
-        ? parsed.visit.openingHours
-        : defaultContent.visit.openingHours,
+      // NAP / mapa siempre desde defaults (dirección actual)
+      address: defaultContent.visit.address,
+      streetAddress: defaultContent.visit.streetAddress,
+      postalCode: defaultContent.visit.postalCode,
+      latitude: defaultContent.visit.latitude,
+      longitude: defaultContent.visit.longitude,
+      mapEmbedUrl: defaultContent.visit.mapEmbedUrl,
+      googleReviewsUrl: defaultContent.visit.googleReviewsUrl,
+      hours: defaultContent.visit.hours,
+      openingHours: defaultContent.visit.openingHours,
+      email: defaultContent.visit.email,
     },
     finalCta: { ...defaultContent.finalCta, ...parsed.finalCta },
     footer: { ...defaultContent.footer, ...parsed.footer },
