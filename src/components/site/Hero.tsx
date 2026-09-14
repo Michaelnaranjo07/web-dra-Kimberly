@@ -128,13 +128,20 @@ export function Hero({ hero, whatsappUrl }: HeroProps) {
           />
         ) : null}
 
-        <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-5 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 xl:max-w-7xl">
+        <div
+          className={[
+            'relative z-10 flex h-full flex-col justify-center pt-28 pb-20',
+            alignLeft
+              ? 'w-full max-w-none px-5 sm:px-8 lg:px-10 xl:px-12 2xl:px-14'
+              : 'mx-auto max-w-6xl px-5 sm:px-6 xl:max-w-7xl',
+          ].join(' ')}
+        >
           <div
             key={active.id}
             className={[
               'relative w-full motion-safe:animate-[reveal-up_500ms_var(--ease-out-strong)_both]',
               alignLeft
-                ? 'max-w-xl text-left'
+                ? 'max-w-lg text-left sm:max-w-xl lg:max-w-[34rem] xl:max-w-[36rem]'
                 : 'mx-auto max-w-2xl text-center',
             ].join(' ')}
           >
@@ -212,7 +219,14 @@ export function Hero({ hero, whatsappUrl }: HeroProps) {
           </div>
 
           {slides.length > 1 ? (
-            <div className="absolute inset-x-5 bottom-6 flex items-center justify-center gap-2 sm:inset-x-6 sm:bottom-8 sm:justify-start xl:inset-x-0">
+            <div
+              className={[
+                'absolute bottom-6 flex items-center gap-2 sm:bottom-8 lg:bottom-10',
+                alignLeft
+                  ? 'left-5 justify-start sm:left-8 lg:left-10 xl:left-12 2xl:left-14'
+                  : 'inset-x-5 justify-center sm:inset-x-6 sm:justify-start',
+              ].join(' ')}
+            >
               {slides.map((slide, i) => (
                 <button
                   key={slide.id}
