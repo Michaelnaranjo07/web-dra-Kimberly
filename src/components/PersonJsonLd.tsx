@@ -21,7 +21,14 @@ export function PersonJsonLd({ about, brand }: PersonJsonLdProps) {
     alumniOf: about.university
       ? { '@type': 'CollegeOrUniversity', name: about.university }
       : undefined,
-    knowsAbout: ['Odontología', 'Odontología para gestantes', 'Ortodoncia'],
+    knowsAbout: [
+      'Rehabilitación oral',
+      'Odontología estética',
+      'Prótesis dentales',
+      'Coronas',
+      'Carillas',
+      'Diseño de sonrisa',
+    ],
   }
 
   return (

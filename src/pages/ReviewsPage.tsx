@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { SiteFooter } from '@/components/site/SiteFooter'
 import { SiteHeader } from '@/components/site/SiteHeader'
+import { TestimonialsCarousel } from '@/components/site/TestimonialsCarousel'
 import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
 import { Seo } from '@/components/Seo'
 import { useSiteContent } from '@/hooks/use-site-content'
@@ -60,7 +61,7 @@ export function ReviewsPage() {
                   {reviews.intro}
                 </p>
                 <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
-                  Aquí compartimos voces seleccionadas de pacientes. En Google
+                  Aquí compartimos pacientes reales del consultorio. En Google
                   encontrarás más reseñas y podrás dejar la tuya.
                 </p>
               </div>
@@ -74,29 +75,10 @@ export function ReviewsPage() {
               </a>
             </div>
 
-            <ul className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
-              {testimonials.items.map((item) => (
-                <li
-                  key={item.id}
-                  className="surface-soft overflow-hidden rounded-2xl border border-line/60 bg-white"
-                >
-                  <div className="aspect-4/3 overflow-hidden bg-fog">
-                    <img
-                      src={item.imageUrl}
-                      alt={item.imageAlt}
-                      className="h-full w-full object-cover object-top"
-                    />
-                  </div>
-                  <div className="px-5 py-5">
-                    <p className="text-sm leading-relaxed text-ink">
-                      “{item.quote}”
-                    </p>
-                    <p className="mt-4 text-sm font-bold text-ink">{item.name}</p>
-                    <p className="mt-0.5 text-sm text-muted">{item.detail}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <TestimonialsCarousel
+              items={testimonials.items}
+              cardBorderClass="border-line/60"
+            />
 
             <div className="mt-12 flex flex-col items-start gap-4 rounded-2xl border border-line/60 bg-white p-6 sm:mt-16 sm:flex-row sm:items-center sm:justify-between sm:p-8">
               <div>

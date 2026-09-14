@@ -2,6 +2,8 @@ import type { SiteContent } from './types'
 
 /** Fotos reales del consultorio (public/images) */
 const IMG_HERO = '/images/fachada-clinica.png'
+const IMG_HERO_WHITE = '/images/blanqueamiento-hero.png'
+const IMG_HERO_DRA = '/images/hero-dra-kimberly.png'
 const IMG_TRUST = '/images/dra-kimberly.jpg'
 const IMG_CLINIC = '/images/planeacion-tratamiento.jpg'
 const IMG_ORTO = '/images/servicio-ortodoncia.jpg'
@@ -12,15 +14,7 @@ const IMG_GEST = '/images/servicio-gestantes.jpg'
 const VID_ORTO = '/images/servicio-ortodoncia.mp4'
 const VID_WHITE = '/images/servicio-blanqueamiento.mp4'
 const VID_ENDO = '/images/servicio-endodoncia.mp4'
-/** Testimonios: stock hasta tener consentimiento de pacientes */
-const IMG_PACIENTE_1 =
-  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80'
-const IMG_PACIENTE_2 =
-  'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80'
-const IMG_PACIENTE_3 =
-  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=800&q=80'
-const IMG_PACIENTE_4 =
-  'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80'
+/** Testimonios: fotos reales en public/images/pacientes */
 
 const ADDRESS =
   'Calle 64A Sur #72-18 Local 1, Barrio Perdomo, Bogotá, Colombia'
@@ -50,7 +44,43 @@ export const defaultContent: SiteContent = {
     primaryCtaLabel: 'Agendar cita',
     secondaryCtaLabel: 'Ver tratamientos',
     secondaryCtaHref: '#tratamientos',
-    doctorImageUrl: IMG_HERO,
+    doctorImageUrl: IMG_HERO_WHITE,
+    slides: [
+      {
+        id: 'hero-blanqueamiento',
+        imageUrl: IMG_HERO_WHITE,
+        alt: 'Blanqueamiento dental en el consultorio Dra. Kimberly Martínez',
+        align: 'left',
+        objectPosition: 'center center',
+        eyebrow: 'Blanqueamiento dental en Bogotá',
+        lineOne: 'Una sonrisa más',
+        accentWord: 'luminosa.',
+        lineTwo: '',
+        promise:
+          'Tratamiento controlado, expectativas claras y cuidado del esmalte. Agenda tu valoración con calma.',
+      },
+      {
+        id: 'hero-dra',
+        imageUrl: IMG_HERO_DRA,
+        alt: 'Dra. Kimberly Martínez, odontóloga en Barrio Perdomo, Bogotá',
+        align: 'left',
+        objectPosition: 'center 20%',
+        eyebrow: 'Odontóloga en Barrio Perdomo, Bogotá',
+        lineOne: 'Cuidado clínico con',
+        accentWord: 'criterio.',
+        lineTwo: '',
+        promise:
+          'Dra. Kimberly Martínez: diagnóstico claro, tratamientos precisos y acompañamiento cercano en cada paso.',
+      },
+      // Desactivado por ahora: fachada se muestra en Ubicación (mapa ↔ foto)
+      // {
+      //   id: 'hero-fachada',
+      //   imageUrl: IMG_HERO,
+      //   alt: 'Fachada del consultorio Dra. Kimberly Martínez en Barrio Perdomo',
+      //   align: 'center',
+      //   objectPosition: 'center 40%',
+      // },
+    ],
     floatingCardTitle: 'Agenda tu valoración con calma',
     floatingCardBody: 'Un solo camino de consulta. Sin presión, con plan claro.',
     highlights: [
@@ -105,11 +135,11 @@ export const defaultContent: SiteContent = {
       },
     ],
     stats: [
-      { id: 's1', value: '10+', label: 'Años de experiencia' },
+      { id: 's1', value: '6+', label: 'Años de experiencia clínica' },
       { id: 's2', value: '5+', label: 'Áreas de tratamiento' },
       { id: 's3', value: '1:1', label: 'Atención personalizada' },
     ],
-    trustStatValue: '10+',
+    trustStatValue: '6+',
     trustStatLabel: 'años de experiencia clínica',
   },
   journey: {
@@ -443,62 +473,75 @@ export const defaultContent: SiteContent = {
     ],
   },
   trust: {
-    eyebrow: 'Nosotros',
-    title: 'Cercanía y criterio en cada consulta',
+    eyebrow: 'Nuestra esencia',
+    title: 'Odontología con criterio clínico, función y estética',
     body:
-      'La Dra. Kimberly Martínez acompaña a sus pacientes en Barrio Perdomo con una forma de atender sencilla y cercana: primero entender qué te preocupa, después explicar el plan con claridad. Más de 10 años de experiencia en odontología general, con un enfoque integral y seguimiento cercano.',
-    imageUrl: IMG_TRUST,
+      'En la Clínica Dra. Kimberly Martínez creemos que cada tratamiento debe comenzar con un diagnóstico preciso y una explicación clara.\n\nLa Dra. Kimberly Martínez, odontóloga egresada de la Universidad El Bosque, ejerce desde 2020 y cuenta con una trayectoria previa en Mecánica Dental, formación que complementa su enfoque actual en rehabilitación oral, odontología estética y atención integral.\n\nSu práctica está orientada a recuperar no solamente la apariencia de la sonrisa, sino también su función, armonía y salud a largo plazo, mediante planes de tratamiento personalizados y, cuando el caso lo requiere, el trabajo conjunto con especialistas.',
+    imageUrl: IMG_HERO_DRA,
     imageAlt:
       'Dra. Kimberly Martínez, odontóloga en consultorio de Barrio Perdomo, Bogotá',
-    secondaryImageUrl: IMG_CLINIC,
+    secondaryImageUrl: '/images/resenas.png',
     secondaryImageAlt:
-      'Consultorio odontológico de la Dra. Kimberly Martínez en Barrio Perdomo, Bogotá',
+      'Dra. Kimberly Martínez con una paciente en el consultorio de Barrio Perdomo',
     highlights: [
       {
         id: 'th1',
-        label: 'Diagnóstico claro antes de tratar',
+        label: 'Diagnóstico y planificación antes de tratar',
       },
       {
         id: 'th2',
-        label: 'Plan explicado a tu ritmo, sin presión',
+        label: 'Enfoque en rehabilitación oral y odontología estética',
       },
       {
         id: 'th3',
-        label: 'Odontología para gestantes con criterio',
+        label: 'Tratamientos explicados con claridad y sin decisiones apresuradas',
       },
     ],
-    ctaLabel: 'Conocer a la Dra. Kimberly',
+    ctaLabel: 'Conoce a la Dra. Kimberly',
     ctaHref: '/nosotros',
+    secondaryCtaLabel: 'Agenda tu valoración',
     credentials: [
       {
         id: 'exp',
-        label: 'Experiencia',
-        value: 'Más de 10 años',
+        label: 'Experiencia clínica',
+        value: 'Más de 6 años como odontóloga',
       },
       {
         id: 'formacion',
-        label: 'Formación',
-        value: 'Odontóloga · Atención integral',
+        label: 'Formación profesional',
+        value: 'Odontóloga · Universidad El Bosque',
+      },
+      {
+        id: 'estetica',
+        label: 'Formación complementaria',
+        value: 'Diplomado en Odontología Estética',
+      },
+      {
+        id: 'tecnica',
+        label: 'Formación técnica',
+        value:
+          'Técnica Profesional en Mecánica Dental · Politécnico Internacional',
       },
       {
         id: 'enfoque',
-        label: 'Enfoque',
-        value: 'Diagnóstico primero, plan a tu ritmo',
+        label: 'Enfoque clínico',
+        value:
+          'Rehabilitación Oral y Odontología Estética',
       },
       {
-        id: 'lugar',
-        label: 'Consultorio',
-        value: 'Barrio Perdomo, Bogotá',
+        id: 'tratamientos',
+        label: 'Tratamientos destacados',
+        value: 'Coronas · Carillas · Prótesis · Diseño de Sonrisa',
       },
       {
         id: 'rethus',
-        label: 'Tarjeta profesional / RETHUS',
-        value: 'Pendiente de publicar (consultar en consultorio)',
+        label: 'Registro profesional',
+        value: 'ReTHUS · Acto Administrativo (14214)',
       },
       {
-        id: 'universidad',
-        label: 'Universidad',
-        value: 'Universidad (actualizar con formación real)',
+        id: 'lugar',
+        label: 'Atención',
+        value: 'Bogotá D.C. – Colombia',
       },
     ],
   },
@@ -507,45 +550,76 @@ export const defaultContent: SiteContent = {
     titleLineTwo: 'felices.',
     titleLineThree: '#PacientesFelices',
     intro:
-      'Voces de quienes ya dieron el paso. También puedes ver más historias en Instagram con #PacientesFelices.',
+      'Personas reales que confían en el consultorio. También puedes ver más historias en Instagram con #PacientesFelices.',
     hashtag: '#PacientesFelices',
     watermark: 'RESULTADOS',
     items: [
       {
         id: 't1',
         quote:
-          'Me explicaron cada paso sin presión. Salí entendiendo el plan y con mucha más calma.',
-        name: 'M.R.',
-        detail: 'Ortodoncia',
-        imageUrl: IMG_PACIENTE_1,
-        imageAlt: 'Paciente #PacientesFelices — ortodoncia',
+          'Me sentí acompañado desde la primera cita. Todo claro, sin presión y con un plan que sí entendí.',
+        name: 'Junior Jaimes',
+        detail: 'Paciente de Venezuela',
+        imageUrl: '/images/pacientes/junior-jaimes.jpg',
+        imageAlt: 'Junior Jaimes, paciente de la Clínica Dra. Kimberly Martínez',
       },
       {
         id: 't2',
         quote:
-          'El blanqueamiento se sintió controlado y natural. Me gustó que cuidaran el esmalte.',
-        name: 'A.L.',
-        detail: 'Blanqueamiento dental',
-        imageUrl: IMG_PACIENTE_2,
-        imageAlt: 'Paciente #PacientesFelices — blanqueamiento',
+          'Viajé para atenderme y valió la pena. Atención cuidadosa y resultados naturales.',
+        name: 'Jessica Cortés Madrid',
+        detail: 'Paciente de España',
+        imageUrl: '/images/pacientes/jessica-cortes-madrid.jpg',
+        imageAlt:
+          'Jessica Cortés Madrid, paciente de la Clínica Dra. Kimberly Martínez',
       },
       {
         id: 't3',
         quote:
-          'Durante el embarazo me atendieron con mucha tranquilidad. Me sentí acompañada de verdad.',
-        name: 'C.G.',
-        detail: 'Odontología para gestantes',
-        imageUrl: IMG_PACIENTE_3,
-        imageAlt: 'Paciente #PacientesFelices — gestantes',
+          'Explicaron cada paso con calma. Salí más segura y con expectativas realistas.',
+        name: 'Dayana Fernández',
+        detail: 'Paciente',
+        imageUrl: '/images/pacientes/dayana-fernandez.jpg',
+        imageAlt: 'Dayana Fernández, paciente de la Clínica Dra. Kimberly Martínez',
       },
       {
         id: 't4',
         quote:
-          'Llegué con dolor y me explicaron opciones claras. Recuperé la confianza de masticar bien.',
-        name: 'J.P.',
-        detail: 'Endodoncia',
-        imageUrl: IMG_PACIENTE_4,
-        imageAlt: 'Paciente #PacientesFelices — endodoncia',
+          'Ambiente profesional y trato cercano. Cuidaron el detalle en cada consulta.',
+        name: 'Dina Rosa Cortés Murcia',
+        detail: 'Paciente',
+        imageUrl: '/images/pacientes/dina-rosa-cortes-murcia.jpg',
+        imageAlt:
+          'Dina Rosa Cortés Murcia, paciente de la Clínica Dra. Kimberly Martínez',
+      },
+      {
+        id: 't5',
+        quote:
+          'Resolvieron mis dudas sin apresurarme. El proceso se sintió ordenado y confiable.',
+        name: 'Maira Liseth Cristancho Hoyos',
+        detail: 'Paciente',
+        imageUrl: '/images/pacientes/maira-liseth-cristancho.jpg',
+        imageAlt:
+          'Maira Liseth Cristancho Hoyos, paciente de la Clínica Dra. Kimberly Martínez',
+      },
+      {
+        id: 't6',
+        quote:
+          'Buscaba precisión y naturalidad. El resultado respetó mi estilo y mi tiempo.',
+        name: 'Richard Ramírez',
+        detail: 'Diseñador de modas · Miss Universo',
+        imageUrl: '/images/pacientes/richard-ramirez.jpg',
+        imageAlt: 'Richard Ramírez, paciente de la Clínica Dra. Kimberly Martínez',
+      },
+      {
+        id: 't7',
+        quote:
+          'Atención humana y criterio clínico. Recomiendo el consultorio con tranquilidad.',
+        name: 'Shirley Stephany Cascante Rodríguez',
+        detail: 'Paciente',
+        imageUrl: '/images/pacientes/shirley-stephany-cascante.jpg',
+        imageAlt:
+          'Shirley Stephany Cascante Rodríguez, paciente de la Clínica Dra. Kimberly Martínez',
       },
     ],
   },
@@ -577,6 +651,9 @@ export const defaultContent: SiteContent = {
     whatsapp: '',
     whatsappUrl: 'https://wa.me/message/SEK3UXCDLIJZJ1',
     mapEmbedUrl: `https://maps.google.com/maps?q=${MAP_QUERY}&t=&z=16&ie=UTF8&iwloc=&output=embed`,
+    facadeImageUrl: IMG_HERO,
+    facadeImageAlt:
+      'Fachada del consultorio Dra. Kimberly Martínez en Barrio Perdomo, Bogotá',
     instagram: 'https://instagram.com/drakimberlymartinez',
     instagramHandle: '@drakimberlymartinez',
     facebook: '',
@@ -814,23 +891,23 @@ export const defaultContent: SiteContent = {
   about: {
     title: 'Dra. Kimberly Martínez',
     intro:
-      'Odontóloga en Barrio Perdomo: atención cercana, diagnóstico claro y planes a tu ritmo.',
-    bio: 'Soy Kimberly Martínez, odontóloga en Barrio Perdomo, Bogotá. Llevo más de 10 años acompañando pacientes que llegan con dudas, con ansiedad, o simplemente con ganas de entender qué les pasa antes de decidir un tratamiento. Mi forma de trabajar parte de una idea simple: primero escuchar, después explicar, y solo entonces proponer un plan — nunca al revés. Me especializo en atención integral, con un interés particular en la odontología para gestantes, un área donde la calma y el criterio clínico hacen toda la diferencia. Fuera de la silla dental, creo que la salud bucal no debería sentirse como un examen: por eso cada valoración empieza con una conversación, no con un diagnóstico apurado. Si tienes una duda antes de decidir, con gusto la resolvemos primero.',
+      'Odontóloga egresada de la Universidad El Bosque, con ejercicio profesional desde 2020 y experiencia clínica enfocada principalmente en rehabilitación oral, odontología estética y atención integral.',
+    bio: 'Su trayectoria en el sector odontológico comenzó varios años antes de ejercer como odontóloga, a partir de su formación como Técnica Profesional en Mecánica Dental en el Politécnico Internacional Educación Superior. Esta experiencia previa le permitió conocer desde una perspectiva técnica los procesos relacionados con prótesis, restauraciones y rehabilitación dental, conocimiento que hoy complementa su práctica clínica.\n\nCuenta además con Diplomado en Odontología Estética, fortaleciendo su formación en tratamientos orientados a recuperar tanto la función como la armonía de la sonrisa.\n\nDentro de su práctica clínica trabaja especialmente en tratamientos de rehabilitación oral, incluyendo prótesis dentales, coronas, restauraciones, carillas y planificación de tratamientos estéticos, siempre partiendo de una valoración integral y de las necesidades particulares de cada paciente.\n\nSu filosofía de atención se basa en realizar primero un diagnóstico adecuado, explicar de manera clara las diferentes alternativas y, posteriormente, construir un plan de tratamiento que busque resultados funcionales, naturales y estéticamente armónicos.',
     formation:
-      'Odontóloga con más de 10 años de experiencia en atención integral, con actualización continua en odontología para gestantes.',
+      'Más de 6 años de experiencia clínica como odontóloga, respaldados por una trayectoria previa en Mecánica Dental y formación continua en odontología estética.',
     credentialsNote:
-      'Las credenciales profesionales (tarjeta / RETHUS) se confirman en el consultorio y se publicarán en el sitio apenas estén verificadas para publicación.',
+      'Credenciales profesionales verificables. El registro ReTHUS se confirma en consultorio cuando lo solicites.',
     imageUrl: IMG_TRUST,
     imageAlt:
       'Dra. Kimberly Martínez, odontóloga en consultorio de Barrio Perdomo, Bogotá',
-    rethus: 'A publicar',
-    university: 'A confirmar',
-    specialty: 'Odontología general · Odontología para gestantes',
+    rethus: 'Acto Administrativo (14214)',
+    university: 'Universidad El Bosque',
+    specialty: 'Odontóloga · Rehabilitación Oral y Odontología Estética',
   },
   reviews: {
     title: 'Opiniones de pacientes',
     intro:
-      'Reseñas reales de pacientes de la Dra. Kimberly Martínez en Barrio Perdomo, Bogotá. Deja la tuya en Google.',
+      'Pacientes reales de la Dra. Kimberly Martínez en Barrio Perdomo, Bogotá. Deja tu reseña en Google.',
     googleUrl: GOOGLE_REVIEWS_URL,
     ctaLabel: 'Ver reseñas en Google',
   },

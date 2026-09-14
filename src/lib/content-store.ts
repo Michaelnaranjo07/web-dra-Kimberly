@@ -7,7 +7,7 @@ import type {
 } from '@/content/types'
 import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 
-const STORAGE_KEY = 'dra-kimberly:content:v41'
+const STORAGE_KEY = 'dra-kimberly:content:v49'
 const CONTENT_ROW_ID = 'main'
 
 type Listener = () => void
@@ -55,9 +55,10 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
     hero: {
       ...defaultContent.hero,
       ...(parsed.hero ?? {}),
-      // Media del hero siempre desde defaults (fachada actual)
+      // Media del hero siempre desde defaults
       doctorImageUrl: defaultContent.hero.doctorImageUrl,
       videoUrl: defaultContent.hero.videoUrl,
+      slides: defaultContent.hero.slides,
       highlights: parsed.hero?.highlights?.length
         ? parsed.hero.highlights
         : defaultContent.hero.highlights,
@@ -97,19 +98,23 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
     trust: {
       ...defaultContent.trust,
       ...parsed.trust,
-      credentials: parsed.trust?.credentials?.length
-        ? parsed.trust.credentials
-        : defaultContent.trust.credentials,
-      highlights: parsed.trust?.highlights?.length
-        ? parsed.trust.highlights
-        : defaultContent.trust.highlights,
+      eyebrow: defaultContent.trust.eyebrow,
+      title: defaultContent.trust.title,
+      body: defaultContent.trust.body,
+      imageUrl: defaultContent.trust.imageUrl,
+      imageAlt: defaultContent.trust.imageAlt,
+      secondaryImageUrl: defaultContent.trust.secondaryImageUrl,
+      secondaryImageAlt: defaultContent.trust.secondaryImageAlt,
+      ctaLabel: defaultContent.trust.ctaLabel,
+      ctaHref: defaultContent.trust.ctaHref,
+      secondaryCtaLabel: defaultContent.trust.secondaryCtaLabel,
+      credentials: defaultContent.trust.credentials,
+      highlights: defaultContent.trust.highlights,
     },
     testimonials: {
       ...defaultContent.testimonials,
       ...parsed.testimonials,
-      items: parsed.testimonials?.items?.length
-        ? parsed.testimonials.items
-        : defaultContent.testimonials.items,
+      items: defaultContent.testimonials.items,
     },
     clinicFaqs: {
       ...defaultContent.clinicFaqs,
@@ -129,6 +134,8 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
       latitude: defaultContent.visit.latitude,
       longitude: defaultContent.visit.longitude,
       mapEmbedUrl: defaultContent.visit.mapEmbedUrl,
+      facadeImageUrl: defaultContent.visit.facadeImageUrl,
+      facadeImageAlt: defaultContent.visit.facadeImageAlt,
       googleReviewsUrl: defaultContent.visit.googleReviewsUrl,
       hours: defaultContent.visit.hours,
       openingHours: defaultContent.visit.openingHours,
@@ -154,7 +161,19 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
           })
         : defaultContent.blog.posts,
     },
-    about: { ...defaultContent.about, ...parsed.about },
+    about: {
+      ...defaultContent.about,
+      ...parsed.about,
+      // CV / credenciales siempre desde defaults
+      title: defaultContent.about.title,
+      intro: defaultContent.about.intro,
+      bio: defaultContent.about.bio,
+      formation: defaultContent.about.formation,
+      credentialsNote: defaultContent.about.credentialsNote,
+      rethus: defaultContent.about.rethus,
+      university: defaultContent.about.university,
+      specialty: defaultContent.about.specialty,
+    },
     reviews: { ...defaultContent.reviews, ...parsed.reviews },
     modules: {
       items: parsed.modules?.items?.length

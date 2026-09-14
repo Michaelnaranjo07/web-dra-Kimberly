@@ -1,4 +1,5 @@
 import type { TestimonialsContent } from '@/content/types'
+import { TestimonialsCarousel } from '@/components/site/TestimonialsCarousel'
 
 type TestimonialsProps = {
   testimonials: TestimonialsContent
@@ -35,28 +36,12 @@ export function Testimonials({ testimonials, instagramUrl }: TestimonialsProps) 
           </div>
         </div>
 
-        <ul className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
-          {testimonials.items.map((item, index) => (
-            <li
-              key={item.id}
-              className="scroll-reveal surface-soft overflow-hidden rounded-2xl border border-white/80 bg-white"
-              style={{ animationDelay: `${index * 40}ms` }}
-            >
-              <div className="aspect-4/3 overflow-hidden bg-fog">
-                <img
-                  src={item.imageUrl}
-                  alt={item.imageAlt}
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
-              <div className="px-5 py-5">
-                <p className="text-sm leading-relaxed text-ink">“{item.quote}”</p>
-                <p className="mt-4 text-sm font-bold text-ink">{item.name}</p>
-                <p className="mt-0.5 text-sm text-muted">{item.detail}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className="scroll-reveal">
+          <TestimonialsCarousel
+            items={testimonials.items}
+            cardBorderClass="border-white/80"
+          />
+        </div>
       </div>
     </section>
   )

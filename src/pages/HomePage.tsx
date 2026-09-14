@@ -2,6 +2,7 @@ import { FaqJsonLd } from '@/components/FaqJsonLd'
 import { FinalCta } from '@/components/site/FinalCta'
 import { Hero } from '@/components/site/Hero'
 import { Journey } from '@/components/site/Journey'
+import { PaymentCarousel } from '@/components/site/PaymentCarousel'
 import { ServiceFaq } from '@/components/site/ServiceFaq'
 import { Services } from '@/components/site/Services'
 import { ServicesMarquee } from '@/components/site/ServicesMarquee'
@@ -24,6 +25,10 @@ export function HomePage() {
   const enabled = (key: SiteModuleKey) =>
     content.modules.items.find((item) => item.key === key)?.enabled !== false
 
+  const paymentMethods = content.hero.paymentMethods.filter(
+    (method) => method.enabled,
+  )
+
   return (
     <>
       <Seo seo={content.seo} canonicalPath="/" />
@@ -37,13 +42,11 @@ export function HomePage() {
         whatsappUrl={whatsappUrl}
       />
       <main>
-        <Hero
-          hero={content.hero}
-          whatsappUrl={whatsappUrl}
-          showPayments={enabled('paymentMarquee')}
-        />
+        <Hero hero={content.hero} whatsappUrl={whatsappUrl} />
         {enabled('journey') ? <Journey journey={content.journey} /> : null}
-        {enabled('trust') ? <Trust trust={content.trust} /> : null}
+        {enabled('trust') ? (
+          <Trust trust={content.trust} whatsappUrl={whatsappUrl} />
+        ) : null}
         {enabled('servicesMarquee') ? (
           <ServicesMarquee
             labels={content.services.items.map((item) => item.title)}
@@ -51,6 +54,14 @@ export function HomePage() {
         ) : null}
         {enabled('services') ? (
           <Services services={content.services} />
+        ) : null}
+        {enabled('paymentMarquee') && paymentMethods.length > 0 ? (
+          <div className="border-y border-line/40 bg-bg py-5 sm:py-6">
+            <p className="mb-3 text-center text-[11px] font-semibold tracking-[0.18em] text-muted uppercase">
+              {content.hero.paymentTitle}
+            </p>
+            <PaymentCarousel methods={paymentMethods} />
+          </div>
         ) : null}
         {enabled('testimonials') ? (
           <Testimonials

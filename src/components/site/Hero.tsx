@@ -1,12 +1,11 @@
-import type { HeroContent } from '@/content/types'
+import { useEffect, useState, useSyncExternalStore } from 'react'
+import type { HeroContent, HeroSlide } from '@/content/types'
 import { MediaCover } from '@/components/site/MediaCover'
-import { PaymentCarousel } from '@/components/site/PaymentCarousel'
 import { trackWhatsAppClick } from '@/lib/site'
 
 type HeroProps = {
   hero: HeroContent
   whatsappUrl: string
-  showPayments?: boolean
 }
 
 function ArrowIcon() {
@@ -24,56 +23,140 @@ function ArrowIcon() {
   )
 }
 
-export function Hero({ hero, whatsappUrl, showPayments = true }: HeroProps) {
-  const paymentMethods = hero.paymentMethods.filter((method) => method.enabled)
-  const showPay = showPayments && paymentMethods.length > 0
+function subscribeReducedMotion(onChange: () => void) {
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+  mq.addEventListener('change', onChange)
+  return () => mq.removeEventListener('change', onChange)
+}
+
+function getReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
+function resolveSlides(hero: HeroContent): HeroSlide[] {
+  if (hero.slides?.length) return hero.slides
+  return [
+    {
+      id: 'hero-default',
+      imageUrl: hero.doctorImageUrl || '/images/fachada-clinica.png',
+      videoUrl: hero.videoUrl,
+      alt: 'Fachada del consultorio Dra. Kimberly Martínez',
+      align: 'center',
+      objectPosition: 'center 40%',
+    },
+  ]
+}
+
+export function Hero({ hero, whatsappUrl }: HeroProps) {
   const trustLine = hero.stats.slice(0, 2)
+  const slides = resolveSlides(hero)
+  const reducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotion,
+    () => true,
+  )
+  const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const active = slides[Math.min(index, slides.length - 1)] ?? slides[0]
+  const alignLeft = active.align === 'left'
+
+  useEffect(() => {
+    if (reducedMotion || paused || slides.length < 2) return
+    const id = window.setInterval(() => {
+      setIndex((current) => (current + 1) % slides.length)
+    }, 7000)
+    return () => window.clearInterval(id)
+  }, [reducedMotion, paused, slides.length])
+
+  const eyebrow = active.eyebrow ?? hero.eyebrow
+  const lineOne = active.lineOne ?? hero.lineOne
+  const accentWord = active.accentWord ?? hero.accentWord
+  const lineTwo = active.lineTwo ?? hero.lineTwo
+  const promise = active.promise ?? hero.promise
 
   return (
     <section
       id="inicio"
-      className={[
-        'relative isolate flex flex-col',
-        showPay ? 'h-svh max-h-svh min-h-128' : 'min-h-[min(80svh,44rem)]',
-      ].join(' ')}
+      className="relative isolate flex h-svh max-h-svh min-h-128 flex-col"
     >
-      <div className="relative min-h-0 flex-1 overflow-hidden">
-        <MediaCover
-          imageUrl={hero.doctorImageUrl || '/images/fachada-clinica.png'}
-          alt="Fachada del consultorio Dra. Kimberly Martínez"
-          className="absolute inset-0"
-          mediaClassName="h-full w-full object-cover"
-          objectPosition="center 40%"
-        />
-        {/* Tint uniforme + viñeta suave (sin manchas de blur) */}
-        <div aria-hidden="true" className="absolute inset-0 bg-signal/20" />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-linear-to-b from-ink/35 via-ink/15 to-transparent"
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              'radial-gradient(ellipse 58% 52% at 50% 42%, rgb(21 26 36 / 0.52) 0%, rgb(21 26 36 / 0.22) 48%, transparent 74%)',
-          }}
-        />
+      <div
+        className="relative min-h-0 flex-1 overflow-hidden"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        {slides.map((slide, i) => {
+          const isActive = i === index
+          return (
+            <div
+              key={slide.id}
+              className={[
+                'absolute inset-0 transition-opacity duration-700 ease-out-strong motion-reduce:transition-none',
+                isActive ? 'opacity-100' : 'pointer-events-none opacity-0',
+              ].join(' ')}
+              aria-hidden={!isActive}
+            >
+              <MediaCover
+                imageUrl={slide.imageUrl}
+                videoUrl={slide.videoUrl}
+                alt={slide.alt}
+                className="absolute inset-0"
+                mediaClassName="h-full w-full object-cover"
+                objectPosition={slide.objectPosition ?? 'center center'}
+              />
+            </div>
+          )
+        })}
 
-        <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-start px-5 pt-20 pb-10 sm:px-6 sm:pt-24 sm:pb-12 xl:max-w-7xl">
-          <div className="relative mx-auto w-full max-w-2xl text-center sm:mt-6 lg:mt-10">
+        <div aria-hidden="true" className="absolute inset-0 bg-signal/15" />
+        <div
+          aria-hidden="true"
+          className={[
+            'absolute inset-0 transition-opacity duration-700 ease-out-strong',
+            alignLeft
+              ? 'bg-linear-to-r from-ink/75 via-ink/40 to-ink/10'
+              : 'bg-linear-to-b from-ink/35 via-ink/15 to-transparent',
+          ].join(' ')}
+        />
+        {!alignLeft ? (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(ellipse 58% 52% at 50% 42%, rgb(21 26 36 / 0.52) 0%, rgb(21 26 36 / 0.22) 48%, transparent 74%)',
+            }}
+          />
+        ) : null}
+
+        <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-5 pt-24 pb-16 sm:px-6 sm:pt-28 sm:pb-20 xl:max-w-7xl">
+          <div
+            key={active.id}
+            className={[
+              'relative w-full motion-safe:animate-[reveal-up_500ms_var(--ease-out-strong)_both]',
+              alignLeft
+                ? 'max-w-xl text-left'
+                : 'mx-auto max-w-2xl text-center',
+            ].join(' ')}
+          >
             {trustLine.length > 0 ? (
-              <p className="mb-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[11px] font-semibold tracking-wide text-white sm:mb-5 sm:text-xs [text-shadow:0_1px_2px_rgb(21_26_36_/_0.55)]">
-                {trustLine.map((stat, index) => (
+              <p
+                className={[
+                  'mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold tracking-wide text-white sm:mb-5 sm:text-xs [text-shadow:0_1px_2px_rgb(21_26_36_/_0.55)]',
+                  alignLeft ? 'justify-start' : 'justify-center',
+                ].join(' ')}
+              >
+                {trustLine.map((stat, i) => (
                   <span key={stat.id} className="inline-flex items-center gap-3">
-                    {index > 0 ? (
+                    {i > 0 ? (
                       <span className="text-white/50" aria-hidden="true">
                         ·
                       </span>
                     ) : null}
                     <span>
                       <span className="text-[#7EE9FF]">{stat.value}</span>{' '}
-                      <span className="font-medium text-white/90">{stat.label}</span>
+                      <span className="font-medium text-white/90">
+                        {stat.label}
+                      </span>
                     </span>
                   </span>
                 ))}
@@ -85,46 +168,70 @@ export function Hero({ hero, whatsappUrl, showPayments = true }: HeroProps) {
                 className="h-1.5 w-1.5 shrink-0 rounded-full bg-ember"
                 aria-hidden="true"
               />
-              <span className="truncate">{hero.eyebrow}</span>
+              <span className="truncate">{eyebrow}</span>
             </p>
 
             <h1 className="font-display mt-4 text-[2rem] leading-[1.1] font-extrabold tracking-tight text-white sm:mt-5 sm:text-5xl sm:leading-[1.05] lg:text-[3.35rem] [text-shadow:0_1px_2px_rgb(21_26_36_/_0.5),0_4px_16px_rgb(21_26_36_/_0.35)]">
-              {hero.lineOne}{' '}
-              <span className="text-[#7EE9FF]">{hero.accentWord}</span>
-              {hero.lineTwo ? <> {hero.lineTwo}</> : null}
+              {lineOne}{' '}
+              <span className="text-[#7EE9FF]">{accentWord}</span>
+              {lineTwo ? <> {lineTwo}</> : null}
             </h1>
 
-            <p className="mx-auto mt-4 max-w-lg text-[0.95rem] leading-relaxed text-white sm:mt-5 sm:text-lg [text-shadow:0_1px_2px_rgb(21_26_36_/_0.5),0_3px_12px_rgb(21_26_36_/_0.3)]">
-              {hero.promise}
+            <p
+              className={[
+                'mt-4 text-[0.95rem] leading-relaxed text-white sm:mt-5 sm:text-lg [text-shadow:0_1px_2px_rgb(21_26_36_/_0.5),0_3px_12px_rgb(21_26_36_/_0.3)]',
+                alignLeft ? 'max-w-md' : 'mx-auto max-w-lg',
+              ].join(' ')}
+            >
+              {promise}
             </p>
 
-            <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center">
+            <div
+              className={[
+                'mt-8 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-center',
+                alignLeft ? 'sm:justify-start' : 'sm:justify-center',
+              ].join(' ')}
+            >
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => trackWhatsAppClick('hero')}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-signal px-7 py-3.5 text-sm font-bold text-white transition-[transform,background-color] duration-150 ease-(--ease-out-strong) hover:bg-ink active:scale-97"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-signal px-7 py-3.5 text-sm font-bold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-ink active:scale-97"
               >
                 {hero.primaryCtaLabel}
                 <ArrowIcon />
               </a>
               <a
                 href={hero.secondaryCtaHref}
-                className="inline-flex items-center justify-center rounded-full border border-white/85 bg-ink/40 px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color,border-color] duration-150 ease-(--ease-out-strong) hover:border-white hover:bg-ink/55 active:scale-97"
+                className="inline-flex items-center justify-center rounded-full border border-white/85 bg-ink/40 px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color,border-color] duration-150 ease-out-strong hover:border-white hover:bg-ink/55 active:scale-97"
               >
                 {hero.secondaryCtaLabel}
               </a>
             </div>
           </div>
+
+          {slides.length > 1 ? (
+            <div className="absolute inset-x-5 bottom-6 flex items-center justify-center gap-2 sm:inset-x-6 sm:bottom-8 sm:justify-start xl:inset-x-0">
+              {slides.map((slide, i) => (
+                <button
+                  key={slide.id}
+                  type="button"
+                  aria-label={`Ver imagen ${i + 1}`}
+                  aria-current={i === index ? 'true' : undefined}
+                  onClick={() => setIndex(i)}
+                  className={[
+                    'h-1.5 rounded-full transition-[width,background-color] duration-200 ease-out-strong',
+                    i === index
+                      ? 'w-7 bg-white'
+                      : 'w-1.5 bg-white/45 hover:bg-white/70',
+                  ].join(' ')}
+                />
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
-
-      {showPay ? (
-        <div className="relative z-20 shrink-0 bg-bg pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pt-4 sm:pb-4">
-          <PaymentCarousel methods={paymentMethods} />
-        </div>
-      ) : null}
     </section>
   )
 }

@@ -101,17 +101,18 @@ export function AboutPage() {
               <h2 className="font-display mt-3 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
                 Quién te atiende
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-                {about.bio}
-              </p>
+              <div className="mt-4 space-y-4 text-base leading-relaxed text-muted sm:text-lg">
+                {about.bio
+                  .split(/\n\n+/)
+                  .map((part) => part.trim())
+                  .filter(Boolean)
+                  .map((paragraph) => (
+                    <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                  ))}
+              </div>
               <p className="mt-6 text-base font-semibold text-ink">
                 {about.formation}
               </p>
-              {about.university ? (
-                <p className="mt-3 text-sm text-muted">
-                  Formación: {about.university}
-                </p>
-              ) : null}
             </div>
 
             <div className="surface-soft rounded-2xl border border-line/60 bg-paper p-6 sm:p-7">
@@ -132,10 +133,6 @@ export function AboutPage() {
               </ul>
               <p className="mt-6 text-sm leading-relaxed text-muted">
                 {about.credentialsNote}
-              </p>
-              <p className="mt-3 text-sm text-muted">
-                RETHUS: {about.rethus}. La verificación oficial se confirma en
-                consultorio.
               </p>
             </div>
           </div>

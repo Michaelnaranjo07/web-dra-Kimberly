@@ -69,6 +69,22 @@ export type HeroStat = {
   label: string
 }
 
+export type HeroSlide = {
+  id: string
+  imageUrl: string
+  /** Video opcional (muted/loop; imageUrl = poster) */
+  videoUrl?: string
+  alt: string
+  align: 'left' | 'center'
+  objectPosition?: string
+  /** Overrides opcionales por slide; si faltan, usa el copy base del hero */
+  eyebrow?: string
+  lineOne?: string
+  accentWord?: string
+  lineTwo?: string
+  promise?: string
+}
+
 export type HeroContent = {
   brand: string
   logoUrl: string
@@ -84,6 +100,8 @@ export type HeroContent = {
   doctorImageUrl: string
   /** Video de fondo opcional del hero (muted/loop; doctorImageUrl = poster) */
   videoUrl?: string
+  /** Rotador de fondos; si está vacío se usa doctorImageUrl */
+  slides: HeroSlide[]
   floatingCardTitle: string
   floatingCardBody: string
   highlights: HeroHighlight[]
@@ -134,6 +152,7 @@ export type TrustContent = {
   highlights: TrustHighlight[]
   ctaLabel: string
   ctaHref: string
+  secondaryCtaLabel?: string
   credentials: Credential[]
 }
 
@@ -172,6 +191,9 @@ export type VisitContent = {
   whatsapp: string
   whatsappUrl: string
   mapEmbedUrl: string
+  /** Foto de fachada para alternar con el mapa */
+  facadeImageUrl: string
+  facadeImageAlt: string
   instagram: string
   instagramHandle: string
   facebook: string

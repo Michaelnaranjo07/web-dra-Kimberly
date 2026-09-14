@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import type { TrustContent } from '@/content/types'
+import { trackWhatsAppClick } from '@/lib/site'
 
 type TrustProps = {
   trust: TrustContent
+  whatsappUrl?: string
 }
 
 function CheckIcon() {
@@ -20,12 +22,16 @@ function CheckIcon() {
   )
 }
 
-export function Trust({ trust }: TrustProps) {
+export function Trust({ trust, whatsappUrl = '' }: TrustProps) {
+  const paragraphs = trust.body
+    .split(/\n\n+/)
+    .map((part) => part.trim())
+    .filter(Boolean)
+
   return (
     <section id="confianza" className="overflow-x-clip bg-bg">
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 sm:gap-12 sm:px-6 sm:py-24 lg:grid-cols-2 lg:gap-16 xl:max-w-7xl">
         <div className="scroll-reveal relative mx-auto mb-8 w-full max-w-[20rem] overflow-visible sm:mb-10 sm:max-w-md lg:mb-0 lg:max-w-lg">
-          {/* Silueta de fondo (papel) */}
           <div
             aria-hidden="true"
             className="absolute top-6 -left-3 h-[88%] w-[92%] bg-paper sm:-left-5"
@@ -38,21 +44,20 @@ export function Trust({ trust }: TrustProps) {
             className="absolute -top-2 right-4 h-20 w-20 rounded-full bg-signal/12 blur-xl"
           />
 
-          {/* Retrato con forma orgánica */}
           <div
-            className="relative z-10 mx-auto aspect-4/5 w-[88%] overflow-hidden bg-fog shadow-[0_24px_60px_-28px_rgba(21,26,36,0.45)]"
+            className="relative z-10 mx-auto aspect-4/5 w-[92%] overflow-hidden bg-fog shadow-[0_24px_60px_-28px_rgba(21,26,36,0.45)] sm:w-[90%]"
             style={{
-              borderRadius: '62% 38% 48% 52% / 44% 52% 48% 56%',
+              /* Curva más suave a la derecha para no recortar cara/gorro */
+              borderRadius: '54% 40% 46% 50% / 40% 36% 44% 48%',
             }}
           >
             <img
               src={trust.imageUrl}
               alt={trust.imageAlt}
-              className="h-full w-full object-cover object-[center_18%]"
+              className="h-full w-full object-cover object-[82%_12%]"
             />
           </div>
 
-          {/* Consultorio: óvalo suave, no cuadrado */}
           <div
             className="absolute right-0 bottom-0 z-20 w-[40%] overflow-hidden bg-fog ring-[5px] ring-bg sm:-right-3 sm:bottom-4 sm:w-[40%] sm:ring-8"
             style={{
@@ -74,9 +79,11 @@ export function Trust({ trust }: TrustProps) {
           <h2 className="font-display mt-3 text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-[2.65rem] lg:leading-[1.1]">
             {trust.title}
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
-            {trust.body}
-          </p>
+          <div className="mt-4 space-y-4 text-base leading-relaxed text-muted sm:text-lg">
+            {paragraphs.map((paragraph) => (
+              <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+            ))}
+          </div>
 
           <ul className="mt-8 space-y-3">
             {trust.highlights.map((item) => (
@@ -91,12 +98,25 @@ export function Trust({ trust }: TrustProps) {
             ))}
           </ul>
 
-          <Link
-            to={trust.ctaHref}
-            className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-signal px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-ink active:scale-97 sm:w-auto"
-          >
-            {trust.ctaLabel}
-          </Link>
+          <div className="mt-8 flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3">
+            <Link
+              to={trust.ctaHref}
+              className="inline-flex w-full items-center justify-center rounded-full bg-signal px-6 py-3.5 text-sm font-semibold text-white transition-[transform,background-color] duration-150 ease-out-strong hover:bg-ink active:scale-97 sm:w-auto"
+            >
+              {trust.ctaLabel}
+            </Link>
+            {trust.secondaryCtaLabel && whatsappUrl ? (
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => trackWhatsAppClick('home_trust')}
+                className="inline-flex w-full items-center justify-center rounded-full border border-line bg-white px-6 py-3.5 text-sm font-semibold text-ink transition-[transform,background-color] duration-150 ease-out-strong hover:bg-paper active:scale-97 sm:w-auto"
+              >
+                {trust.secondaryCtaLabel}
+              </a>
+            ) : null}
+          </div>
 
           <dl className="mt-10 hidden divide-y divide-line border-y border-line sm:block">
             {trust.credentials.slice(0, 2).map((item) => (

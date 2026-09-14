@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { VisitContent } from '@/content/types'
 import { trackWhatsAppClick } from '@/lib/site'
 
@@ -6,7 +7,12 @@ type VisitProps = {
   whatsappUrl: string
 }
 
+type MapView = 'map' | 'facade'
+
 export function Visit({ visit, whatsappUrl }: VisitProps) {
+  const [view, setView] = useState<MapView>('map')
+  const showFacade = view === 'facade' && Boolean(visit.facadeImageUrl)
+
   return (
     <section id="visita" className="bg-bg">
       <div className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-24 xl:max-w-7xl">
@@ -97,14 +103,62 @@ export function Visit({ visit, whatsappUrl }: VisitProps) {
             </div>
           </div>
 
-          <div className="scroll-reveal overflow-hidden rounded-2xl border border-line/60 surface-soft">
-            <iframe
-              title={`Mapa: ${visit.address}`}
-              src={visit.mapEmbedUrl}
-              className="h-60 w-full border-0 sm:h-full sm:min-h-90"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          <div className="scroll-reveal overflow-hidden rounded-2xl border border-line/60 bg-white surface-soft">
+            <div className="flex items-center justify-between gap-3 border-b border-line/50 px-4 py-3 sm:px-5">
+              <p className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
+                {showFacade ? 'Fachada' : 'Mapa'}
+              </p>
+              <div
+                className="inline-flex rounded-full border border-line/70 bg-paper p-0.5"
+                role="group"
+                aria-label="Cambiar entre mapa y fachada"
+              >
+                <button
+                  type="button"
+                  aria-pressed={view === 'map'}
+                  onClick={() => setView('map')}
+                  className={[
+                    'rounded-full px-3.5 py-1.5 text-xs font-semibold transition-[transform,background-color,color] duration-150 ease-out-strong active:scale-97',
+                    view === 'map'
+                      ? 'bg-signal text-white'
+                      : 'text-muted hover:text-ink',
+                  ].join(' ')}
+                >
+                  Mapa
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={view === 'facade'}
+                  onClick={() => setView('facade')}
+                  className={[
+                    'rounded-full px-3.5 py-1.5 text-xs font-semibold transition-[transform,background-color,color] duration-150 ease-out-strong active:scale-97',
+                    view === 'facade'
+                      ? 'bg-signal text-white'
+                      : 'text-muted hover:text-ink',
+                  ].join(' ')}
+                >
+                  Fachada
+                </button>
+              </div>
+            </div>
+
+            <div className="relative h-60 bg-fog sm:h-full sm:min-h-90">
+              {showFacade ? (
+                <img
+                  src={visit.facadeImageUrl}
+                  alt={visit.facadeImageAlt}
+                  className="absolute inset-0 h-full w-full object-cover object-[center_40%]"
+                />
+              ) : (
+                <iframe
+                  title={`Mapa: ${visit.address}`}
+                  src={visit.mapEmbedUrl}
+                  className="absolute inset-0 h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
