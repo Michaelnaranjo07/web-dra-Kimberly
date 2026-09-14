@@ -7,7 +7,7 @@ import type {
 } from '@/content/types'
 import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 
-const STORAGE_KEY = 'dra-kimberly:content:v49'
+const STORAGE_KEY = 'dra-kimberly:content:v50'
 const CONTENT_ROW_ID = 'main'
 
 type Listener = () => void

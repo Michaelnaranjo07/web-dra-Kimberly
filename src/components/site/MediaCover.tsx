@@ -8,6 +8,8 @@ type MediaCoverProps = {
   mediaClassName?: string
   /** CSS object-position, e.g. "center 20%" */
   objectPosition?: string
+  /** object-position en viewports < 768px */
+  objectPositionMobile?: string
 }
 
 function subscribeReducedMotion(onChange: () => void) {
@@ -21,6 +23,20 @@ function getReducedMotionSnapshot() {
 }
 
 function getReducedMotionServerSnapshot() {
+  return false
+}
+
+function subscribeMobile(onChange: () => void) {
+  const mq = window.matchMedia('(max-width: 767px)')
+  mq.addEventListener('change', onChange)
+  return () => mq.removeEventListener('change', onChange)
+}
+
+function getMobileSnapshot() {
+  return window.matchMedia('(max-width: 767px)').matches
+}
+
+function getMobileServerSnapshot() {
   return false
 }
 
@@ -38,13 +54,24 @@ export function MediaCover({
   className = 'relative overflow-hidden',
   mediaClassName = 'h-full w-full object-cover',
   objectPosition,
+  objectPositionMobile,
 }: MediaCoverProps) {
   const reduceMotion = useSyncExternalStore(
     subscribeReducedMotion,
     getReducedMotionSnapshot,
     getReducedMotionServerSnapshot,
   )
-  const style = objectPosition ? { objectPosition } : undefined
+  const isMobile = useSyncExternalStore(
+    subscribeMobile,
+    getMobileSnapshot,
+    getMobileServerSnapshot,
+  )
+  const resolvedPosition =
+    (isMobile && objectPositionMobile ? objectPositionMobile : objectPosition) ||
+    undefined
+  const style = resolvedPosition
+    ? { objectPosition: resolvedPosition }
+    : undefined
   const showVideo = Boolean(videoUrl) && !reduceMotion
 
   return (

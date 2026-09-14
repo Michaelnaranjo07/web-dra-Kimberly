@@ -77,6 +77,8 @@ export type HeroSlide = {
   alt: string
   align: 'left' | 'center'
   objectPosition?: string
+  /** Encuadre en mobile (<768px); si falta, usa objectPosition */
+  objectPositionMobile?: string
   /** Overrides opcionales por slide; si faltan, usa el copy base del hero */
   eyebrow?: string
   lineOne?: string

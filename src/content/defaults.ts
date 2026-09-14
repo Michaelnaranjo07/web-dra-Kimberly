@@ -52,6 +52,8 @@ export const defaultContent: SiteContent = {
         alt: 'Blanqueamiento dental en el consultorio Dra. Kimberly Martínez',
         align: 'left',
         objectPosition: 'center center',
+        // Mobile: un poco a la derecha del crop para revelar más al paciente
+        objectPositionMobile: '62% 38%',
         eyebrow: 'Blanqueamiento dental en Bogotá',
         lineOne: 'Una sonrisa más',
         accentWord: 'luminosa.',
@@ -64,7 +66,9 @@ export const defaultContent: SiteContent = {
         imageUrl: IMG_HERO_DRA,
         alt: 'Dra. Kimberly Martínez, odontóloga en Barrio Perdomo, Bogotá',
         align: 'left',
-        objectPosition: 'center 20%',
+        objectPosition: '82% 18%',
+        // Mobile: anclar a la derecha para no cortar la cara
+        objectPositionMobile: '88% 16%',
         eyebrow: 'Odontóloga en Barrio Perdomo, Bogotá',
         lineOne: 'Cuidado clínico con',
         accentWord: 'criterio.',

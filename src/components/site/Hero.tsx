@@ -102,6 +102,7 @@ export function Hero({ hero, whatsappUrl }: HeroProps) {
                 className="absolute inset-0"
                 mediaClassName="h-full w-full object-cover"
                 objectPosition={slide.objectPosition ?? 'center center'}
+                objectPositionMobile={slide.objectPositionMobile}
               />
             </div>
           )
