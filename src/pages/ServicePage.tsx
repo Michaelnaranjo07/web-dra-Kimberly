@@ -109,7 +109,7 @@ export function ServicePage() {
               </p>
               {featured ? (
                 <p className="mt-4 text-[11px] font-semibold tracking-[0.14em] text-ember uppercase">
-                  Diferenciador del consultorio
+                  Diferenciador de la clínica
                 </p>
               ) : null}
               <div className="mt-7 flex w-full flex-col gap-2.5 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3">
@@ -148,7 +148,7 @@ export function ServicePage() {
           <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-6 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] xl:max-w-7xl">
             <div>
               <p className="text-[11px] font-semibold tracking-[0.18em] text-signal uppercase">
-                En el consultorio
+                En la clínica
               </p>
               <h2 className="font-display mt-3 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
                 Cómo te acompañamos
@@ -200,7 +200,7 @@ export function ServicePage() {
                   Más tratamientos
                 </p>
                 <h2 className="font-display mt-2 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
-                  Otros servicios del consultorio
+                  Otros servicios de la clínica
                 </h2>
               </div>
               <Link

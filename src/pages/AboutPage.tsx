@@ -18,10 +18,10 @@ export function AboutPage() {
     <>
       <Seo
         seo={{
-          title: 'Dra. Kimberly Martínez — Odontóloga en Perdomo',
+          title: 'Clínica Dra. Kimberly M. — Odontóloga en Perdomo',
           description: about.intro,
           keywords:
-            'Dra. Kimberly Martínez, odontóloga Bogotá, Perdomo, odontología gestantes, RETHUS',
+            'Clínica Dra. Kimberly M., odontóloga Bogotá, Perdomo, odontología gestantes, RETHUS',
           ogImage: about.imageUrl || content.seo.ogImage,
         }}
         canonicalPath="/nosotros"
@@ -52,7 +52,7 @@ export function AboutPage() {
               </nav>
 
               <p className="mt-5 text-[11px] font-semibold tracking-[0.18em] text-signal uppercase sm:mt-6">
-                El consultorio
+                La clínica
               </p>
               <h1 className="font-display mt-3 text-[1.75rem] leading-tight font-extrabold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
                 {about.title}
@@ -142,7 +142,7 @@ export function AboutPage() {
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-12 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-14 xl:max-w-7xl">
             <div>
               <h2 className="font-display text-xl font-extrabold tracking-tight text-ink sm:text-2xl">
-                Más sobre el consultorio
+                Más sobre la clínica
               </h2>
               <p className="mt-2 text-sm text-muted">
                 Lee opiniones de pacientes o explora los tratamientos.

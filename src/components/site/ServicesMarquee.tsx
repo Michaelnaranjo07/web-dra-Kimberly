@@ -6,7 +6,7 @@ export function ServicesMarquee({ labels }: ServicesMarqueeProps) {
   const loop = [...labels, ...labels]
 
   return (
-    <div className="bg-signal" aria-label="Servicios del consultorio">
+    <div className="bg-signal" aria-label="Servicios de la clínica">
       <div className="services-marquee overflow-hidden py-4 sm:py-5">
         <ul className="services-marquee-track flex w-max items-center gap-8 px-4 sm:gap-12">
           {loop.map((label, index) => (

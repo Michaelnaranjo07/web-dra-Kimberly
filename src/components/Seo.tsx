@@ -21,7 +21,7 @@ export function Seo({ seo, canonicalPath }: SeoProps) {
       {canonical ? <link rel="canonical" href={canonical} /> : null}
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="es_CO" />
-      <meta property="og:site_name" content="Dra. Kimberly Martínez" />
+      <meta property="og:site_name" content="Clínica Dra. Kimberly M." />
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={image} />

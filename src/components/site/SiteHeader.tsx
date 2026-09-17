@@ -46,7 +46,7 @@ function ChevronIcon({ open }: { open: boolean }) {
       aria-hidden="true"
       viewBox="0 0 16 16"
       className={[
-        'h-3.5 w-3.5 transition-transform duration-200 ease-(--ease-out-strong)',
+        'h-3.5 w-3.5 transition-transform duration-200 ease-out-strong',
         open ? 'rotate-180' : '',
       ].join(' ')}
       fill="none"
@@ -145,7 +145,7 @@ export function SiteHeader({
             className="h-8 w-auto object-contain sm:h-10"
           />
           <span className="hidden truncate font-display text-sm font-bold tracking-tight text-ink min-[380px]:inline sm:text-[0.95rem]">
-            Dra. Kimberly Martínez
+            {brand}
           </span>
         </Link>
 
@@ -253,7 +253,7 @@ export function SiteHeader({
                   <Link
                     to={`/servicios/${service.slug}`}
                     onClick={() => setMegaOpen(false)}
-                    className="group flex gap-3 rounded-xl p-3 transition-[background-color,transform] duration-150 ease-(--ease-out-strong) hover:bg-paper active:scale-97"
+                    className="group flex gap-3 rounded-xl p-3 transition-[background-color,transform] duration-150 ease-out-strong hover:bg-paper active:scale-97"
                   >
                     <img
                       src={service.imageUrl}

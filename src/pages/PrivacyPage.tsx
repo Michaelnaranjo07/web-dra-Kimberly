@@ -10,7 +10,7 @@ export function PrivacyPage() {
   const whatsappUrl =
     content.visit.whatsappUrl ||
     `https://wa.me/${content.visit.whatsapp.replace(/\D/g, '')}`
-  const email = content.visit.email || 'consultar en el consultorio'
+  const email = content.visit.email || 'consultar en la clínica'
   const address = content.visit.address || 'Barrio Perdomo, Bogotá'
   const whatsapp = content.visit.whatsapp || whatsappUrl
 
@@ -18,11 +18,11 @@ export function PrivacyPage() {
     <>
       <Seo
         seo={{
-          title: 'Política de privacidad — Dra. Kimberly Martínez',
+          title: 'Política de privacidad — Clínica Dra. Kimberly M.',
           description:
-            'Tratamiento de datos personales conforme a la Ley 1581 de 2012 (habeas data) en el consultorio de la Dra. Kimberly Martínez, Barrio Perdomo, Bogotá.',
+            'Tratamiento de datos personales conforme a la Ley 1581 de 2012 (habeas data) en el Clínica Dra. Kimberly M., Barrio Perdomo, Bogotá.',
           keywords:
-            'política de privacidad, habeas data, Ley 1581, odontología Bogotá, Dra. Kimberly Martínez',
+            'política de privacidad, habeas data, Ley 1581, odontología Bogotá, Clínica Dra. Kimberly M.',
           ogImage: content.seo.ogImage,
         }}
         canonicalPath="/politica-de-privacidad"
@@ -68,9 +68,11 @@ export function PrivacyPage() {
                   1. Responsable del tratamiento
                 </h2>
                 <p className="mt-3">
-                  El responsable del tratamiento de datos personales es el
-                  consultorio de la <strong className="font-semibold text-ink">Dra. Kimberly Martínez</strong>,
-                  ubicado en {address}. Canales de contacto: correo {email};
+                  El responsable del tratamiento de datos personales es la{' '}
+                  <strong className="font-semibold text-ink">
+                    Clínica Dra. Kimberly M.
+                  </strong>
+                  , ubicada en {address}. Canales de contacto: correo {email};
                   WhatsApp {whatsapp}.
                 </p>
               </section>
@@ -81,7 +83,7 @@ export function PrivacyPage() {
                 </h2>
                 <p className="mt-3">
                   Según la interacción (sitio web, WhatsApp, llamada o atención
-                  en consultorio), podemos tratar datos de identificación y
+                  en la clínica), podemos tratar datos de identificación y
                   contacto (nombre, teléfono, correo), datos de ubicación
                   relativos a la cita, y datos de salud bucal necesarios para la
                   valoración y el tratamiento clínico, cuando usted los aporta o
@@ -142,7 +144,7 @@ export function PrivacyPage() {
                     rel="noreferrer"
                     className="font-semibold text-signal transition-colors hover:text-ink"
                   >
-                    escribir al consultorio
+                    escribir a la clínica
                   </a>
                   .
                 </p>

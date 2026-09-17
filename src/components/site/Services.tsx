@@ -127,7 +127,7 @@ export function Services({
                     </p>
                     {featured ? (
                       <p className="mt-3 text-[11px] font-semibold tracking-[0.14em] text-ember uppercase">
-                        Diferenciador del consultorio
+                        Diferenciador de la clínica
                       </p>
                     ) : null}
                     <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-signal transition-colors duration-150 group-hover:text-ink">

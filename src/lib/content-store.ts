@@ -7,7 +7,7 @@ import type {
 } from '@/content/types'
 import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 
-const STORAGE_KEY = 'dra-kimberly:content:v50'
+const STORAGE_KEY = 'dra-kimberly:content:v52'
 const CONTENT_ROW_ID = 'main'
 
 type Listener = () => void
@@ -51,11 +51,17 @@ function mergeServiceItems(parsed?: ServiceItem[]): ServiceItem[] {
 
 function mergeContent(parsed: Partial<SiteContent>): SiteContent {
   return {
-    seo: { ...defaultContent.seo, ...parsed.seo },
+    seo: {
+      ...defaultContent.seo,
+      ...parsed.seo,
+      title: defaultContent.seo.title,
+      description: defaultContent.seo.description,
+    },
     hero: {
       ...defaultContent.hero,
       ...(parsed.hero ?? {}),
       // Media del hero siempre desde defaults
+      brand: defaultContent.hero.brand,
       doctorImageUrl: defaultContent.hero.doctorImageUrl,
       videoUrl: defaultContent.hero.videoUrl,
       slides: defaultContent.hero.slides,
@@ -119,6 +125,7 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
     clinicFaqs: {
       ...defaultContent.clinicFaqs,
       ...parsed.clinicFaqs,
+      title: defaultContent.clinicFaqs.title,
       items: mergeFaqs(
         parsed.clinicFaqs?.items,
         defaultContent.clinicFaqs.items,
@@ -142,7 +149,11 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
       email: defaultContent.visit.email,
     },
     finalCta: { ...defaultContent.finalCta, ...parsed.finalCta },
-    footer: { ...defaultContent.footer, ...parsed.footer },
+    footer: {
+      ...defaultContent.footer,
+      ...parsed.footer,
+      note: defaultContent.footer.note,
+    },
     blog: {
       ...defaultContent.blog,
       ...parsed.blog,

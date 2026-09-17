@@ -15,11 +15,11 @@ export function TermsPage() {
     <>
       <Seo
         seo={{
-          title: 'Términos y condiciones — Dra. Kimberly Martínez',
+          title: 'Términos y condiciones — Clínica Dra. Kimberly M.',
           description:
-            'Términos de uso del sitio web del consultorio de la Dra. Kimberly Martínez en Barrio Perdomo, Bogotá. Contenido informativo, no contrato médico.',
+            'Términos de uso del sitio web de la Clínica Dra. Kimberly M. en Barrio Perdomo, Bogotá. Contenido informativo, no contrato médico.',
           keywords:
-            'términos y condiciones, sitio web odontológico, Dra. Kimberly Martínez, Bogotá',
+            'términos y condiciones, sitio web odontológico, Clínica Dra. Kimberly M., Bogotá',
           ogImage: content.seo.ogImage,
         }}
         canonicalPath="/terminos-y-condiciones"
@@ -54,10 +54,9 @@ export function TermsPage() {
               Términos y condiciones
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-              Estos términos regulan el uso del sitio web del consultorio de la
-              Dra. Kimberly Martínez. No constituyen un contrato de prestación
-              de servicios médicos ni sustituyen la relación clínica en
-              consultorio.
+              Estos términos regulan el uso del sitio web de la Clínica Dra. Kimberly M.
+              No constituyen un contrato de prestación de servicios médicos ni
+              sustituyen la relación clínica presencial.
             </p>
 
             <div className="mt-10 space-y-8 text-sm leading-relaxed text-muted sm:text-base">
@@ -66,7 +65,7 @@ export function TermsPage() {
                   1. Objeto
                 </h2>
                 <p className="mt-3">
-                  El sitio ofrece información general sobre el consultorio,
+                  El sitio ofrece información general sobre la clínica,
                   servicios, ubicación y canales de contacto. Al navegarlo,
                   usted acepta estos términos.
                 </p>
@@ -89,7 +88,7 @@ export function TermsPage() {
                 </h2>
                 <p className="mt-3">
                   Cualquier plan de tratamiento, indicación o decisión clínica
-                  requiere evaluación presencial (o el medio que el consultorio
+                  requiere evaluación presencial (o el medio que la clínica
                   determine) por personal calificado. La agenda por WhatsApp u
                   otros canales no implica aceptación automática de un
                   tratamiento concreto.
@@ -113,7 +112,7 @@ export function TermsPage() {
                 </h2>
                 <p className="mt-3">
                   Textos, imágenes, marca y materiales del sitio pertenecen al
-                  consultorio o a sus titulares. Queda prohibida su reproducción
+                  clínica o a sus titulares. Queda prohibida su reproducción
                   no autorizada con fines comerciales.
                 </p>
               </section>

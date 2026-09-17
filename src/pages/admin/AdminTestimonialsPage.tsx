@@ -116,7 +116,7 @@ export function AdminTestimonialsPage() {
                   setSaved(false)
                 }}
                 className={[
-                  'w-full rounded-2xl border px-4 py-3 text-left transition-[background-color,border-color,transform] duration-150 ease-(--ease-out-strong) active:scale-[0.99]',
+                  'w-full rounded-2xl border px-4 py-3 text-left transition-[background-color,border-color,transform] duration-150 ease-out-strong active:scale-[0.99]',
                   editing?.id === item.id
                     ? 'border-signal/30 bg-signal/5'
                     : 'border-line bg-bg hover:bg-paper',
@@ -142,7 +142,7 @@ export function AdminTestimonialsPage() {
               <Button
                 variant="danger"
                 type="button"
-                className="!py-2 !px-4"
+                className="py-2! px-4!"
                 onClick={() => removeItem(editing.id)}
               >
                 Eliminar

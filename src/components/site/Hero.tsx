@@ -40,7 +40,7 @@ function resolveSlides(hero: HeroContent): HeroSlide[] {
       id: 'hero-default',
       imageUrl: hero.doctorImageUrl || '/images/fachada-clinica.png',
       videoUrl: hero.videoUrl,
-      alt: 'Fachada del consultorio Dra. Kimberly Martínez',
+      alt: 'Fachada de la Clínica Dra. Kimberly M.',
       align: 'center',
       objectPosition: 'center 40%',
     },
@@ -142,14 +142,14 @@ export function Hero({ hero, whatsappUrl }: HeroProps) {
             className={[
               'relative w-full motion-safe:animate-[reveal-up_500ms_var(--ease-out-strong)_both]',
               alignLeft
-                ? 'max-w-lg text-left sm:max-w-xl lg:max-w-[34rem] xl:max-w-[36rem]'
+                ? 'max-w-lg text-left sm:max-w-xl lg:max-w-136 xl:max-w-xl'
                 : 'mx-auto max-w-2xl text-center',
             ].join(' ')}
           >
             {trustLine.length > 0 ? (
               <p
                 className={[
-                  'mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold tracking-wide text-white sm:mb-5 sm:text-xs [text-shadow:0_1px_2px_rgb(21_26_36_/_0.55)]',
+                  'mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold tracking-wide text-white sm:mb-5 sm:text-xs [text-shadow:0_1px_2px_rgb(21_26_36/0.55)]',
                   alignLeft ? 'justify-start' : 'justify-center',
                 ].join(' ')}
               >
@@ -179,7 +179,7 @@ export function Hero({ hero, whatsappUrl }: HeroProps) {
               <span className="truncate">{eyebrow}</span>
             </p>
 
-            <h1 className="font-display mt-4 text-[2rem] leading-[1.1] font-extrabold tracking-tight text-white sm:mt-5 sm:text-5xl sm:leading-[1.05] lg:text-[3.35rem] [text-shadow:0_1px_2px_rgb(21_26_36_/_0.5),0_4px_16px_rgb(21_26_36_/_0.35)]">
+            <h1 className="font-display mt-4 text-[2rem] leading-[1.1] font-extrabold tracking-tight text-white sm:mt-5 sm:text-5xl sm:leading-[1.05] lg:text-[3.35rem] [text-shadow:0_1px_2px_rgb(21_26_36/0.5),0_4px_16px_rgb(21_26_36/0.35)]">
               {lineOne}{' '}
               <span className="text-[#7EE9FF]">{accentWord}</span>
               {lineTwo ? <> {lineTwo}</> : null}
@@ -187,7 +187,7 @@ export function Hero({ hero, whatsappUrl }: HeroProps) {
 
             <p
               className={[
-                'mt-4 text-[0.95rem] leading-relaxed text-white sm:mt-5 sm:text-lg [text-shadow:0_1px_2px_rgb(21_26_36_/_0.5),0_3px_12px_rgb(21_26_36_/_0.3)]',
+                'mt-4 text-[0.95rem] leading-relaxed text-white sm:mt-5 sm:text-lg [text-shadow:0_1px_2px_rgb(21_26_36/0.5),0_3px_12px_rgb(21_26_36/0.3)]',
                 alignLeft ? 'max-w-md' : 'mx-auto max-w-lg',
               ].join(' ')}
             >

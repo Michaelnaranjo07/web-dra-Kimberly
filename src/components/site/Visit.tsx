@@ -34,7 +34,17 @@ export function Visit({ visit, whatsappUrl }: VisitProps) {
               <p className="text-[11px] font-semibold tracking-[0.14em] text-signal uppercase">
                 Dirección
               </p>
-              <p className="mt-2 text-sm font-semibold text-ink sm:text-base">
+              {visit.googleReviewsUrl ? (
+                <a
+                  href={visit.googleReviewsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 block text-sm font-semibold text-ink transition-colors hover:text-signal sm:text-base"
+                >
+                  Clínica Dra. Kimberly M.
+                </a>
+              ) : null}
+              <p className="mt-1 text-sm leading-relaxed text-muted sm:text-[0.95rem]">
                 {visit.address}
               </p>
             </div>

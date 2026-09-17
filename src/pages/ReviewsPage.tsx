@@ -18,10 +18,10 @@ export function ReviewsPage() {
     <>
       <Seo
         seo={{
-          title: `${reviews.title} — Dra. Kimberly Martínez`,
+          title: `${reviews.title} — Clínica Dra. Kimberly M.`,
           description: reviews.intro,
           keywords:
-            'opiniones odontólogo Bogotá, reseñas Dra. Kimberly Martínez, pacientes Perdomo',
+            'opiniones odontólogo Bogotá, reseñas Clínica Dra. Kimberly M., pacientes Perdomo',
           ogImage: content.seo.ogImage,
         }}
         canonicalPath="/opiniones"
@@ -61,7 +61,7 @@ export function ReviewsPage() {
                   {reviews.intro}
                 </p>
                 <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted">
-                  Aquí compartimos pacientes reales del consultorio. En Google
+                  Aquí compartimos pacientes reales de la clínica. En Google
                   encontrarás más reseñas y podrás dejar la tuya.
                 </p>
               </div>

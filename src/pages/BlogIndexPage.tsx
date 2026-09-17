@@ -30,10 +30,10 @@ export function BlogIndexPage() {
     <>
       <Seo
         seo={{
-          title: `${content.blog.title} — Dra. Kimberly Martínez`,
+          title: `${content.blog.title} — Clínica Dra. Kimberly M.`,
           description: content.blog.intro,
           keywords:
-            'blog odontología Bogotá, salud bucal, gestantes, Dra. Kimberly Martínez',
+            'blog odontología Bogotá, salud bucal, gestantes, Clínica Dra. Kimberly M.',
           ogImage: content.seo.ogImage,
         }}
         canonicalPath="/blog"
@@ -80,7 +80,7 @@ export function BlogIndexPage() {
                 </p>
                 <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted">
                   Mientras tanto, puedes revisar los tratamientos del
-                  consultorio y agendar una valoración.
+                  clínica y agendar una valoración.
                 </p>
                 <Link
                   to="/servicios"
