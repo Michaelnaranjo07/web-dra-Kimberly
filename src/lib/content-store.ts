@@ -1,6 +1,5 @@
 import { defaultContent } from '@/content/defaults'
 import type {
-  PaymentMethod,
   ServiceFaq,
   ServiceItem,
   SiteContent,
