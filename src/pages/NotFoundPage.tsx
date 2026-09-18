@@ -14,7 +14,7 @@ export function NotFoundPage() {
     <>
       <Seo
         seo={{
-          title: 'Página no encontrada — Clínica Dra. Kimberly M.',
+          title: 'Página no encontrada — Clínica Dra. Kimberly Martinez',
           description:
             'La página que buscas no existe. Vuelve al inicio o agenda por WhatsApp.',
           keywords: 'odontología Bogotá, dra kimberly martinez',

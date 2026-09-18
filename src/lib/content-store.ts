@@ -7,7 +7,7 @@ import type {
 } from '@/content/types'
 import { isSupabaseConfigured, supabase } from '@/lib/supabase'
 
-const STORAGE_KEY = 'dra-kimberly:content:v52'
+const STORAGE_KEY = 'dra-kimberly:content:v58'
 const CONTENT_ROW_ID = 'main'
 
 type Listener = () => void
@@ -41,6 +41,8 @@ function mergeServiceItems(parsed?: ServiceItem[]): ServiceItem[] {
       ...item,
       imageUrl: item.imageUrl || fallback.imageUrl,
       videoUrl: item.videoUrl ?? fallback.videoUrl,
+      description: fallback.description,
+      pageBody: fallback.pageBody,
       highlights: item.highlights?.length
         ? item.highlights
         : fallback.highlights,
@@ -71,18 +73,16 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
       stats: parsed.hero?.stats?.length
         ? parsed.hero.stats
         : defaultContent.hero.stats,
-      paymentMethods: (
-        parsed.hero?.paymentMethods?.length
-          ? parsed.hero.paymentMethods
-          : defaultContent.hero.paymentMethods
-      ).map((method) => {
-        const legacy = method as PaymentMethod & { kind?: string }
+      paymentMethods: defaultContent.hero.paymentMethods.map((method) => {
+        const override = parsed.hero?.paymentMethods?.find(
+          (entry) => entry.id === method.id,
+        )
         return {
-          id: legacy.id,
-          label: legacy.label,
-          logoUrl: legacy.logoUrl ?? '',
-          notes: legacy.notes ?? '',
-          enabled: legacy.enabled ?? true,
+          id: method.id,
+          label: method.label,
+          logoUrl: method.logoUrl,
+          notes: method.notes,
+          enabled: override?.enabled ?? method.enabled,
         }
       }),
     },
@@ -99,6 +99,7 @@ function mergeContent(parsed: Partial<SiteContent>): SiteContent {
     services: {
       ...defaultContent.services,
       ...parsed.services,
+      marqueeLabels: defaultContent.services.marqueeLabels,
       items: mergeServiceItems(parsed.services?.items),
     },
     trust: {

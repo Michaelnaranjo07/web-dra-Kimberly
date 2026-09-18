@@ -135,6 +135,8 @@ export type ServicesContent = {
   intro: string
   ctaLabel: string
   ctaHref: string
+  /** Etiquetas del carrusel cyan (puede diferir de los títulos de servicio) */
+  marqueeLabels: string[]
   items: ServiceItem[]
 }
 

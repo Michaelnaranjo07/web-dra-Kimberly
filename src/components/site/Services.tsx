@@ -80,7 +80,7 @@ export function Services({
 
         <ul className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {services.items.map((item, index) => {
-            const featured = item.slug === 'odontologia-gestantes'
+            const featured = item.slug === 'protesis-dental'
             return (
               <li
                 key={item.id}

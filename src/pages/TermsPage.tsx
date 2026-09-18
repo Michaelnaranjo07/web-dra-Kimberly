@@ -15,11 +15,11 @@ export function TermsPage() {
     <>
       <Seo
         seo={{
-          title: 'Términos y condiciones — Clínica Dra. Kimberly M.',
+          title: 'Términos y condiciones — Clínica Dra. Kimberly Martinez',
           description:
-            'Términos de uso del sitio web de la Clínica Dra. Kimberly M. en Barrio Perdomo, Bogotá. Contenido informativo, no contrato médico.',
+            'Términos de uso del sitio web de la Clínica Dra. Kimberly Martinez en Barrio Perdomo, Bogotá. Contenido informativo, no contrato médico.',
           keywords:
-            'términos y condiciones, sitio web odontológico, Clínica Dra. Kimberly M., Bogotá',
+            'términos y condiciones, sitio web odontológico, Clínica Dra. Kimberly Martinez, Bogotá',
           ogImage: content.seo.ogImage,
         }}
         canonicalPath="/terminos-y-condiciones"
@@ -54,7 +54,7 @@ export function TermsPage() {
               Términos y condiciones
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-muted sm:text-base">
-              Estos términos regulan el uso del sitio web de la Clínica Dra. Kimberly M.
+              Estos términos regulan el uso del sitio web de la Clínica Dra. Kimberly Martinez
               No constituyen un contrato de prestación de servicios médicos ni
               sustituyen la relación clínica presencial.
             </p>

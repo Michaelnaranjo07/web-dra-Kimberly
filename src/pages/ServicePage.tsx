@@ -42,7 +42,7 @@ export function ServicePage() {
   const absoluteUrl =
     typeof window !== 'undefined' ? `${window.location.origin}${path}` : path
 
-  const featured = service.slug === 'odontologia-gestantes'
+  const featured = service.slug === 'protesis-dental'
 
   return (
     <>

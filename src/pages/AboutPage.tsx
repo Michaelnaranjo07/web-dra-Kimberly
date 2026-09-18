@@ -18,10 +18,10 @@ export function AboutPage() {
     <>
       <Seo
         seo={{
-          title: 'Clínica Dra. Kimberly M. — Odontóloga en Perdomo',
+          title: 'Clínica Dra. Kimberly Martinez — Odontóloga en Perdomo',
           description: about.intro,
           keywords:
-            'Clínica Dra. Kimberly M., odontóloga Bogotá, Perdomo, odontología gestantes, RETHUS',
+            'Clínica Dra. Kimberly Martinez, odontóloga Bogotá, Perdomo, odontología gestantes, RETHUS',
           ogImage: about.imageUrl || content.seo.ogImage,
         }}
         canonicalPath="/nosotros"

@@ -16,7 +16,7 @@ const VID_WHITE = '/images/servicio-blanqueamiento.mp4'
 const VID_ENDO = '/images/servicio-endodoncia.mp4'
 /** Testimonios: fotos reales en public/images/pacientes */
 
-const BRAND = 'Clínica Dra. Kimberly M.'
+const BRAND = 'Clínica Dra. Kimberly Martinez'
 const ADDRESS =
   'Calle 64A Sur #72-18 Local 1, Barrio Perdomo, Bogotá, Colombia'
 const MAPS_PLACE_QUERY = encodeURIComponent(
@@ -53,7 +53,7 @@ export const defaultContent: SiteContent = {
       {
         id: 'hero-blanqueamiento',
         imageUrl: IMG_HERO_WHITE,
-        alt: 'Blanqueamiento dental en la Clínica Dra. Kimberly M.',
+        alt: 'Blanqueamiento dental en la Clínica Dra. Kimberly Martinez',
         align: 'left',
         objectPosition: 'center center',
         // Mobile: un poco a la derecha del crop para revelar más al paciente
@@ -68,23 +68,23 @@ export const defaultContent: SiteContent = {
       {
         id: 'hero-dra',
         imageUrl: IMG_HERO_DRA,
-        alt: 'Dra. Kimberly Martínez, odontóloga en la Clínica Dra. Kimberly M., Bogotá',
+        alt: 'Dra. Kimberly Martínez, odontóloga en la Clínica Dra. Kimberly Martinez, Bogotá',
         align: 'left',
         objectPosition: '82% 18%',
         // Mobile: anclar a la derecha para no cortar la cara
         objectPositionMobile: '88% 16%',
-        eyebrow: 'Odontóloga en Barrio Perdomo, Bogotá',
+        eyebrow: 'Odontología de alta calidad a tu alcance',
         lineOne: 'Cuidado clínico con',
         accentWord: 'criterio.',
         lineTwo: '',
         promise:
-          'Clínica Dra. Kimberly M.: diagnóstico claro, tratamientos precisos y acompañamiento cercano en cada paso.',
+          'Clínica Dra. Kimberly Martinez: diagnóstico claro, tratamientos precisos y acompañamiento cercano en cada paso.',
       },
       // Desactivado por ahora: fachada se muestra en Ubicación (mapa ↔ foto)
       // {
       //   id: 'hero-fachada',
       //   imageUrl: IMG_HERO,
-      //   alt: 'Fachada de la Clínica Dra. Kimberly M. en Barrio Perdomo',
+      //   alt: 'Fachada de la Clínica Dra. Kimberly Martinez en Barrio Perdomo',
       //   align: 'center',
       //   objectPosition: 'center 40%',
       // },
@@ -132,13 +132,20 @@ export const defaultContent: SiteContent = {
         label: 'Efectivo',
         logoUrl: '/payments/efectivo.svg',
         notes: 'Pago en efectivo en la clínica.',
-        enabled: true,
+        enabled: false,
       },
       {
         id: 'p6',
         label: 'Welli',
         logoUrl: '/payments/welli.png',
         notes: 'Financiación Welli.',
+        enabled: true,
+      },
+      {
+        id: 'p7',
+        label: 'Addi',
+        logoUrl: '/payments/addi-cerulean.png',
+        notes: 'Financiación Addi.',
         enabled: true,
       },
     ],
@@ -187,6 +194,14 @@ export const defaultContent: SiteContent = {
       'Ortodoncia, blanqueamiento, prótesis, endodoncia y odontología para gestantes en Bogotá — cada opción explicada en lenguaje claro: qué cambia para ti, cómo se siente el proceso y para quién tiene más sentido.',
     ctaLabel: 'Agendar valoración',
     ctaHref: '#cita',
+    marqueeLabels: [
+      'Ortodoncia',
+      'Implantes Dentales',
+      'Prótesis dental',
+      'Endodoncia',
+      'Odontología para gestantes',
+      'Diseño de sonrisa',
+    ],
     items: [
       {
         id: 'ortodoncia',
@@ -195,13 +210,13 @@ export const defaultContent: SiteContent = {
         description:
           'Corrige la posición de tus dientes con un seguimiento cercano y pasos claros. Ideal si buscas mejorar mordida, estética o comodidad al hablar y comer, sin sorpresas en el camino.',
         pageBody:
-          'En la Clínica Dra. Kimberly M. en Barrio Perdomo, la ortodoncia empieza por una valoración clara: qué quieres corregir, cómo se ve el proceso y qué implica en tu rutina. El plan se explica sin tecnicismos innecesarios, con controles cercanos para que avances con tranquilidad. Trabajamos alineación, mordida y comodidad al hablar o comer, siempre con decisiones compartidas y sin presión.',
+          'En la Clínica Dra. Kimberly Martinez en Barrio Perdomo, la ortodoncia empieza por una valoración clara: qué quieres corregir, cómo se ve el proceso y qué implica en tu rutina. El plan se explica sin tecnicismos innecesarios, con controles cercanos para que avances con tranquilidad. Trabajamos alineación, mordida y comodidad al hablar o comer, siempre con decisiones compartidas y sin presión.',
         audience:
           'Ideal si buscas mejorar la posición de tus dientes, la mordida o la estética de tu sonrisa con un seguimiento cercano.',
         slug: 'ortodoncia',
         imageUrl: IMG_ORTO,
         imageAlt:
-          'Ortodoncia en la Clínica Dra. Kimberly M., Bogotá',
+          'Ortodoncia en la Clínica Dra. Kimberly Martinez, Bogotá',
         videoUrl: VID_ORTO,
         highlights: [
           { id: 'o1', label: 'Valoración y plan explicados desde el inicio' },
@@ -240,9 +255,9 @@ export const defaultContent: SiteContent = {
               'No siempre. Depende del espacio disponible y la posición de tus dientes. Si una extracción hace parte del plan, te lo explicamos como paso necesario desde el inicio, no como sorpresa a mitad de tratamiento.',
           },
         ],
-        seoTitle: 'Ortodoncia en Bogotá — Clínica Dra. Kimberly M. | Perdomo',
+        seoTitle: 'Ortodoncia en Bogotá — Clínica Dra. Kimberly Martinez | Perdomo',
         seoDescription:
-          'Ortodoncia en Barrio Perdomo, Bogotá. Plan claro, seguimiento cercano y decisiones sin presión. Agenda en la Clínica Dra. Kimberly M..',
+          'Ortodoncia en Barrio Perdomo, Bogotá. Plan claro, seguimiento cercano y decisiones sin presión. Agenda en la Clínica Dra. Kimberly Martinez.',
         seoKeywords:
           'ortodoncia Bogotá, ortodoncia Perdomo, brackets Bogotá, alineación dental, dra kimberly martinez',
       },
@@ -259,7 +274,7 @@ export const defaultContent: SiteContent = {
         slug: 'blanqueamiento-dental',
         imageUrl: IMG_WHITE,
         imageAlt:
-          'Blanqueamiento dental en la Clínica Dra. Kimberly M., Bogotá',
+          'Blanqueamiento dental en la Clínica Dra. Kimberly Martinez, Bogotá',
         videoUrl: VID_WHITE,
         highlights: [
           { id: 'b1', label: 'Valoración previa del esmalte y la sonrisa' },
@@ -299,9 +314,9 @@ export const defaultContent: SiteContent = {
           },
         ],
         seoTitle:
-          'Blanqueamiento dental en Bogotá — Clínica Dra. Kimberly M.',
+          'Blanqueamiento dental en Bogotá — Clínica Dra. Kimberly Martinez',
         seoDescription:
-          'Blanqueamiento dental controlado en Bogotá. Resultado natural y cuidado del esmalte en la Clínica Dra. Kimberly M. en Perdomo.',
+          'Blanqueamiento dental controlado en Bogotá. Resultado natural y cuidado del esmalte en la Clínica Dra. Kimberly Martinez en Perdomo.',
         seoKeywords:
           'blanqueamiento dental Bogotá, blanqueamiento Perdomo, dientes más blancos, dra kimberly martinez',
       },
@@ -310,15 +325,15 @@ export const defaultContent: SiteContent = {
         title: 'Prótesis dental',
         benefit: 'Recuperar masticar y sonreír con naturalidad.',
         description:
-          'Reemplaza dientes ausentes o dañados para volver a comer y hablar con confianza. Incluye prótesis flexibles, una opción más cómoda y discreta para quienes buscan un ajuste amable en el día a día.',
+          'Reemplaza dientes ausentes o dañados para volver a comer y hablar con confianza. Incluye prótesis flexibles — un diferenciador de la clínica: comodidad, discreción y un ajuste pensado para el día a día.',
         pageBody:
-          'Las prótesis dentales ayudan a recuperar función y estética cuando faltan dientes o hay piezas muy comprometidas. En la clínica evaluamos tu caso y te explicamos opciones claras — incluida la prótesis flexible, pensada para mayor comodidad y discreción en el día a día. El objetivo es volver a masticar, hablar y sonreír con naturalidad, con un plan que entiendes desde la primera cita.',
+          'Las prótesis dentales ayudan a recuperar función y estética cuando faltan dientes o hay piezas muy comprometidas. En la Clínica Dra. Kimberly Martinez evaluamos tu caso y te explicamos opciones claras — incluida la prótesis flexible, un diferenciador de la clínica pensado para mayor comodidad y discreción. El objetivo es volver a masticar, hablar y sonreír con naturalidad, con un plan que entiendes desde la primera cita.',
         audience:
           'Ideal si necesitas reemplazar dientes ausentes o dañados y buscas comodidad, función y un resultado natural.',
         slug: 'protesis-dental',
         imageUrl: IMG_PROTESIS,
         imageAlt:
-          'Prótesis dental flexible en la Clínica Dra. Kimberly M., Bogotá',
+          'Prótesis dental flexible en la Clínica Dra. Kimberly Martinez, Bogotá',
         highlights: [
           { id: 'p1', label: 'Opciones claras, incluida prótesis flexible' },
           { id: 'p2', label: 'Enfoque en comodidad y naturalidad' },
@@ -356,7 +371,7 @@ export const defaultContent: SiteContent = {
               'Buscamos que el color y la forma coincidan con tu sonrisa. El grado de naturalidad depende del tipo de prótesis y de tu anatomía; en la cita te mostramos qué resultado es razonable esperar.',
           },
         ],
-        seoTitle: 'Prótesis dental en Bogotá — Clínica Dra. Kimberly M.',
+        seoTitle: 'Prótesis dental en Bogotá — Clínica Dra. Kimberly Martinez',
         seoDescription:
           'Prótesis dental y prótesis flexibles en Bogotá. Recuperar función y estética con un plan claro en Barrio Perdomo.',
         seoKeywords:
@@ -375,7 +390,7 @@ export const defaultContent: SiteContent = {
         slug: 'endodoncia',
         imageUrl: IMG_ENDO,
         imageAlt:
-          'Endodoncia en la Clínica Dra. Kimberly M., Bogotá',
+          'Endodoncia en la Clínica Dra. Kimberly Martinez, Bogotá',
         videoUrl: VID_ENDO,
         highlights: [
           { id: 'e1', label: 'Alivio del dolor con explicación paso a paso' },
@@ -414,9 +429,9 @@ export const defaultContent: SiteContent = {
               'Es mejor esperar a que pase el efecto de la anestesia y evitar morder fuerte con ese diente hasta que quede protegido con la restauración final. Te damos indicaciones concretas al salir de la cita.',
           },
         ],
-        seoTitle: 'Endodoncia en Bogotá — Clínica Dra. Kimberly M. | Perdomo',
+        seoTitle: 'Endodoncia en Bogotá — Clínica Dra. Kimberly Martinez | Perdomo',
         seoDescription:
-          'Endodoncia en Bogotá para aliviar el dolor y conservar tu diente. Atención clara en la Clínica Dra. Kimberly M. en Perdomo.',
+          'Endodoncia en Bogotá para aliviar el dolor y conservar tu diente. Atención clara en la Clínica Dra. Kimberly Martinez en Perdomo.',
         seoKeywords:
           'endodoncia Bogotá, tratamiento de conducto Perdomo, dolor dental, dra kimberly martinez',
       },
@@ -425,15 +440,15 @@ export const defaultContent: SiteContent = {
         title: 'Odontología para gestantes',
         benefit: 'Cuidado dental seguro mientras esperas a tu bebé.',
         description:
-          'Atención pensada para el embarazo: valoración cuidadosa, explicaciones tranquilas y decisiones que priorizan tu bienestar y el de tu bebé. Un diferenciador de la clínica — aquí el cuidado dental durante la gestación se trata con criterio y calma.',
+          'Atención pensada para el embarazo: valoración cuidadosa, explicaciones tranquilas y decisiones que priorizan tu bienestar y el de tu bebé.',
         pageBody:
-          'Durante el embarazo, la salud bucal merece atención con criterio y calma. En la Clínica Dra. Kimberly M. ofrecemos odontología para gestantes: valoración cuidadosa, explicaciones tranquilas y decisiones que priorizan tu bienestar y el de tu bebé. Es un diferenciador de la clínica — aquí no se improvisa: se escucha, se explica y se actúa con prudencia clínica en cada etapa del embarazo.',
+          'Durante el embarazo, la salud bucal merece atención con criterio y calma. En la Clínica Dra. Kimberly Martinez ofrecemos odontología para gestantes: valoración cuidadosa, explicaciones tranquilas y decisiones que priorizan tu bienestar y el de tu bebé. Aquí no se improvisa: se escucha, se explica y se actúa con prudencia clínica en cada etapa del embarazo.',
         audience:
           'Ideal si estás embarazada y quieres cuidado dental seguro, claro y sin alarmismo innecesario.',
         slug: 'odontologia-gestantes',
         imageUrl: IMG_GEST,
         imageAlt:
-          'Odontología para gestantes en la Clínica Dra. Kimberly M., Bogotá',
+          'Odontología para gestantes en la Clínica Dra. Kimberly Martinez, Bogotá',
         highlights: [
           { id: 'g1', label: 'Valoración cuidadosa en cada trimestre' },
           { id: 'g2', label: 'Explicaciones tranquilas, sin presión' },
@@ -474,7 +489,7 @@ export const defaultContent: SiteContent = {
         ],
         seoTitle: 'Odontología para gestantes en Bogotá | Dra. Kimberly',
         seoDescription:
-          'Odontología segura para gestantes en Bogotá. Atención tranquilizadora y criterio clínico en Perdomo en la Clínica Dra. Kimberly M..',
+          'Odontología segura para gestantes en Bogotá. Atención tranquilizadora y criterio clínico en Perdomo en la Clínica Dra. Kimberly Martinez.',
         seoKeywords:
           'odontología gestantes Bogotá, dentista embarazo Perdomo, salud bucal embarazo, dra kimberly martinez',
       },
@@ -484,13 +499,13 @@ export const defaultContent: SiteContent = {
     eyebrow: 'Nuestra esencia',
     title: 'Odontología con criterio clínico, función y estética',
     body:
-      'En la Clínica Dra. Kimberly M. creemos que cada tratamiento debe comenzar con un diagnóstico preciso y una explicación clara.\n\nLa Dra. Kimberly Martínez, odontóloga egresada de la Universidad El Bosque, ejerce desde 2020 y cuenta con una trayectoria previa en Mecánica Dental, formación que complementa su enfoque actual en rehabilitación oral, odontología estética y atención integral.\n\nSu práctica está orientada a recuperar no solamente la apariencia de la sonrisa, sino también su función, armonía y salud a largo plazo, mediante planes de tratamiento personalizados y, cuando el caso lo requiere, el trabajo conjunto con especialistas.',
+      'En la Clínica Dra. Kimberly Martinez creemos que cada tratamiento debe comenzar con un diagnóstico preciso y una explicación clara.\n\nLa Dra. Kimberly Martínez, odontóloga egresada de la Universidad El Bosque, ejerce desde 2020 y cuenta con una trayectoria previa en Mecánica Dental, formación que complementa su enfoque actual en rehabilitación oral, odontología estética y atención integral.\n\nSu práctica está orientada a recuperar no solamente la apariencia de la sonrisa, sino también su función, armonía y salud a largo plazo, mediante planes de tratamiento personalizados y, cuando el caso lo requiere, el trabajo conjunto con especialistas.',
     imageUrl: IMG_HERO_DRA,
     imageAlt:
-      'Dra. Kimberly Martínez, odontóloga en la Clínica Dra. Kimberly M., Bogotá',
+      'Dra. Kimberly Martínez, odontóloga en la Clínica Dra. Kimberly Martinez, Bogotá',
     secondaryImageUrl: '/images/resenas.png',
     secondaryImageAlt:
-      'Dra. Kimberly Martínez con una paciente en la Clínica Dra. Kimberly M.',
+      'Dra. Kimberly Martínez con una paciente en la Clínica Dra. Kimberly Martinez',
     highlights: [
       {
         id: 'th1',
@@ -569,7 +584,7 @@ export const defaultContent: SiteContent = {
         name: 'Junior Jaimes',
         detail: 'Administrador de Empresas · Venezuela 🇻🇪',
         imageUrl: '/images/pacientes/junior-jaimes.jpg',
-        imageAlt: 'Junior Jaimes, paciente de la Clínica Dra. Kimberly M.',
+        imageAlt: 'Junior Jaimes, paciente de la Clínica Dra. Kimberly Martinez',
       },
       {
         id: 't2',
@@ -579,7 +594,7 @@ export const defaultContent: SiteContent = {
         detail: 'España 🇪🇸',
         imageUrl: '/images/pacientes/jessica-cortes-madrid.jpg',
         imageAlt:
-          'Jessica Cortés Madrid, paciente de la Clínica Dra. Kimberly M.',
+          'Jessica Cortés Madrid, paciente de la Clínica Dra. Kimberly Martinez',
       },
       {
         id: 't3',
@@ -588,7 +603,7 @@ export const defaultContent: SiteContent = {
         name: 'Dayana Fernández',
         detail: 'Washington, EE. UU. 🇺🇸',
         imageUrl: '/images/pacientes/dayana-fernandez.jpg',
-        imageAlt: 'Dayana Fernández, paciente de la Clínica Dra. Kimberly M.',
+        imageAlt: 'Dayana Fernández, paciente de la Clínica Dra. Kimberly Martinez',
       },
       {
         id: 't4',
@@ -598,7 +613,7 @@ export const defaultContent: SiteContent = {
         detail: 'Ingeniera',
         imageUrl: '/images/pacientes/dina-rosa-cortes-murcia.jpg',
         imageAlt:
-          'Dina Rosa Cortés Murcia, paciente de la Clínica Dra. Kimberly M.',
+          'Dina Rosa Cortés Murcia, paciente de la Clínica Dra. Kimberly Martinez',
       },
       {
         id: 't5',
@@ -608,7 +623,7 @@ export const defaultContent: SiteContent = {
         detail: 'Trabajadora Social',
         imageUrl: '/images/pacientes/maira-liseth-cristancho.jpg',
         imageAlt:
-          'Maira Liseth Cristancho Hoyos, paciente de la Clínica Dra. Kimberly M.',
+          'Maira Liseth Cristancho Hoyos, paciente de la Clínica Dra. Kimberly Martinez',
       },
       {
         id: 't6',
@@ -617,7 +632,7 @@ export const defaultContent: SiteContent = {
         name: 'Richard Ramírez',
         detail: 'Diseñador de modas · Miss Universo',
         imageUrl: '/images/pacientes/richard-ramirez.jpg',
-        imageAlt: 'Richard Ramírez, paciente de la Clínica Dra. Kimberly M.',
+        imageAlt: 'Richard Ramírez, paciente de la Clínica Dra. Kimberly Martinez',
       },
       {
         id: 't7',
@@ -626,7 +641,7 @@ export const defaultContent: SiteContent = {
         name: 'Shirley Cascante',
         detail: 'Ingeniera de Sistemas · Australia 🇦🇺',
         imageUrl: '/images/pacientes/shirley-stephany-cascante.jpg',
-        imageAlt: 'Shirley Cascante, paciente de la Clínica Dra. Kimberly M.',
+        imageAlt: 'Shirley Cascante, paciente de la Clínica Dra. Kimberly Martinez',
       },
     ],
   },
@@ -660,7 +675,7 @@ export const defaultContent: SiteContent = {
     mapEmbedUrl: `https://maps.google.com/maps?q=${MAP_QUERY}&t=&z=16&ie=UTF8&iwloc=&output=embed`,
     facadeImageUrl: IMG_HERO,
     facadeImageAlt:
-      'Fachada de la Clínica Dra. Kimberly M. en Barrio Perdomo, Bogotá',
+      'Fachada de la Clínica Dra. Kimberly Martinez en Barrio Perdomo, Bogotá',
     instagram: 'https://instagram.com/drakimberlymartinez',
     instagramHandle: '@drakimberlymartinez',
     facebook: '',
@@ -694,9 +709,9 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: '',
-        seoTitle: 'Primera valoración odontológica — Clínica Dra. Kimberly M.',
+        seoTitle: 'Primera valoración odontológica — Clínica Dra. Kimberly Martinez',
         seoDescription:
-          'Guía para tu primera valoración en la Clínica Dra. Kimberly M. en Barrio Perdomo, Bogotá.',
+          'Guía para tu primera valoración en la Clínica Dra. Kimberly Martinez en Barrio Perdomo, Bogotá.',
       },
       {
         id: 'b2',
@@ -709,7 +724,7 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: 'odontologia-gestantes',
-        seoTitle: 'Odontología en el embarazo — Clínica Dra. Kimberly M.',
+        seoTitle: 'Odontología en el embarazo — Clínica Dra. Kimberly Martinez',
         seoDescription:
           'Cuidado dental durante el embarazo en Bogotá. Atención con criterio en Perdomo.',
       },
@@ -726,7 +741,7 @@ export const defaultContent: SiteContent = {
         relatedServiceSlug: 'blanqueamiento-dental',
         seoTitle: 'Blanqueamiento dental: expectativas — Dra. Kimberly',
         seoDescription:
-          'Expectativas realistas del blanqueamiento dental en la Clínica Dra. Kimberly M..',
+          'Expectativas realistas del blanqueamiento dental en la Clínica Dra. Kimberly Martinez.',
       },
       {
         id: 'b4',
@@ -739,7 +754,7 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: 'ortodoncia',
-        seoTitle: 'Ortodoncia en adultos — Clínica Dra. Kimberly M. | Bogotá',
+        seoTitle: 'Ortodoncia en adultos — Clínica Dra. Kimberly Martinez | Bogotá',
         seoDescription:
           'Ortodoncia para adultos en Barrio Perdomo, Bogotá. Plan claro y seguimiento cercano.',
       },
@@ -754,7 +769,7 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: 'ortodoncia',
-        seoTitle: 'Brackets metálicos vs. estéticos — Clínica Dra. Kimberly M.',
+        seoTitle: 'Brackets metálicos vs. estéticos — Clínica Dra. Kimberly Martinez',
         seoDescription:
           'Comparación clara de brackets metálicos y estéticos en la clínica, Bogotá.',
       },
@@ -769,7 +784,7 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: 'endodoncia',
-        seoTitle: 'Dolor de muela: cuándo consultar — Clínica Dra. Kimberly M.',
+        seoTitle: 'Dolor de muela: cuándo consultar — Clínica Dra. Kimberly Martinez',
         seoDescription:
           'Orientación calmada sobre el dolor de muela y cuándo pedir cita en Bogotá.',
       },
@@ -784,7 +799,7 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: 'endodoncia',
-        seoTitle: 'Mitos de la endodoncia — Clínica Dra. Kimberly M.',
+        seoTitle: 'Mitos de la endodoncia — Clínica Dra. Kimberly Martinez',
         seoDescription:
           'Aclaramos mitos comunes sobre el tratamiento de conducto en la clínica.',
       },
@@ -799,7 +814,7 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: 'protesis-dental',
-        seoTitle: 'Prótesis flexible en Bogotá — Clínica Dra. Kimberly M.',
+        seoTitle: 'Prótesis flexible en Bogotá — Clínica Dra. Kimberly Martinez',
         seoDescription:
           'Qué es la prótesis flexible y para quién puede tener sentido en Barrio Perdomo.',
       },
@@ -814,7 +829,7 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: 'protesis-dental',
-        seoTitle: 'Cuidado de prótesis dental — Clínica Dra. Kimberly M.',
+        seoTitle: 'Cuidado de prótesis dental — Clínica Dra. Kimberly Martinez',
         seoDescription:
           'Consejos prácticos para cuidar tu prótesis en casa, con criterio clínico en Bogotá.',
       },
@@ -844,7 +859,7 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: 'odontologia-gestantes',
-        seoTitle: 'Sangrado de encías en el embarazo — Clínica Dra. Kimberly M.',
+        seoTitle: 'Sangrado de encías en el embarazo — Clínica Dra. Kimberly Martinez',
         seoDescription:
           'Orientación clara sobre el sangrado gingival en gestantes en la clínica.',
       },
@@ -859,7 +874,7 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: '',
-        seoTitle: 'Clínica en Barrio Perdomo — Clínica Dra. Kimberly M.',
+        seoTitle: 'Clínica en Barrio Perdomo — Clínica Dra. Kimberly Martinez',
         seoDescription:
           'Ubicación y visita a la clínica odontológica en Barrio Perdomo, Bogotá.',
       },
@@ -874,7 +889,7 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: '',
-        seoTitle: 'Rutina de higiene oral — Clínica Dra. Kimberly M.',
+        seoTitle: 'Rutina de higiene oral — Clínica Dra. Kimberly Martinez',
         seoDescription:
           'Consejos prácticos de higiene oral para el día a día, desde la clínica en Bogotá.',
       },
@@ -889,14 +904,14 @@ export const defaultContent: SiteContent = {
         status: 'draft',
         publishedAt: '',
         relatedServiceSlug: '',
-        seoTitle: '¿Cada cuánto ir al odontólogo? — Clínica Dra. Kimberly M.',
+        seoTitle: '¿Cada cuánto ir al odontólogo? — Clínica Dra. Kimberly Martinez',
         seoDescription:
           'Orientación sobre la frecuencia de visitas al odontólogo en Bogotá.',
       },
     ],
   },
   about: {
-    title: 'Clínica Dra. Kimberly M.',
+    title: 'Clínica Dra. Kimberly Martinez',
     intro:
       'Odontóloga egresada de la Universidad El Bosque, con ejercicio profesional desde 2020 y experiencia clínica enfocada principalmente en rehabilitación oral, odontología estética y atención integral.',
     bio: 'Su trayectoria en el sector odontológico comenzó varios años antes de ejercer como odontóloga, a partir de su formación como Técnica Profesional en Mecánica Dental en el Politécnico Internacional Educación Superior. Esta experiencia previa le permitió conocer desde una perspectiva técnica los procesos relacionados con prótesis, restauraciones y rehabilitación dental, conocimiento que hoy complementa su práctica clínica.\n\nCuenta además con Diplomado en Odontología Estética, fortaleciendo su formación en tratamientos orientados a recuperar tanto la función como la armonía de la sonrisa.\n\nDentro de su práctica clínica trabaja especialmente en tratamientos de rehabilitación oral, incluyendo prótesis dentales, coronas, restauraciones, carillas y planificación de tratamientos estéticos, siempre partiendo de una valoración integral y de las necesidades particulares de cada paciente.\n\nSu filosofía de atención se basa en realizar primero un diagnóstico adecuado, explicar de manera clara las diferentes alternativas y, posteriormente, construir un plan de tratamiento que busque resultados funcionales, naturales y estéticamente armónicos.',
@@ -906,7 +921,7 @@ export const defaultContent: SiteContent = {
       'Credenciales profesionales verificables. El registro ReTHUS se confirma en la clínica cuando lo solicites.',
     imageUrl: IMG_TRUST,
     imageAlt:
-      'Dra. Kimberly Martínez, odontóloga en la Clínica Dra. Kimberly M., Bogotá',
+      'Dra. Kimberly Martínez, odontóloga en la Clínica Dra. Kimberly Martinez, Bogotá',
     rethus: 'Acto Administrativo (14214)',
     university: 'Universidad El Bosque',
     specialty: 'Odontóloga · Rehabilitación Oral y Odontología Estética',
@@ -914,7 +929,7 @@ export const defaultContent: SiteContent = {
   reviews: {
     title: 'Opiniones de pacientes',
     intro:
-      'Pacientes reales de la Clínica Dra. Kimberly M. en Bogotá. Deja tu reseña en Google.',
+      'Pacientes reales de la Clínica Dra. Kimberly Martinez en Bogotá. Deja tu reseña en Google.',
     googleUrl: GOOGLE_REVIEWS_URL,
     ctaLabel: 'Ver reseñas en Google',
   },
@@ -932,7 +947,7 @@ export const defaultContent: SiteContent = {
         id: 'clinic-f2',
         question: '¿Qué medios de pago aceptan?',
         answer:
-          'Codensa, Sistecrédito, Welli, tarjetas Visa y Mastercard, y efectivo en la clínica. Puedes ver el detalle de cada uno en la sección de medios de pago del sitio.',
+          'Codensa, Sistecrédito, Welli, Addi, tarjetas Visa y Mastercard, y efectivo en la clínica. Puedes ver el detalle de cada uno en la sección de medios de pago del sitio.',
       },
       {
         id: 'clinic-f3',

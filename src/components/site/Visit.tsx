@@ -41,7 +41,7 @@ export function Visit({ visit, whatsappUrl }: VisitProps) {
                   rel="noreferrer"
                   className="mt-2 block text-sm font-semibold text-ink transition-colors hover:text-signal sm:text-base"
                 >
-                  Clínica Dra. Kimberly M.
+                  Clínica Dra. Kimberly Martinez
                 </a>
               ) : null}
               <p className="mt-1 text-sm leading-relaxed text-muted sm:text-[0.95rem]">

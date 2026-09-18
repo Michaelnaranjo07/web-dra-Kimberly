@@ -18,11 +18,11 @@ export function PrivacyPage() {
     <>
       <Seo
         seo={{
-          title: 'Política de privacidad — Clínica Dra. Kimberly M.',
+          title: 'Política de privacidad — Clínica Dra. Kimberly Martinez',
           description:
-            'Tratamiento de datos personales conforme a la Ley 1581 de 2012 (habeas data) en el Clínica Dra. Kimberly M., Barrio Perdomo, Bogotá.',
+            'Tratamiento de datos personales conforme a la Ley 1581 de 2012 (habeas data) en el Clínica Dra. Kimberly Martinez, Barrio Perdomo, Bogotá.',
           keywords:
-            'política de privacidad, habeas data, Ley 1581, odontología Bogotá, Clínica Dra. Kimberly M.',
+            'política de privacidad, habeas data, Ley 1581, odontología Bogotá, Clínica Dra. Kimberly Martinez',
           ogImage: content.seo.ogImage,
         }}
         canonicalPath="/politica-de-privacidad"
@@ -70,7 +70,7 @@ export function PrivacyPage() {
                 <p className="mt-3">
                   El responsable del tratamiento de datos personales es la{' '}
                   <strong className="font-semibold text-ink">
-                    Clínica Dra. Kimberly M.
+                    Clínica Dra. Kimberly Martinez
                   </strong>
                   , ubicada en {address}. Canales de contacto: correo {email};
                   WhatsApp {whatsapp}.

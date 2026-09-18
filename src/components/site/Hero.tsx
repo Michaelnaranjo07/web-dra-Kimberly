@@ -40,7 +40,7 @@ function resolveSlides(hero: HeroContent): HeroSlide[] {
       id: 'hero-default',
       imageUrl: hero.doctorImageUrl || '/images/fachada-clinica.png',
       videoUrl: hero.videoUrl,
-      alt: 'Fachada de la Clínica Dra. Kimberly M.',
+      alt: 'Fachada de la Clínica Dra. Kimberly Martinez',
       align: 'center',
       objectPosition: 'center 40%',
     },

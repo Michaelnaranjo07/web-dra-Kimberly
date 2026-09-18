@@ -48,9 +48,7 @@ export function HomePage() {
           <Trust trust={content.trust} whatsappUrl={whatsappUrl} />
         ) : null}
         {enabled('servicesMarquee') ? (
-          <ServicesMarquee
-            labels={content.services.items.map((item) => item.title)}
-          />
+          <ServicesMarquee labels={content.services.marqueeLabels} />
         ) : null}
         {enabled('services') ? (
           <Services services={content.services} />

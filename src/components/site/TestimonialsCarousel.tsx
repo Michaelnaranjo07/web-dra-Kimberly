@@ -31,40 +31,61 @@ function getVisibleCount() {
 
 function TestimonialCard({
   item,
-  cardBorderClass,
 }: {
   item: Testimonial
-  cardBorderClass: string
+  cardBorderClass?: string
 }) {
+  const avatar = '4.85rem'
+  const notch = '2.7rem' // radio del hueco (foto + aire)
+  const notchX = '3.625rem' // left-4 (1rem) + mitad del avatar
+  const notchY = '0.425rem' // centro del avatar respecto al top de la card
+
   return (
-    <article
-      className={[
-        'surface-soft h-full overflow-hidden rounded-2xl border bg-white',
-        cardBorderClass,
-      ].join(' ')}
-    >
-      <div className="aspect-4/3 overflow-hidden bg-fog">
+    <article className="relative h-full pt-8">
+      <div
+        className="absolute top-0 left-4 z-20 overflow-hidden rounded-full bg-fog"
+        style={{ width: avatar, height: avatar }}
+      >
         <img
           src={item.imageUrl}
           alt={item.imageAlt}
-          className="h-full w-full object-cover object-top"
+          className="h-full w-full object-cover object-[center_12%]"
           loading="lazy"
           draggable={false}
         />
       </div>
-      <div className="px-5 py-5">
+
+      <div
+        className="relative flex min-h-44 flex-col bg-white pt-5 pr-5 pb-5 pl-5"
+        style={{
+          borderRadius: '2.85rem 1.35rem 1.6rem 1.45rem',
+          // Hueco limpio para la foto (se ve el fondo de la sección)
+          WebkitMaskImage: `radial-gradient(circle ${notch} at ${notchX} ${notchY}, transparent 98%, #000 100%)`,
+          maskImage: `radial-gradient(circle ${notch} at ${notchX} ${notchY}, transparent 98%, #000 100%)`,
+          // drop-shadow respeta la máscara; evita esquinas oscuras del box-shadow+borde
+          filter: 'drop-shadow(0 12px 22px rgba(21, 26, 36, 0.10))',
+        }}
+      >
+        <div className="flex min-h-[3.1rem] items-center pl-[4.6rem]">
+          <div className="min-w-0">
+            <p className="font-display text-[0.95rem] leading-snug font-bold tracking-tight text-ink">
+              {item.name}
+            </p>
+            <p className="mt-0.5 text-xs leading-snug text-muted">{item.detail}</p>
+          </div>
+        </div>
+
         {item.quote ? (
-          <p className="text-sm leading-relaxed text-ink">“{item.quote}”</p>
+          <p className="relative mt-4 text-sm leading-relaxed text-ink">
+            <span
+              aria-hidden="true"
+              className="font-display absolute -top-1 -left-0.5 text-[1.65rem] leading-none text-signal/35"
+            >
+              “
+            </span>
+            <span className="relative pl-3.5">{item.quote}</span>
+          </p>
         ) : null}
-        <p
-          className={[
-            'text-sm font-bold text-ink',
-            item.quote ? 'mt-4' : '',
-          ].join(' ')}
-        >
-          {item.name}
-        </p>
-        <p className="mt-0.5 text-sm text-muted">{item.detail}</p>
       </div>
     </article>
   )
@@ -72,7 +93,6 @@ function TestimonialCard({
 
 export function TestimonialsCarousel({
   items,
-  cardBorderClass = 'border-white/80',
 }: TestimonialsCarouselProps) {
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
@@ -136,10 +156,7 @@ export function TestimonialsCarousel({
                   width: `calc((100cqw - ${(visible - 1) * gap}px) / ${visible})`,
                 }}
               >
-                <TestimonialCard
-                  item={item}
-                  cardBorderClass={cardBorderClass}
-                />
+                <TestimonialCard item={item} />
               </li>
             ))}
           </ul>

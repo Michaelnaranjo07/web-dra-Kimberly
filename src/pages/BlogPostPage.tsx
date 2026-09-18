@@ -43,7 +43,7 @@ export function BlogPostPage() {
     image: absoluteUrl(post.coverUrl),
     author: {
       '@type': 'Person',
-      name: 'Clínica Dra. Kimberly M.',
+      name: 'Clínica Dra. Kimberly Martinez',
       jobTitle: content.about.specialty,
     },
     publisher: {
@@ -59,7 +59,7 @@ export function BlogPostPage() {
     <>
       <Seo
         seo={{
-          title: post.seoTitle || `${post.title} — Clínica Dra. Kimberly M.`,
+          title: post.seoTitle || `${post.title} — Clínica Dra. Kimberly Martinez`,
           description: post.seoDescription || post.excerpt,
           keywords: content.seo.keywords,
           ogImage: post.coverUrl || content.seo.ogImage,
@@ -136,7 +136,7 @@ export function BlogPostPage() {
 
               <aside className="surface-soft mt-10 rounded-2xl border border-line/60 bg-white p-6 sm:p-7">
                 <p className="font-display text-lg font-bold tracking-tight text-ink">
-                  Clínica Dra. Kimberly M.
+                  Clínica Dra. Kimberly Martinez
                 </p>
                 <p className="mt-1 text-sm font-semibold text-ink/80">
                   {content.about.specialty}

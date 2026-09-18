@@ -30,10 +30,10 @@ export function BlogIndexPage() {
     <>
       <Seo
         seo={{
-          title: `${content.blog.title} — Clínica Dra. Kimberly M.`,
+          title: `${content.blog.title} — Clínica Dra. Kimberly Martinez`,
           description: content.blog.intro,
           keywords:
-            'blog odontología Bogotá, salud bucal, gestantes, Clínica Dra. Kimberly M.',
+            'blog odontología Bogotá, salud bucal, gestantes, Clínica Dra. Kimberly Martinez',
           ogImage: content.seo.ogImage,
         }}
         canonicalPath="/blog"

@@ -16,9 +16,9 @@ export function ServicesIndexPage() {
     <>
       <Seo
         seo={{
-          title: 'Servicios odontológicos en Bogotá — Clínica Dra. Kimberly M.',
+          title: 'Servicios odontológicos en Bogotá — Clínica Dra. Kimberly Martinez',
           description:
-            'Ortodoncia, blanqueamiento, prótesis, endodoncia y odontología para gestantes en Barrio Perdomo, Bogotá. Agenda en la Clínica Dra. Kimberly M..',
+            'Ortodoncia, blanqueamiento, prótesis, endodoncia y odontología para gestantes en Barrio Perdomo, Bogotá. Agenda en la Clínica Dra. Kimberly Martinez.',
           keywords:
             'servicios odontológicos Bogotá, ortodoncia, blanqueamiento, prótesis, endodoncia, odontología gestantes, Perdomo',
           ogImage: content.seo.ogImage,
